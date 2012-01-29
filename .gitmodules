@@ -1,6 +1,3 @@
-[submodule ".vim/bundle/pyflakes-vim"]
-	path = .vim/bundle/pyflakes-vim
-	url = https://github.com/kevinw/pyflakes-vim.git
 [submodule ".vim/bundle/vim-colors-solarized"]
 	path = .vim/bundle/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
