@@ -1,0 +1,7 @@
+[user]
+	name = Brian Riley
+	email = brian@btriley.com
+[alias]
+	st = status
+[core]
+	excludesfile = /Users/brian/.gitignore

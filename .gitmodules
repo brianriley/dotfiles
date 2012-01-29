@@ -1,0 +1,22 @@
+[submodule ".vim/bundle/pyflakes-vim"]
+	path = .vim/bundle/pyflakes-vim
+	url = https://github.com/kevinw/pyflakes-vim.git
+[submodule ".vim/bundle/vim-colors-solarized"]
+	path = .vim/bundle/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule ".vim/bundle/vim-pep8"]
+	path = .vim/bundle/vim-pep8
+	url = https://github.com/jbking/vim-pep8.git
+[submodule ".vim/bundle/Command-T"]
+	path = .vim/bundle/Command-T
+	url = https://github.com/vim-scripts/Command-T.git
+    ignore = untracked
+[submodule ".vim/bundle/Dpaste.com-Plugin"]
+	path = .vim/bundle/Dpaste.com-Plugin
+	url = https://github.com/vim-scripts/Dpaste.com-Plugin.git
+[submodule ".vim/bundle/Sorcerer"]
+	path = .vim/bundle/Sorcerer
+	url = https://github.com/vim-scripts/Sorcerer.git
+[submodule ".vim/bundle/vim-powerline"]
+	path = .vim/bundle/vim-powerline
+	url = https://github.com/Lokaltog/vim-powerline.git
