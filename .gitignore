@@ -5,6 +5,8 @@
 /.cups
 /.dropbox
 /.emacs.d
+/.fontconfig
+/.fonts
 /.gem
 /.irb-history
 /.irb_history
@@ -19,9 +21,11 @@
 /.sqlite_history
 /.ssh
 /.subversion
+/.vagrant.d
 /.vim/.netrwhist
 /.viminfo
 /.virtualenvs
+/.vms
 /.zcompdump
 /.zsh/data
 /Applications
