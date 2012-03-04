@@ -21,6 +21,7 @@
 /.sqlite_history
 /.ssh
 /.subversion
+/.tox
 /.vagrant.d
 /.vim/.netrwhist
 /.viminfo
