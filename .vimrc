@@ -92,7 +92,8 @@ map <leader>q :q<cr>
 map <leader><leader> :b#<cr>
 
 " Insert blank lines w/o leaving normal mode
-nmap <Leader><CR> o<Esc>
+nmap <leader><CR> o<Esc>
+nmap <leader><S-CR> O<Esc>
 
 " From https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
 function! InsertTabWrapper()
