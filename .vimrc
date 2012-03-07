@@ -33,26 +33,12 @@ set smartcase
 syntax on
 set t_Co=256
 set background=light
+colors sorcerer
 if has("gui_running")
   set cursorline
   set invmmta
-  
-  " bicycle repairman
-  let g:bike_exceptions = 1
-  map <leader>e :BikeExtract<cr>
-  
-  " colors and fonts
-  colors sorcerer
   set guioptions-=T
   set guifont=Monaco:h11
-else
-
-  " disbale PEP8 plugin for non-graphic vim
-  let g:pep8_ftplugin_loaded=0
-  let g:pep8_ignore_autocmd=0
-  let g:pep8_ignore_default_mapping=0
-  
-  colorscheme darkblue
 endif
 
 set whichwrap+=<,>,[,]
@@ -85,11 +71,11 @@ map <Down> gj
 nmap j gj
 
 " move single lines up and down
-nmap <D-k> ddkP
-nmap <D-j> ddp
+nmap <S-k> ddkP
+nmap <S-j> ddp
 " move blocks up and down
-vmap <D-k> xkP`[V`]
-vmap <D-j> xp`[V`]
+vmap <S-k> xkP`[V`]
+vmap <S-j> xp`[V`]
 
 set wildignore+=*.pyc
 set wildmenu
