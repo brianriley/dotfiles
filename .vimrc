@@ -42,7 +42,7 @@ if has("gui_running")
   set guifont=Monaco:h11
 endif
 
-set whichwrap+=<,>,[,]
+set whichwrap+=<,>,h,l,[,]
 set wrap linebreak nolist
 
 augroup mkd
