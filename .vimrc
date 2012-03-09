@@ -34,8 +34,9 @@ syntax on
 set t_Co=256
 set background=light
 colors sorcerer
+set cursorline
+
 if has("gui_running")
-  set cursorline
   set invmmta
   set guioptions-=T
   set guifont=Monaco:h11
