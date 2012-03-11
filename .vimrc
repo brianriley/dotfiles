@@ -6,6 +6,7 @@ set laststatus=2
 set encoding=utf-8
 set fileencoding=utf-8
 
+set history=10000
 set softtabstop=4
 set shiftwidth=4
 set tabstop=4
