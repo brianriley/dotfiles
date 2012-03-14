@@ -35,7 +35,7 @@ syntax on
 set t_Co=256
 set background=light
 colors sorcerer
-set cursorline
+hi cursorline ctermfg=NONE
 
 if has("gui_running")
   set invmmta
