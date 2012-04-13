@@ -47,8 +47,20 @@ endif
 set whichwrap+=<,>,h,l,[,]
 set wrap linebreak nolist
 
-augroup mkd
+augroup vimAutocmds
+  autocmd!
+
+  " Jump to last cursor position unless it's invalid or in an event handler
+  autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
+
+  autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
+  autocmd FileType python set sw=4 sts=4 et
+
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
+  autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:>
 augroup END
 
 " scrollbars
