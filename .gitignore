@@ -2,6 +2,7 @@
 *.DS_Store
 /.Trash
 /.bash_history
+/.cabal
 /.cups
 /.dropbox
 /.emacs.d
