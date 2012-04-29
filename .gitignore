@@ -8,6 +8,7 @@
 /.fontconfig
 /.fonts
 /.gem
+/.ghc
 /.irb-history
 /.irb_history
 /.lesshst
