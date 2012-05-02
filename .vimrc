@@ -17,6 +17,7 @@ set noswapfile
 set nohls
 set number
 set clipboard=unnamed
+set t_ti= t_te=
 
 " split windows to the right or below the current window
 set splitright splitbelow
