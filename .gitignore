@@ -42,8 +42,7 @@
 /Pictures
 /Public
 /Sites
-/bin/jsc
-/bin/subl
+/bin
 /projects
 
 *.pyc
