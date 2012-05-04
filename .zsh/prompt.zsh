@@ -1,4 +1,4 @@
-PROMPT_PREFIX="[%{$fg[cyan]%}%*%{$terminfo[sgr0]%}] %c"
+PROMPT_PREFIX="[%{$fg[cyan]%}%*%{$terminfo[sgr0]%}] %~"
 PROMPT_SUFFIX="%(!.#.>)"
 
 setopt PROMPT_SUBST
