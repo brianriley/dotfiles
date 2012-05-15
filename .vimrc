@@ -87,9 +87,6 @@ nmap k gk
 map <Down> gj
 nmap j gj
 
-" move single lines up and down
-nmap <S-k> ddkP
-nmap <S-j> ddp
 " move blocks up and down
 vmap <S-k> xkP`[V`]
 vmap <S-j> xp`[V`]
