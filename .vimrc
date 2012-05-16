@@ -79,7 +79,16 @@ endif
 let g:pep8_ignore="E501"
 
 map <leader>o :CommandT<cr>
-map <leader>t :wa\|:! nosetests<cr>
+
+"""""""""
+" Tests
+"""""""""
+function! RunTests()
+    :wa
+    :! nosetests
+endfunction
+
+map <leader>t :call RunTests()<cr>
 
 " move up/down within wrapped lines
 map <up> gk
