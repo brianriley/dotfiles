@@ -79,7 +79,16 @@ endif
 let g:pep8_ignore="E501"
 
 map <leader>o :CommandT<cr>
-map <leader>t :wa\|:! nosetests<cr>
+
+"""""""""
+" Tests
+"""""""""
+function! RunTests()
+    :wa
+    :! nosetests
+endfunction
+
+map <leader>t :call RunTests()<cr>
 
 " move up/down within wrapped lines
 map <up> gk
@@ -87,9 +96,6 @@ nmap k gk
 map <Down> gj
 nmap j gj
 
-" move single lines up and down
-nmap <S-k> ddkP
-nmap <S-j> ddp
 " move blocks up and down
 vmap <S-k> xkP`[V`]
 vmap <S-j> xp`[V`]
