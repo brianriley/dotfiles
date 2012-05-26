@@ -24,12 +24,15 @@ set splitright splitbelow
 
 let mapleader=","
 
-" search
+""""""""""
+" search "
+""""""""""
 set incsearch
 set hlsearch
 " clear highlight on carriage return
 nnoremap <CR> :nohlsearch<cr>
-
+" make regexes Perl style
+set magic
 set ignorecase
 set smartcase
 
