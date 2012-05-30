@@ -1,4 +1,4 @@
-PROMPT_PREFIX="[%{$fg[cyan]%}%*%{$terminfo[sgr0]%}] %~"
+PROMPT_PREFIX="[%{$fg[cyan]%}%*%{$reset_color%}] %{$fg[magenta]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} %~"
 PROMPT_SUFFIX="%(!.#.>)"
 
 setopt PROMPT_SUBST
