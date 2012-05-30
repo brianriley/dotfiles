@@ -152,3 +152,5 @@ map <leader>p :Dpaste<cr>
 
 " Misspelled words
 iab teh the
+
+imap <C-c> <Esc>
