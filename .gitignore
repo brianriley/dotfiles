@@ -15,6 +15,7 @@
 /.lesshst
 /.local
 /.netrc
+/.npm
 /.pip
 /.pypirc
 /.pythonhist
