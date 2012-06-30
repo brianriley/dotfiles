@@ -115,8 +115,8 @@ map <C-L> <C-W>l
 
 map <leader>w :w<cr>
 map <leader>q :q<cr>
-map <leader>v :v<cr>
-map <leader>e :e<cr>
+map <leader>v :v 
+map <leader>e :e 
 map <leader><leader> :b#<cr>
 
 " Insert blank lines w/o leaving normal mode
