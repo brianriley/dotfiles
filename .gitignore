@@ -12,9 +12,11 @@
 /.ghc
 /.irb-history
 /.irb_history
+/.keepassx
 /.lesshst
 /.local
 /.netrc
+/.npm
 /.pip
 /.pypirc
 /.pythonhist
