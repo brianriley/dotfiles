@@ -1,3 +1,15 @@
+# Options and loads
+setopt promptsubst
+autoload -U promptinit
+promptinit
+
+autoload -U compinit
+compinit
+
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '\C-x\C-e' edit-command-line
+
 # Path to the .zsh directory
 export ZSH=$HOME/.zsh
 
