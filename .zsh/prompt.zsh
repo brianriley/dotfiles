@@ -1,7 +1,6 @@
 PROMPT_PREFIX="[%{$fg[cyan]%}%*%{$reset_color%}] %{$fg[magenta]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} %~"
 PROMPT_SUFFIX="%(!.#.>)"
 
-setopt PROMPT_SUBST
 PROMPT="$PROMT_PREFIX $PROMPT_SUFFIX "
 
 # Tab and window title

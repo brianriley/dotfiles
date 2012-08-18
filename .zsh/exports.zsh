@@ -1,5 +1,5 @@
 export HISTFILE=$ZSH/data/history
-export HISTSIZE=1000
+export HISTSIZE=10000
 export SAVEHIST=$HISTSIZE
 
 export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
@@ -14,3 +14,5 @@ export PATH="$HOME/.cabal/bin:$PATH"
 
 # add home bin folders to path
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+
+export EDITOR="vi"
