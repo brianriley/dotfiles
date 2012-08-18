@@ -5,3 +5,5 @@
 	st = status
 [core]
 	excludesfile = /Users/brian/.gitignore
+[color]
+	ui = true
