@@ -12,6 +12,7 @@
 /.ghc
 /.irb-history
 /.irb_history
+/.jline-clojure.main.history
 /.keepassx
 /.lein
 /.lesshst
