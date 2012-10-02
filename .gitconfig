@@ -7,3 +7,5 @@
 	excludesfile = /Users/brian/.gitignore
 [color]
 	ui = true
+[push]
+	default = tracking
