@@ -97,6 +97,9 @@ endfunction
 
 map <leader>t :call RunTests()<cr>
 
+""""""""""""
+" Movements
+""""""""""""
 " move up/down within wrapped lines
 map <up> gk
 nmap k gk
@@ -107,20 +110,26 @@ nmap j gj
 vmap <S-k> xkP`[V`]
 vmap <S-j> xp`[V`]
 
-set wildignore+=*.pyc
-set wildmenu
-
 " remap C-W C-<key> to C-<key> for
 " moving between splits
 map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-H> <C-W>h
 map <C-L> <C-W>l
+
+" auto-resize panes to 60% of window
 let &winheight = &lines * 6 / 10
 let &winwidth = &columns * 6 / 10
 
+""""""""""""
+" Search
+""""""""""""
+set wildignore+=*.pyc
+set wildmenu
+
 map <leader>w :w<cr>
 map <leader>q :q<cr>
+map <leader>Q :waq<cr>
 map <leader>v :v 
 map <leader>e :e 
 map <leader><leader> :b#<cr>
