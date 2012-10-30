@@ -78,9 +78,21 @@ map <leader>o :CommandT<cr>
 """""""""
 " Tests
 """""""""
+function! RunDjangoTests()
+    :! python manage.py test
+endfunction
+
+function! RunNoseTests()
+    :! nosetests
+endfunction
+
 function! RunTests()
     :wa
-    :! nosetests
+    if filereadable("manage.py")
+        call RunDjangoTests()
+    else
+        call RunNoseTests()
+    endif
 endfunction
 
 map <leader>t :call RunTests()<cr>
