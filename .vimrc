@@ -42,7 +42,6 @@ set smartcase
 " colors "
 """"""""""
 set t_Co=256
-set background=light
 colors ir_black
 set cursorline
 hi cursorline ctermfg=NONE
