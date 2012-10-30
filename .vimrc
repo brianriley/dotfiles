@@ -36,18 +36,15 @@ set magic
 set ignorecase
 set smartcase
 
+""""""""""
+" colors "
+""""""""""
 syntax on
 set t_Co=256
 set background=light
 colors sorcerer
 set cursorline
 hi cursorline ctermfg=NONE
-
-if has("gui_running")
-  set invmmta
-  set guioptions-=T
-  set guifont=Monaco:h11
-endif
 
 set whichwrap+=<,>,h,l,[,]
 set wrap linebreak nolist
@@ -68,18 +65,11 @@ augroup vimAutocmds
   autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:>
 augroup END
 
-" scrollbars
-set guioptions-=L
-set guioptions-=r
-
 filetype on            " enables filetype detection
 filetype plugin on     " enables filetype specific plugins
 if has("autocmd")
   filetype plugin indent on
 endif
-
-" have pep8 ignore line length
-let g:pep8_ignore="E501"
 
 map <leader>o :CommandT<cr>
 
@@ -147,8 +137,6 @@ nmap <Up> :echo "kだよ、k"<cr>
 nmap <Down> :echo "jだよ、j"<cr>
 nmap <Left> :echo "hだよ、h"<cr>
 nmap <Right> :echo "lだよ、l"<cr>
-
-map <leader>p :Dpaste<cr>
 
 " Misspelled words
 iab teh the
