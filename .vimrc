@@ -44,7 +44,6 @@ set smartcase
 set t_Co=256
 colors ir_briley
 set cursorline
-hi cursorline ctermfg=NONE
 
 set whichwrap+=<,>,h,l,[,]
 set wrap linebreak nolist
