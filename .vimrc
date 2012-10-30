@@ -52,6 +52,8 @@ set wrap linebreak nolist
 
 augroup vimAutocmds
   autocmd!
+  autocmd BufEnter * if &filetype == "" | setlocal ft=text | endif
+  autocmd FileType text,gitcommit setlocal spell
 
   " Jump to last cursor position in file unless it's invalid or in an event handler
   autocmd BufReadPost *
@@ -59,8 +61,8 @@ augroup vimAutocmds
     \   exe "normal g`\"" |
     \ endif
 
-  autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
-  autocmd FileType python set sw=4 sts=4 et
+  autocmd FileType ruby,haml,eruby,yaml set ai sw=2 sts=2 et
+  autocmd FileType python,html,javascript,sass,cucumber set sw=4 sts=4 et
 
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
   autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:>
@@ -128,8 +130,9 @@ set wildignore+=*.pyc
 set wildmenu
 
 map <leader>w :w<cr>
+map <leader>W :wqa<cr>
 map <leader>q :q<cr>
-map <leader>Q :waq<cr>
+map <leader>Q :q!<cr>
 map <leader>v :v 
 map <leader>e :e 
 map <leader><leader> :b#<cr>
