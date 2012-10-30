@@ -41,7 +41,6 @@ set smartcase
 """"""""""
 " colors "
 """"""""""
-syntax on
 set t_Co=256
 set background=light
 colors ir_black
@@ -54,7 +53,7 @@ set wrap linebreak nolist
 augroup vimAutocmds
   autocmd!
 
-  " Jump to last cursor position unless it's invalid or in an event handler
+  " Jump to last cursor position in file unless it's invalid or in an event handler
   autocmd BufReadPost *
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal g`\"" |
@@ -67,11 +66,8 @@ augroup vimAutocmds
   autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:>
 augroup END
 
-filetype on            " enables filetype detection
-filetype plugin on     " enables filetype specific plugins
-if has("autocmd")
-  filetype plugin indent on
-endif
+syntax on
+filetype plugin indent on
 
 """"""""""""
 " Command T
