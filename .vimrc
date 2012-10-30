@@ -60,6 +60,9 @@ augroup vimAutocmds
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal g`\"" |
     \ endif
+  " Except for git commit messages
+  autocmd BufReadPost COMMIT_EDITMSG
+    \ exe "normal! gg"
 
   autocmd FileType ruby,haml,eruby,yaml set ai sw=2 sts=2 et
   autocmd FileType python,html,javascript,sass,cucumber set sw=4 sts=4 et
