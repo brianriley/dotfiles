@@ -42,7 +42,7 @@ set smartcase
 syntax on
 set t_Co=256
 set background=light
-colors sorcerer
+colors ir_black
 set cursorline
 hi cursorline ctermfg=NONE
 
