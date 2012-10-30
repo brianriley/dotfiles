@@ -73,7 +73,11 @@ if has("autocmd")
   filetype plugin indent on
 endif
 
+""""""""""""
+" Command T
+""""""""""""
 map <leader>o :CommandT<cr>
+map <leader>O :CommandT %:h<cr>
 
 """""""""
 " Tests
