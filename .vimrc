@@ -102,6 +102,8 @@ map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-H> <C-W>h
 map <C-L> <C-W>l
+let &winheight = &lines * 6 / 10
+let &winwidth = &columns * 6 / 10
 
 map <leader>w :w<cr>
 map <leader>q :q<cr>
