@@ -16,6 +16,7 @@ set ruler
 set noswapfile
 set nohls
 set number
+set scrolloff=3
 set clipboard=unnamed
 set t_ti= t_te=
 
@@ -135,10 +136,10 @@ nmap <silent> <leader>[ ciw[<C-r>"]<esc>
 nmap <silent> <leader>{ ciw{<C-r>"}<esc>
 nmap <silent> <leader>< ciw<<C-r>"><esc>
 
-nmap <Up> :echo "kだよ、k"<cr>
-nmap <Down> :echo "jだよ、j"<cr>
-nmap <Left> :echo "hだよ、h"<cr>
-nmap <Right> :echo "lだよ、l"<cr>
+nmap <Up> <nop>
+nmap <Down> <nop>
+nmap <Left> <nop>
+nmap <Right> <nop>
 
 " Misspelled words
 iab teh the
