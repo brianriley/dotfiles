@@ -19,3 +19,6 @@ for file in $SOURCES; do
     file=$ZSH/$file.zsh
     [[ -f $file ]] && source $file
 done
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

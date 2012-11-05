@@ -10,6 +10,7 @@
 /.fonts
 /.gem
 /.ghc
+/.heroku
 /.irb-history
 /.irb_history
 /.jline-clojure.main.history
