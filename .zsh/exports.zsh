@@ -15,4 +15,7 @@ export PATH="$HOME/.cabal/bin:$PATH"
 # add home bin folders to path
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
 export EDITOR="vi"
