@@ -42,7 +42,7 @@ set smartcase
 " colors "
 """"""""""
 set t_Co=256
-colors ir_briley
+colors Tomorrow-Night
 set cursorline
 
 set whichwrap+=<,>,h,l,[,]
