@@ -44,6 +44,7 @@ set smartcase
 set t_Co=256
 colors Tomorrow-Night
 set cursorline
+let python_highlight_all=1
 
 set whichwrap+=<,>,h,l,[,]
 set wrap linebreak nolist
