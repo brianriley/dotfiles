@@ -23,6 +23,7 @@
 /.netrc
 /.npm
 /.pip
+/.psql_history
 /.pypirc
 /.pythonhist
 /.rediscli_history
