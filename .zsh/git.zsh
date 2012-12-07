@@ -12,4 +12,4 @@ function git_status_color() {
     fi
 }
 
-PROMPT='$(git_branch_name)$PROMPT_PREFIX $PROMPT_SUFFIX '
+PROMPT='$PROMPT_PREFIX $(git_branch_name) $PROMPT_SUFFIX '
