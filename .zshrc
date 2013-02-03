@@ -19,3 +19,5 @@ for file in $SOURCES; do
     file=$ZSH/$file.zsh
     [[ -f $file ]] && source $file
 done
+
+bindkey '^R' history-incremental-search-backward
