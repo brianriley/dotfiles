@@ -11,6 +11,7 @@ promptinit
 autoload -U compinit
 compinit
 
+# VCS prompt
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git svn hg
 zstyle ':vcs_info:*' check-for-changes true
@@ -90,7 +91,17 @@ alias stop_postgres="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 # IP
 alias whats-my-ip="curl -s checkip.dyndns.org | grep -Eo '[0-9\.]+'"
 
-# virtualenvwrapper
+# virtualenv
+export WORKON_HOME=$HOME/.virtualenvs
+test -d $WORKON_HOME || mkdir $WORKON_HOME
 source /usr/local/share/python/virtualenvwrapper_lazy.sh
+
+#######################
+#### pip
+#######################
+# keep all logs in one place
+export PIP_LOG_FILE='/tmp/pip-log.txt'
+# use a cache
+export PIP_DOWNLOAD_CACHE='/tmp/pip_cache'
 
 bindkey '^R' history-incremental-search-backward
