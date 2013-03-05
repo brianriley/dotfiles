@@ -1,1 +1,0 @@
-setopt correct_all

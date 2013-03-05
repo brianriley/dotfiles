@@ -1,4 +1,6 @@
-# Options and loads
+#######################
+#### Options and loads
+#######################
 autoload -U colors
 colors
 
@@ -23,14 +25,72 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
 
+autoload -U compinit
+compinit
+
+#######################
+#### Exports
+#######################
+export HISTFILE=$HOME/.history
+export HISTSIZE=10000
+export SAVEHIST=$HISTSIZE
+
+export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
+export PATH="/usr/local/share/python:$PATH"
+
+# add Ruby executable path
+RUBY_EXECUTABLE_PATH=`gem environment | grep "EXECUTABLE DIRECTORY" | awk '{print $4}'`
+export PATH="$RUBY_EXECUTABLE_PATH:$PATH"
+
+# add cabal to path
+export PATH="$HOME/.cabal/bin:$PATH"
+
+# add home bin folders to path
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+export EDITOR="vi"
+
 # Path to the .zsh directory
 export ZSH=$HOME/.zsh
 
-# Files to source in order
-SOURCES=(exports correction completion prompt aliases python)
-for file in $SOURCES; do
-    file=$ZSH/$file.zsh
-    [[ -f $file ]] && source $file
-done
+# spelling correction
+setopt correct_all
+
+#######################
+#### Prompt
+#######################
+PROMPT_PREFIX="[%{$fg[cyan]%}%*%{$reset_color%}] %{$fg[magenta]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} %~"
+PROMPT_SUFFIX="%(!.#.>)"
+
+PROMPT='$PROMPT_PREFIX ${vcs_info_msg_0_} $PROMPT_SUFFIX '
+
+# Tab and window title
+case $TERM in
+    *xterm*|ansi)
+        function settab { print -Pn "\e]1;%~\a" }
+        function settitle { print -Pn "\e]2;%~\a" }
+        function chpwd { settab;settitle }
+        settab;settitle
+    ;;
+esac
+
+#######################
+#### Aliases
+#######################
+alias ls='ls -G'
+alias ll='ls -lh'
+
+# PostgreSQL
+alias start_postgres="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
+alias stop_postgres="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
+
+# IP
+alias whats-my-ip="curl -s checkip.dyndns.org | grep -Eo '[0-9\.]+'"
+
+# virtualenvwrapper
+source /usr/local/share/python/virtualenvwrapper_lazy.sh
 
 bindkey '^R' history-incremental-search-backward
