@@ -8,6 +8,7 @@ setopt prompt_subst
 autoload -U promptinit
 promptinit
 
+# enable completion
 autoload -U compinit
 compinit
 
@@ -25,9 +26,6 @@ precmd() {
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
-
-autoload -U compinit
-compinit
 
 #######################
 #### Exports
