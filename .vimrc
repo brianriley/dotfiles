@@ -134,7 +134,7 @@ set wildmenu
 map <leader>w :w<cr>
 map <leader>W :wqa<cr>
 map <leader>q :q<cr>
-map <leader>Q :q!<cr>
+map <leader>Q :qa<cr>
 map <leader>v :v 
 map <leader>e :e 
 map <leader><leader> :b#<cr>
