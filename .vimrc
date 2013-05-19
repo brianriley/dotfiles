@@ -90,9 +90,15 @@ function! RunNoseTests()
     :! nosetests
 endfunction
 
+function! RunSpec()
+    :! rspec
+endfunction
+
 function! RunTests()
     :wa
-    if filereadable("manage.py")
+    if &ft == "ruby"
+        call RunSpec()
+    elseif filereadable("manage.py")
         call RunDjangoTests()
     else
         call RunNoseTests()
