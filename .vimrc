@@ -107,6 +107,21 @@ endfunction
 map <leader>t :call RunTests()<cr>
 
 """"""""""""
+" Open on GitHub
+""""""""""""
+function! OpenOnGitHub()
+    let reporoot = substitute(system("git rev-parse --show-toplevel"), "\n", "", "")
+    let origin = substitute(substitute(split(system("git config --get remote.origin.url"), ":")[1], ".git", "", ""), "\n", "", "")
+    let branch = substitute(system("git rev-parse --abbrev-ref HEAD"), "\n", "", "")
+    let filepath = substitute(expand('%:p'), reporoot, "", "")
+    let linenumber = line('.')
+    let url = "https://github.com/" . origin . "/blob/" . branch . filepath . "#L" . linenumber
+    call system("open " . url)
+endfunction
+
+map <leader>g :call OpenOnGithub()<cr>
+
+""""""""""""
 " Movements
 """"""""""""
 " move up/down within wrapped lines
