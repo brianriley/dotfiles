@@ -107,7 +107,7 @@ endfunction
 map <leader>t :call RunTests()<cr>
 
 """"""""""""
-" Open on GitHub
+" Open current file and line on GitHub
 """"""""""""
 function! OpenOnGitHub()
     let reporoot = substitute(system("git rev-parse --show-toplevel"), "\n", "", "")
@@ -119,7 +119,7 @@ function! OpenOnGitHub()
     call system("open " . url)
 endfunction
 
-map <leader>g :call OpenOnGithub()<cr>
+map <leader>g :call OpenOnGitHub()<cr>
 
 """"""""""""
 " Movements
