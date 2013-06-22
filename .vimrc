@@ -50,6 +50,10 @@ set wrap linebreak nolist
 
 augroup vimAutocmds
   autocmd!
+
+  " coffeescript
+  autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+
   autocmd BufEnter * if &filetype == "" | setlocal ft=text | endif
   autocmd FileType text,gitcommit setlocal spell
 
