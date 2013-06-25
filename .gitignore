@@ -7,6 +7,7 @@
 !/.vim
 !/.emacs
 !/.gitconfig
+!/.gitignore_global
 !/.gitmodules
 !/.rspec
 !/.tmux.conf

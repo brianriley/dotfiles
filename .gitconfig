@@ -4,7 +4,7 @@
 [alias]
 	st = status
 [core]
-	excludesfile = /Users/brian/.gitignore
+	excludesfile = /Users/brian/.gitignore_global
 [color]
 	ui = true
 [push]
