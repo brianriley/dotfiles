@@ -39,8 +39,8 @@ export SAVEHIST=$HISTSIZE
 export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
 export PATH="/usr/local/share/python:$PATH"
 
-# add cabal to path
-export PATH="$HOME/.cabal/bin:$PATH"
+# npm'z
+export PATH="/usr/local/share/npm/bin:$PATH"
 
 # add home bin folders to path
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
