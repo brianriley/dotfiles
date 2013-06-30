@@ -37,7 +37,6 @@ export HISTSIZE=10000
 export SAVEHIST=$HISTSIZE
 
 export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
-export PATH="/usr/local/share/python:$PATH"
 
 # npm'z
 export PATH="/usr/local/share/npm/bin:$PATH"
