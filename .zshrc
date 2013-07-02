@@ -89,7 +89,7 @@ alias whats-my-ip="curl -s checkip.dyndns.org | grep -Eo '[0-9\.]+'"
 # virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
 test -d $WORKON_HOME || mkdir $WORKON_HOME
-source /usr/local/share/python/virtualenvwrapper_lazy.sh
+source /usr/local/bin/virtualenvwrapper_lazy.sh
 
 #######################
 #### pip
