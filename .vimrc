@@ -198,6 +198,7 @@ inoremap <s-tab> <c-n>
 " shortcuts to wrap words in quotes and brackets
 nmap <silent> <leader>' ciw'<C-r>"'<esc>
 nmap <silent> <leader>" ciw"<C-r>""<esc>
+nmap <silent> <leader>` ciw`<C-r>"`<esc>
 nmap <silent> <leader>( ciw(<C-r>")<esc>
 nmap <silent> <leader>[ ciw[<C-r>"]<esc>
 nmap <silent> <leader>{ ciw{<C-r>"}<esc>
