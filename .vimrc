@@ -42,35 +42,49 @@ set smartcase
 " colors "
 """"""""""
 set t_Co=256
-colors Tomorrow-Night
+colorscheme jellybeans
 set cursorline
 
 set whichwrap+=<,>,h,l,[,]
 set wrap linebreak nolist
 
-augroup vimAutocmds
-  autocmd!
+augroup spelling
+    autocmd!
+    autocmd BufEnter * if &filetype == "" | setlocal ft=text | endif
+    autocmd FileType text,gitcommit setlocal spell
+augroup END
 
-  " coffeescript
-  autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+augroup jump_to_last_position
+    autocmd!
+    " Jump to last cursor position in file unless it's invalid or in an event handler
+    autocmd BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe "normal g`\"" |
+        \ endif
+    " Except for git commit messages
+    autocmd BufReadPost COMMIT_EDITMSG
+        \ exe "normal! gg"
+augroup END
 
-  autocmd BufEnter * if &filetype == "" | setlocal ft=text | endif
-  autocmd FileType text,gitcommit setlocal spell
+augroup two_space_types
+    autocmd!
+    autocmd FileType ruby,haml,eruby,yaml set ai sw=2 sts=2 et
+augroup END
 
-  " Jump to last cursor position in file unless it's invalid or in an event handler
-  autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
-  " Except for git commit messages
-  autocmd BufReadPost COMMIT_EDITMSG
-    \ exe "normal! gg"
+augroup four_space_types
+    autocmd!
+    autocmd FileType python,html,javascript,sass,cucumber set sw=4 sts=4 et
+augroup END
 
-  autocmd FileType ruby,haml,eruby,yaml set ai sw=2 sts=2 et
-  autocmd FileType python,html,javascript,sass,cucumber set sw=4 sts=4 et
+augroup ft_coffeescript
+    autocmd!
+    autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+augroup END
 
-  autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
-  autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:>
+augroup ft_markdown
+    autocmd!
+    autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
+    autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:>
 augroup END
 
 syntax on
@@ -145,9 +159,11 @@ map <C-K> <C-W>k
 map <C-H> <C-W>h
 map <C-L> <C-W>l
 
-" auto-resize panes to 60% of window
+" auto-resize panes to 60% of window...
 let &winheight = &lines * 6 / 10
 let &winwidth = &columns * 6 / 10
+" ...and resize when the window has been resized
+au VimResized * :wincmd =
 
 """"""""""""
 " Search
