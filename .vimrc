@@ -115,10 +115,24 @@ function! RunSpec()
     :! rspec
 endfunction
 
+function! RunLettuce()
+    :! lettuce
+endfunction
+
+function! RunCucumber()
+    :! cucumber
+endfunction
+
 function! RunTests()
     :wa
     if &ft == "ruby"
         call RunSpec()
+    elseif &ft == "cucumber"
+        if filereadable("features/terrain.py")
+            call RunLettuce()
+        else
+            call RunCucumber()
+        endif
     elseif filereadable("manage.py")
         call RunDjangoTests()
     else
