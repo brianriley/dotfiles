@@ -45,6 +45,11 @@ set t_Co=256
 colorscheme jellybeans
 set cursorline
 
+""""""""""
+" status "
+""""""""""
+set statusline=%f\ (%{&ft})\ %m%=%lL,%cC\ %P
+
 set whichwrap+=<,>,h,l,[,]
 set wrap linebreak nolist
 
