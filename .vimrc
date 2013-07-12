@@ -15,7 +15,6 @@ set expandtab
 set ruler
 set noswapfile
 set nohls
-set number
 set scrolloff=3
 set clipboard=unnamed
 set t_ti= t_te=
