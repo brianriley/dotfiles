@@ -105,7 +105,6 @@ map <leader>O :CommandT %:h<cr>
 """""""""
 function! RunRubyTests(filename)
     " Run minitest on the file or over all specs
-    echo a:filename
     let is_spec = match(a:filename, '_spec.rb') != -1
     if is_spec
         exec ':! ruby ' . a:filename
