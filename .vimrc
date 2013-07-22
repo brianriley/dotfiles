@@ -70,14 +70,10 @@ augroup jump_to_last_position
         \ exe "normal! gg"
 augroup END
 
-augroup two_space_types
+augroup spaces
     autocmd!
-    autocmd FileType ruby,haml,eruby,yaml set ai sw=2 sts=2 et
-augroup END
-
-augroup four_space_types
-    autocmd!
-    autocmd FileType python,html,javascript,sass,cucumber set sw=4 sts=4 et
+    autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
+    autocmd FileType python set sw=4 sts=4 et
 augroup END
 
 augroup ft_coffeescript
@@ -109,7 +105,7 @@ function! RunRubyTests(filename)
     if is_spec
         exec ':! ruby ' . a:filename
     else
-        exec ':! ruby spec/'
+        exec ':! ruby spec/*'
     endif
 endfunction
 
