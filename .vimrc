@@ -101,42 +101,44 @@ map <leader>o :CommandT<cr>
 map <leader>O :CommandT %:h<cr>
 
 """""""""
-" Tests
+" Tests runners
 """""""""
-function! RunDjangoTests()
-    :! python manage.py test
+function! RunRubyTests(filename)
+    " Run minitest on the file or over all specs
+    let is_spec = match(a:filename, '_spec.rb') != -1
+    if is_spec:
+        exec ':! ruby ' . a:filename
+    else
+        exec ':! ruby spec/'
+    endif
 endfunction
 
-function! RunNoseTests()
-    :! nosetests
+function! RunFeatures(filename)
+    if filereadable("features/terrain.py")
+        exec ':! lettuce ' . a:filename
+    else
+        exec ':! cucumber ' . a:filename
+    endif
 endfunction
 
-function! RunSpec()
-    :! rspec
-endfunction
-
-function! RunLettuce()
-    :! lettuce
-endfunction
-
-function! RunCucumber()
-    :! cucumber
+function! RunPythonTests(filename)
+    let is_test_file = match(a:filename, '/test') != -1
+    if is_test_file
+        exec ':! py.test ' . a:filename
+    else
+        exec ':! py.test'
+    end
 endfunction
 
 function! RunTests()
     :wa
+    let filename = expand("%")
     if &ft == "ruby"
-        call RunSpec()
+        call RunRubyTests(filename)
     elseif &ft == "cucumber"
-        if filereadable("features/terrain.py")
-            call RunLettuce()
-        else
-            call RunCucumber()
-        endif
-    elseif filereadable("manage.py")
-        call RunDjangoTests()
-    else
-        call RunNoseTests()
+        call RunFeatures(filename)
+    elseif &ft == "python"
+        call RunPythonTests(filename)
     endif
 endfunction
 
