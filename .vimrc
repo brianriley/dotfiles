@@ -7,6 +7,7 @@ set encoding=utf-8
 set fileencoding=utf-8
 
 set history=10000
+set backspace=2 " allow erasing previously entered characters
 set softtabstop=4
 set shiftwidth=4
 set tabstop=4
