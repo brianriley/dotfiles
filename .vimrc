@@ -106,7 +106,7 @@ function! RunRubyTests(filename)
     if is_spec
         exec ':! rspec ' . a:filename
     else
-        exec ':! rspec spec/*'
+        exec ':! rspec spec/'
     endif
 endfunction
 
