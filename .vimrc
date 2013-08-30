@@ -104,9 +104,9 @@ function! RunRubyTests(filename)
     " Run minitest on the file or over all specs
     let is_spec = match(a:filename, '_spec.rb') != -1
     if is_spec
-        exec ':! ruby ' . a:filename
+        exec ':! rspec ' . a:filename
     else
-        exec ':! ruby spec/*'
+        exec ':! rspec spec/*'
     endif
 endfunction
 
