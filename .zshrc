@@ -86,6 +86,9 @@ alias stop_postgres="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 # IP
 alias whats-my-ip="curl -s checkip.dyndns.org | grep -Eo '[0-9\.]+'"
 
+# mutt
+alias mutt="cd ~/Downloads && mutt"
+
 # virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
 test -d $WORKON_HOME || mkdir $WORKON_HOME
