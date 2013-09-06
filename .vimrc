@@ -56,7 +56,7 @@ set wrap linebreak nolist
 augroup spelling
     autocmd!
     autocmd BufEnter * if &filetype == "" | setlocal ft=text | endif
-    autocmd FileType text,gitcommit setlocal spell
+    autocmd FileType text,gitcommit,mail setlocal spell
 augroup END
 
 augroup jump_to_last_position
