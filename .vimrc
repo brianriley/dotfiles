@@ -101,7 +101,6 @@ map <leader>O :CommandT %:h<cr>
 " Tests runners
 """""""""
 function! RunRubyTests(filename)
-    " Run minitest on the file or over all specs
     let is_spec = match(a:filename, '_spec.rb') != -1
     if is_spec
         exec ':! rspec ' . a:filename
@@ -230,3 +229,28 @@ nmap <Right> <nop>
 iab teh the
 
 imap <C-c> <Esc>
+
+" Move between production code and specs
+function! SwitchToProduction(filename)
+    let prod_file = substitute(a:filename, '_spec', '', '')
+    let prod_file_and_path = substitute(prod_file, 'spec', 'app', '')
+    exec ':e ' . prod_file_and_path
+endfunction
+
+function! SwitchToSpec(filename)
+    let spec_file = substitute(a:filename, '.rb', '_spec.rb', '')
+    let spec_file_and_path = substitute(spec_file, 'app', 'spec', '')
+    exec ':e ' . spec_file_and_path
+endfunction
+
+function! MoveBetweenProdAndSpec()
+    let filename = expand("%")
+    let is_spec = match(filename, '_spec.rb') != -1
+    if is_spec
+        call SwitchToProduction(filename)
+    else
+        call SwitchToSpec(filename)
+    endif
+endfunction
+
+map <leader>. :call MoveBetweenProdAndSpec()<cr>
