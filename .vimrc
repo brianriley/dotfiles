@@ -230,27 +230,28 @@ iab teh the
 
 imap <C-c> <Esc>
 
+""""""""""""
 " Move between production code and specs
+""""""""""""
 function! SwitchToProduction(filename)
     let prod_file = substitute(a:filename, '_spec', '', '')
-    let prod_file_and_path = substitute(prod_file, 'spec', 'app', '')
-    exec ':e ' . prod_file_and_path
+    return substitute(prod_file, 'spec', 'app', '')
 endfunction
 
 function! SwitchToSpec(filename)
     let spec_file = substitute(a:filename, '.rb', '_spec.rb', '')
-    let spec_file_and_path = substitute(spec_file, 'app', 'spec', '')
-    exec ':e ' . spec_file_and_path
+    return substitute(spec_file, 'app', 'spec', '')
 endfunction
 
 function! MoveBetweenProdAndSpec()
     let filename = expand("%")
     let is_spec = match(filename, '_spec.rb') != -1
     if is_spec
-        call SwitchToProduction(filename)
+        let other_file = SwitchToProduction(filename)
     else
-        call SwitchToSpec(filename)
+        let other_file = SwitchToSpec(filename)
     endif
+    exec ':edit ' . other_file
 endfunction
 
 map <leader>. :call MoveBetweenProdAndSpec()<cr>
