@@ -193,7 +193,7 @@ map <leader>q :q<cr>
 map <leader>Q :qa<cr>
 map <leader>v :v 
 map <leader>e :e 
-map <leader>r :r
+map <leader>r :r 
 map <leader><leader> :b#<cr>
 
 " Insert blank lines w/o leaving normal mode
