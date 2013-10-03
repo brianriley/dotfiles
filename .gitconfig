@@ -3,6 +3,8 @@
 	email = brian@btriley.com
 [alias]
 	st = status
+    ci = commit
+    lol = log --oneline --graph --decorate --all
 [core]
 	excludesfile = /Users/brian/.gitignore_global
 [color]
