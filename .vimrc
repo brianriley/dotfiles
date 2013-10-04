@@ -20,6 +20,7 @@ set scrolloff=3
 set clipboard=unnamed
 set t_ti= t_te=
 set shell=bash
+set number
 
 " split windows to the right or below the current window
 set splitright splitbelow
