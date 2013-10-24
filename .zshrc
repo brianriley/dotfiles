@@ -53,7 +53,7 @@ export EDITOR="vi"
 export ZSH=$HOME/.zsh
 
 # spelling correction
-setopt correct_all
+setopt correct
 
 #######################
 #### Prompt
