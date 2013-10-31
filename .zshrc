@@ -94,6 +94,8 @@ export WORKON_HOME=$HOME/.virtualenvs
 test -d $WORKON_HOME || mkdir $WORKON_HOME
 source /usr/local/bin/virtualenvwrapper_lazy.sh
 
+alias be="bundle exec"
+
 #######################
 #### pip
 #######################
