@@ -105,7 +105,4 @@ export PIP_LOG_FILE='/tmp/pip-log.txt'
 export PIP_DOWNLOAD_CACHE='/tmp/pip_cache'
 
 bindkey '^R' history-incremental-search-backward
-
-# init RVM
-PATH=$PATH:$HOME/.rvm/bin
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+eval "$(rbenv init -)"
