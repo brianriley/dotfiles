@@ -94,8 +94,6 @@ export WORKON_HOME=$HOME/.virtualenvs
 test -d $WORKON_HOME || mkdir $WORKON_HOME
 source /usr/local/bin/virtualenvwrapper_lazy.sh
 
-alias be="bundle exec"
-
 #######################
 #### pip
 #######################
@@ -106,3 +104,4 @@ export PIP_DOWNLOAD_CACHE='/tmp/pip_cache'
 
 bindkey '^R' history-incremental-search-backward
 eval "$(rbenv init -)"
+[ -f ~/.bundler-exec.sh ] && source ~/.bundler-exec.sh
