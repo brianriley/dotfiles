@@ -92,49 +92,6 @@ augroup END
 syntax on
 filetype plugin indent on
 
-"""""""""
-" Tests runners
-"""""""""
-function! RunRubyTests(filename)
-    let is_spec = match(a:filename, '_spec.rb') != -1
-    if is_spec
-        exec ':! rspec ' . a:filename
-    else
-        exec ':! rspec spec/'
-    endif
-endfunction
-
-function! RunFeatures(filename)
-    if filereadable("features/terrain.py")
-        exec ':! lettuce ' . a:filename
-    else
-        exec ':! cucumber ' . a:filename
-    endif
-endfunction
-
-function! RunPythonTests(filename)
-    let is_test_file = match(a:filename, '/test') != -1
-    if is_test_file
-        exec ':! py.test ' . a:filename
-    else
-        exec ':! py.test'
-    end
-endfunction
-
-function! RunTests()
-    :wa
-    let filename = expand("%")
-    if &ft == "ruby"
-        call RunRubyTests(filename)
-    elseif &ft == "cucumber"
-        call RunFeatures(filename)
-    elseif &ft == "python"
-        call RunPythonTests(filename)
-    endif
-endfunction
-
-map <leader>t :call RunTests()<cr>
-
 """"""""""""
 " Open current file and line on GitHub
 """"""""""""
@@ -189,6 +146,7 @@ map <leader>Q :qa<cr>
 map <leader>v :v 
 map <leader>e :e 
 map <leader>r :r 
+map <leader>x :x<cr>
 map <leader><leader> :b#<cr>
 
 " Insert blank lines w/o leaving normal mode
@@ -226,28 +184,77 @@ iab teh the
 
 imap <C-c> <Esc>
 
+"""""""""
+" Tests 
+"""""""""
+function! RunTests_ruby(filename, line)
+  let is_spec = match(a:filename, '_spec.rb') != -1
+  if is_spec
+    let command = ':! rspec ' . a:filename . ' -l ' . a:line
+  else
+    if !exists('g:test_command')
+      let command = ':! rspec spec/'
+    else
+      let command = g:test_command
+    endif 
+  endif
+  let g:test_command = command
+  exec command
+endfunction
+
+function! RunTests_cucumber(filename)
+  if filereadable("features/terrain.py")
+    exec ':! lettuce ' . a:filename
+  else
+    exec ':! cucumber ' . a:filename
+  endif
+endfunction
+
+function! RunTests_python(filename)
+  let is_test_file = match(a:filename, '/test') != -1
+  if is_test_file
+    exec ':! py.test ' . a:filename
+  else
+    exec ':! py.test'
+  end
+endfunction
+
+function! RunTests()
+  :wa
+  let filename = expand("%")
+  let line = line(".")
+  let test_runner = ':call RunTests_' . &ft . '("' . filename . '",' . line . ')'
+  exec test_runner
+endfunction
+
+map <leader>t :call RunTests()<cr>
+
 """"""""""""
 " Move between production code and specs
 """"""""""""
-function! SwitchToProduction(filename)
-    let prod_file = substitute(a:filename, '_spec', '', '')
-    return substitute(prod_file, 'spec', 'app', '')
+function! ProdFileName(filename)
+  let prod_file = substitute(a:filename, '_spec', '', '')
+  return substitute(prod_file, 'spec', 'app', '')
 endfunction
 
-function! SwitchToSpec(filename)
-    let spec_file = substitute(a:filename, '.rb', '_spec.rb', '')
-    return substitute(spec_file, 'app', 'spec', '')
+function! SpecFileName(filename)
+  let spec_file = substitute(a:filename, '.rb', '_spec.rb', '')
+  return substitute(spec_file, 'app', 'spec', '')
+endfunction
+
+function! GetOtherFile(filename)
+  let is_spec = match(filename, '_spec.rb') != -1
+  if is_spec
+    let other_file = ProdFileName(filename)
+  else
+    let other_file = SpecFileName(filename)
+  endif
+  return other_file
 endfunction
 
 function! MoveBetweenProdAndSpec()
-    let filename = expand("%")
-    let is_spec = match(filename, '_spec.rb') != -1
-    if is_spec
-        let other_file = SwitchToProduction(filename)
-    else
-        let other_file = SwitchToSpec(filename)
-    endif
-    exec ':edit ' . other_file
+  let other_file = GetOtherFile(expand("%"))
+  exec ':edit ' . other_file
 endfunction
 
 map <leader>. :call MoveBetweenProdAndSpec()<cr>
