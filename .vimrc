@@ -202,12 +202,8 @@ function! RunTests_ruby(filename, line)
   exec command
 endfunction
 
-function! RunTests_cucumber(filename)
-  if filereadable("features/terrain.py")
-    exec ':! lettuce ' . a:filename
-  else
-    exec ':! cucumber ' . a:filename
-  endif
+function! RunTests_cucumber(filename, line)
+  exec ':! cucumber ' . a:filename
 endfunction
 
 function! RunTests_python(filename)
