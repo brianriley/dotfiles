@@ -89,10 +89,7 @@ alias whats-my-ip="curl -s checkip.dyndns.org | grep -Eo '[0-9\.]+'"
 # mutt
 alias mutt="cd ~/Downloads && mutt"
 
-# virtualenv
-export WORKON_HOME=$HOME/.virtualenvs
-test -d $WORKON_HOME || mkdir $WORKON_HOME
-source /usr/local/bin/virtualenvwrapper_lazy.sh
+alias vi="vim"
 
 #######################
 #### pip
