@@ -100,5 +100,5 @@ export PIP_LOG_FILE='/tmp/pip-log.txt'
 export PIP_DOWNLOAD_CACHE='/tmp/pip_cache'
 
 bindkey '^R' history-incremental-search-backward
-eval "$(rbenv init -)"
+eval "$(rbenv init - $SHELL)"
 [ -f ~/.bundler-exec.sh ] && source ~/.bundler-exec.sh
