@@ -79,10 +79,6 @@ esac
 alias ls='ls -G'
 alias ll='ls -lh'
 
-# PostgreSQL
-alias start_postgres="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
-alias stop_postgres="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
-
 # IP
 alias whats-my-ip="curl -s checkip.dyndns.org | grep -Eo '[0-9\.]+'"
 
@@ -100,5 +96,9 @@ export PIP_LOG_FILE='/tmp/pip-log.txt'
 export PIP_DOWNLOAD_CACHE='/tmp/pip_cache'
 
 bindkey '^R' history-incremental-search-backward
+
+#######################
+#### rubby
+#######################
 eval "$(rbenv init - $SHELL)"
-[ -f ~/.bundler-exec.sh ] && source ~/.bundler-exec.sh
+[ -f ~/bundler.plugin.zsh ] && source ~/bundler.plugin.zsh
