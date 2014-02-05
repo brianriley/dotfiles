@@ -239,18 +239,16 @@ function! SpecFileName(filename)
 endfunction
 
 function! GetOtherFile(filename)
-  let is_spec = match(filename, '_spec.rb') != -1
+  let is_spec = match(a:filename, '_spec.rb') != -1
   if is_spec
-    let other_file = ProdFileName(filename)
+    return ProdFileName(a:filename)
   else
-    let other_file = SpecFileName(filename)
+    return SpecFileName(a:filename)
   endif
-  return other_file
 endfunction
 
 function! MoveBetweenProdAndSpec()
-  let other_file = GetOtherFile(expand("%"))
-  exec ':edit ' . other_file
+  exec ':edit ' . GetOtherFile(expand("%"))
 endfunction
 
 map <leader>. :call MoveBetweenProdAndSpec()<cr>
