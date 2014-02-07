@@ -78,11 +78,6 @@ augroup spaces
     autocmd FileType python set sw=4 sts=4 et
 augroup END
 
-augroup ft_coffeescript
-    autocmd!
-    autocmd BufNewFile,BufRead *.coffee set filetype=coffee
-augroup END
-
 augroup ft_markdown
     autocmd!
     autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
