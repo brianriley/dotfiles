@@ -8,9 +8,9 @@ set fileencoding=utf-8
 
 set history=10000
 set backspace=2 " allow erasing previously entered characters
-set softtabstop=4
-set shiftwidth=4
-set tabstop=4
+set softtabstop=2
+set shiftwidth=2
+set tabstop=2
 set autoindent
 set expandtab
 set ruler
@@ -74,8 +74,7 @@ augroup END
 
 augroup spaces
     autocmd!
-    autocmd FileType ruby,haml,eruby,yaml,html,javascript,coffee,sass,scss,cucumber set ai sw=2 sts=2 et
-    autocmd FileType python set sw=4 sts=4 et
+    autocmd FileType python,markdown set sw=4 sts=4 et
 augroup END
 
 augroup ft_markdown
