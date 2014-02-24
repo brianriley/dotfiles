@@ -9,8 +9,8 @@ autoload -U promptinit
 promptinit
 
 # enable completion
-autoload -U compinit
-compinit
+autoload -U compinit && compinit
+zstyle ':completion:*' menu select
 
 # VCS prompt
 autoload -Uz vcs_info
