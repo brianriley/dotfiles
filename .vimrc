@@ -224,18 +224,28 @@ map <leader>t :call RunTests()<cr>
 """"""""""""
 function! ProdFileName(filename)
   let prod_file = substitute(a:filename, '_spec', '', '')
-  return substitute(prod_file, 'spec', 'app', '')
+  return substitute(prod_file, 'spec/', '', '')
 endfunction
 
 function! SpecFileName(filename)
-  let spec_file = substitute(a:filename, '.rb', '_spec.rb', '')
-  return substitute(spec_file, 'app', 'spec', '')
+  let _spec_file = substitute(a:filename, '.rb', '_spec.rb', '')
+  let spec_file = substitute(_spec_file, 'app/', '', '')
+  return 'spec/' . spec_file
+endfunction
+
+function! ExpandPath(filename)
+  let is_rails = isdirectory('app')
+  if is_rails
+    return 'app/' . a:filename
+  else
+    return a:filename
+  endif
 endfunction
 
 function! GetOtherFile(filename)
   let is_spec = match(a:filename, '_spec.rb') != -1
   if is_spec
-    return ProdFileName(a:filename)
+    return ExpandPath(ProdFileName(a:filename))
   else
     return SpecFileName(a:filename)
   endif
