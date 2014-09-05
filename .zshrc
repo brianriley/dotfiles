@@ -1,12 +1,10 @@
 #######################
 #### Options and loads
 #######################
-autoload -U colors
-colors
+autoload -U colors && colors
 
 setopt prompt_subst
-autoload -U promptinit
-promptinit
+autoload -U promptinit && promptinit
 
 # enable completion
 autoload -U compinit && compinit
@@ -58,10 +56,13 @@ setopt correct
 #######################
 #### Prompt
 #######################
-PROMPT_PREFIX="[%{$fg[cyan]%}%*%{$reset_color%}] %~"
-PROMPT_SUFFIX="%(!.#.>)"
+PROMPT_TIME="[%{$fg[cyan]%}%*%{$reset_color%}]"
+PROMPT_PATH="%{$fg[grey]%}%~%{$reset_color%}"
+PROMPT_CHAR="%(!.#.>)"
 
-PROMPT='$PROMPT_PREFIX ${vcs_info_msg_0_} $PROMPT_SUFFIX '
+PROMPT='$PROMPT_PATH ${vcs_info_msg_0_}
+$PROMPT_CHAR '
+RPROMPT='$PROMPT_TIME'
 
 # Tab and window title
 case $TERM in
