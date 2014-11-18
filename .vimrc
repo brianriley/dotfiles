@@ -43,7 +43,7 @@ set smartcase
 " colors "
 """"""""""
 set t_Co=256
-colorscheme jellybeans
+colorscheme Tomorrow
 set cursorline
 
 """"""""""
@@ -138,7 +138,6 @@ map <leader>W :wqa<cr>
 map <leader>q :q<cr>
 map <leader>Q :qa<cr>
 map <leader>v :v 
-map <leader>e :e 
 map <leader>r :r 
 map <leader>x :x<cr>
 map <leader><leader> :b#<cr>
@@ -257,19 +256,10 @@ endfunction
 
 map <leader>. :call MoveBetweenProdAndSpec()<cr>
 
-" From https://github.com/garybernhardt/selecta
-" Run a given vim command on the results of fuzzy selecting from a given shell
-" command. See usage below.
-function! SelectaCommand(choice_command, vim_command)
-  try
-    silent! exec a:vim_command . " " . system(a:choice_command . " | selecta | sort")
-  catch /Vim:Interrupt/
-    " Swallow the ^C so that the redraw below happens; otherwise there will be
-    " leftovers from selecta on the screen
-  endtry
-  redraw!
-endfunction
-
 " Find all files in all non-dot directories starting in the working directory.
 " Fuzzy select one of those. Open the selected file with :e.
-map <leader>f :call SelectaCommand("find * -type f", ":e")<cr>
+nnoremap <leader>e :call SelectaFile()<cr>
+
+" Find all buffers that have been opened.
+" Fuzzy select one of those. Open the selected file with :e.
+nnoremap <leader>b :call SelectaBuffer()<cr>
