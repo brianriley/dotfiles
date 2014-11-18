@@ -103,3 +103,6 @@ bindkey '^R' history-incremental-search-backward
 #######################
 eval "$(rbenv init - $SHELL)"
 [ -f ~/bundler.plugin.zsh ] && source ~/bundler.plugin.zsh
+
+. `brew --prefix`/etc/profile.d/z.sh
+setopt autocd
