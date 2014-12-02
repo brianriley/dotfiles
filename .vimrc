@@ -183,10 +183,10 @@ imap <C-c> <Esc>
 function! RunTests_ruby(filename, line)
   let is_spec = match(a:filename, '_spec.rb') != -1
   if is_spec
-    let command = ':! rspec ' . a:filename . ':' . a:line
+    let command = ':! bundle exec rspec ' . a:filename . ':' . a:line
   else
     if !exists('g:test_command')
-      let command = ':! rspec spec/'
+      let command = ':! bundle exec rspec spec/'
     else
       let command = g:test_command
     endif 
@@ -196,7 +196,7 @@ function! RunTests_ruby(filename, line)
 endfunction
 
 function! RunTests_cucumber(filename, line)
-  exec ':! cucumber ' . a:filename
+  exec ':! bundle exec cucumber ' . a:filename
 endfunction
 
 function! RunTests_python(filename)
