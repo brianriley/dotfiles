@@ -12,3 +12,5 @@
 	ui = true
 [push]
 	default = tracking
+[rerere]
+	enabled = true
