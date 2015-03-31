@@ -208,6 +208,10 @@ function! RunTests_python(filename)
   end
 endfunction
 
+function! RunTests_elixir(filename, line)
+  exec ':! mix test ' . a:filename . ':' . a:line
+endfunction
+
 function! RunTests()
   :wa
   let filename = expand("%")
