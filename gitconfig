@@ -12,3 +12,5 @@
   default = tracking
 [rerere]
   enabled = true
+[core]
+  editor = vim
