@@ -1,6 +1,20 @@
-call pathogen#infect()
-
 set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'tpope/vim-commentary'
+Plugin 'michaelavila/selecta.vim'
+Plugin 'elixir-lang/vim-elixir'
+
+call vundle#end()
+filetype plugin indent on
+syntax on
+
 set laststatus=2
 
 set encoding=utf-8
@@ -82,9 +96,6 @@ augroup ft_markdown
     autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
     autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:>
 augroup END
-
-syntax on
-filetype plugin indent on
 
 """"""""""""
 " Open current file and line on GitHub
