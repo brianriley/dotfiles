@@ -1,16 +1,14 @@
 [user]
-	name = Brian Riley
-	email = brian@btriley.com
+  name = Brian Riley
+  email = brian@btriley.com
 [alias]
-	st = status
+  st = status
   ci = commit
   graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
   rollback = reset HEAD^
-[core]
-	excludesfile = /Users/brian/.gitignore_global
 [color]
-	ui = true
+  ui = true
 [push]
-	default = tracking
+  default = tracking
 [rerere]
-	enabled = true
+  enabled = true
