@@ -4,7 +4,6 @@
 # ...except the following
 !/.irssi
 !/.tmux
-!/.vim
 !/.emacs
 !/.gitconfig
 !/.gitignore_global
