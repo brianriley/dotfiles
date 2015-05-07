@@ -7,6 +7,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'chriskempson/base16-vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'michaelavila/selecta.vim'
 Plugin 'elixir-lang/vim-elixir'
@@ -57,7 +58,8 @@ set smartcase
 " colors "
 """"""""""
 set t_Co=256
-colorscheme Tomorrow
+set background=light
+colorscheme base16-default
 set cursorline
 
 """"""""""
