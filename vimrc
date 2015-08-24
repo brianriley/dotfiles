@@ -58,7 +58,7 @@ set smartcase
 " colors "
 """"""""""
 set t_Co=256
-set background=light
+set background=dark
 colorscheme base16-default
 set cursorline
 
