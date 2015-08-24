@@ -80,13 +80,13 @@ esac
 alias ls='ls -G'
 alias ll='ls -lh'
 
-# IP
 alias whats-my-ip="curl -s checkip.dyndns.org | grep -Eo '[0-9\.]+'"
 
-# mutt
 alias mutt="cd ~/Downloads && mutt"
 
 alias vi="vim"
+
+alias h="heroku"
 
 #######################
 #### pip
