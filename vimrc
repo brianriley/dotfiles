@@ -7,14 +7,26 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'reedes/vim-colors-pencil'
-Plugin 'tpope/vim-commentary'
-Plugin 'michaelavila/selecta.vim'
+Plugin 'bling/vim-airline'
+Plugin 'edkolev/tmuxline.vim'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'junegunn/goyo.vim'
+Plugin 'mbbill/undotree'
+Plugin 'michaelavila/selecta.vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'reedes/vim-colors-pencil'
+Plugin 'reedes/vim-pencil'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
 
 call vundle#end()
 filetype plugin indent on
 syntax on
+
+runtime! macros/matchit.vim
 
 set laststatus=2
 
@@ -36,6 +48,8 @@ set clipboard=unnamed
 set t_ti= t_te=
 set shell=bash
 set number
+set whichwrap+=<,>,h,l,[,]
+set wrap linebreak nolist
 
 " split windows to the right or below the current window
 set splitright splitbelow
@@ -62,54 +76,44 @@ set background=light
 colorscheme pencil
 set cursorline
 
-""""""""""
-" status "
-""""""""""
-set statusline=%f\ (%{&ft})\ %m%=%lL,%cC\ %P
+augroup SetFiletypes
+  autocmd!
+  autocmd BufNewFile,BufReadPost *.markdown,*.md,*.mdown,*.mkd,*.mkdn set filetype=markdown
+  autocmd BufNewFile,BufReadPost *.txt,README,INSTALL,NEWS,TODO set filetype=text
+augroup END
 
-set whichwrap+=<,>,h,l,[,]
-set wrap linebreak nolist
-
-augroup spelling
-    autocmd!
-    autocmd BufEnter * if &filetype == "" | setlocal ft=text | endif
-    autocmd FileType text,gitcommit,mail setlocal spell
+augroup FiletypeOptions
+  autocmd!
+  autocmd FileType python,markdown set sw=4 sts=4 et
+  autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:>
+  autocmd FileType gitcommit,mail,markdown,text call pencil#init()
+  autocmd FileType markdown Goyo 80
+  autocmd FileType vim setlocal keywordprg=:help
 augroup END
 
 augroup jump_to_last_position
-    autocmd!
-    " Jump to last cursor position in file unless it's invalid or in an event handler
-    autocmd BufReadPost *
-        \ if line("'\"") > 0 && line("'\"") <= line("$") |
-        \   exe "normal g`\"" |
-        \ endif
-    " Except for git commit messages
-    autocmd BufReadPost COMMIT_EDITMSG
-        \ exe "normal! gg"
-augroup END
-
-augroup spaces
-    autocmd!
-    autocmd FileType python,markdown set sw=4 sts=4 et
-augroup END
-
-augroup ft_markdown
-    autocmd!
-    autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
-    autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:>
+  autocmd!
+  " Jump to last cursor position in file unless it's invalid or in an event handler
+  autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
+  " Except for git commit messages
+  autocmd BufReadPost COMMIT_EDITMSG
+    \ exe "normal! gg"
 augroup END
 
 """"""""""""
 " Open current file and line on GitHub
 """"""""""""
 function! OpenOnGitHub()
-    let reporoot = substitute(system("git rev-parse --show-toplevel"), "\n", "", "")
-    let origin = substitute(substitute(split(system("git config --get remote.origin.url"), ":")[1], ".git", "", ""), "\n", "", "")
-    let branch = substitute(system("git rev-parse --abbrev-ref HEAD"), "\n", "", "")
-    let filepath = substitute(expand('%:p'), reporoot, "", "")
-    let linenumber = line('.')
-    let url = "https://github.com/" . origin . "/blob/" . branch . filepath . "#L" . linenumber
-    call system("open " . url)
+  let reporoot = substitute(system("git rev-parse --show-toplevel"), "\n", "", "")
+  let origin = substitute(substitute(split(system("git config --get remote.origin.url"), ":")[1], ".git", "", ""), "\n", "", "")
+  let branch = substitute(system("git rev-parse --abbrev-ref HEAD"), "\n", "", "")
+  let filepath = substitute(expand('%:p'), reporoot, "", "")
+  let linenumber = line('.')
+  let url = "https://github.com/" . origin . "/blob/" . branch . filepath . "#L" . linenumber
+  call system("open " . url)
 endfunction
 
 map <leader>g :call OpenOnGitHub()<cr>
@@ -161,24 +165,15 @@ nmap <leader><S-CR> O<Esc>
 
 " From https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
 function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+      return "\<tab>"
+  else
+      return "\<c-p>"
+  endif
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
-
-" shortcuts to wrap words in quotes and brackets
-nmap <silent> <leader>' ciw'<C-r>"'<esc>
-nmap <silent> <leader>" ciw"<C-r>""<esc>
-nmap <silent> <leader>` ciw`<C-r>"`<esc>
-nmap <silent> <leader>( ciw(<C-r>")<esc>
-nmap <silent> <leader>[ ciw[<C-r>"]<esc>
-nmap <silent> <leader>{ ciw{<C-r>"}<esc>
-nmap <silent> <leader>< ciw<<C-r>"><esc>
 
 nmap <Up> <nop>
 nmap <Down> <nop>
@@ -191,7 +186,7 @@ iab teh the
 imap <C-c> <Esc>
 
 """""""""
-" Tests 
+" Tests
 """""""""
 function! RunTests_ruby(filename, line)
   let is_spec = match(a:filename, '_spec.rb') != -1
@@ -202,14 +197,14 @@ function! RunTests_ruby(filename, line)
       let command = ':! bundle exec rspec spec/'
     else
       let command = g:test_command
-    endif 
+    endif
   endif
   let g:test_command = command
   exec command
 endfunction
 
 function! RunTests_cucumber(filename, line)
-  exec ':! bundle exec cucumber ' . a:filename
+  exec ':! bundle exec cucumber ' . a:filename . ':' . a:line
 endfunction
 
 function! RunTests_python(filename)
@@ -280,3 +275,60 @@ nnoremap <leader>e :call SelectaFile()<cr>
 " Find all buffers that have been opened.
 " Fuzzy select one of those. Open the selected file with :e.
 nnoremap <leader>b :call SelectaBuffer()<cr>
+
+""""""""""""
+" Plugins
+""""""""""""
+" Airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme = "pencil"
+" Tmuxline
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'b'    : '#W',
+      \'win'  : '#I #W',
+      \'cwin' : '#I #W',
+      \'z'    : '%a %b %d %R'}
+let g:tmuxline_powerline_separators = 0
+
+
+" Goyo
+" From
+" https://github.com/junegunn/goyo.vim/wiki/Customization#ensure-q-to-quit-even-when-goyo-is-active
+function! s:goyo_enter()
+  silent !tmux set status off
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  let b:quitting = 0
+  let b:quitting_bang = 0
+  autocmd QuitPre <buffer> let b:quitting = 1
+  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
+endfunction
+
+function! s:goyo_leave()
+  silent !tmux set status on
+  set showmode
+  set showcmd
+  set scrolloff=3
+  " Quit Vim if this is the only remaining buffer
+  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+    if b:quitting_bang
+      qa!
+    else
+      qa
+    endif
+  endif
+endfunction
+
+autocmd User GoyoEnter call <SID>goyo_enter()
+autocmd User GoyoLeave call <SID>goyo_leave()
+
+" Syntastic
+let g:syntastic_ruby_checkers = ['rubocop', 'mri']
+
+" Undotree
+if has("persistent_undo")
+  set undodir='~/.undodir/'
+  set undofile
+endif
