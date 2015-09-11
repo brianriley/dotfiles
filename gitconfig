@@ -14,5 +14,6 @@
   enabled = true
 [core]
   editor = vim
+  excludesfile = ~/.gitignore
 [credential]
   helper = osxkeychain
