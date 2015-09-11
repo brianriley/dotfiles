@@ -207,7 +207,7 @@ function! RunTests_cucumber(filename, line)
   exec ':! bundle exec cucumber ' . a:filename . ':' . a:line
 endfunction
 
-function! RunTests_python(filename)
+function! RunTests_python(filename, line)
   let is_test_file = match(a:filename, '/test') != -1
   if is_test_file
     exec ':! py.test ' . a:filename
@@ -326,6 +326,7 @@ autocmd User GoyoLeave call <SID>goyo_leave()
 
 " Syntastic
 let g:syntastic_ruby_checkers = ['rubocop', 'mri']
+let g:syntastic_python_checkers = ['pep8', 'pyflakes', 'python']
 
 " Undotree
 if has("persistent_undo")
