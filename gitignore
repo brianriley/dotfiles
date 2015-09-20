@@ -4,3 +4,4 @@ __pycache__
 *.sqlite
 *.DS_Store
 *~
+.sass-cache
