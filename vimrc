@@ -10,6 +10,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'janko-m/vim-test'
 Plugin 'junegunn/goyo.vim'
 Plugin 'mbbill/undotree'
 Plugin 'michaelavila/selecta.vim'
@@ -185,51 +186,6 @@ iab teh the
 
 imap <C-c> <Esc>
 
-"""""""""
-" Tests
-"""""""""
-function! RunTests_ruby(filename, line)
-  let is_spec = match(a:filename, '_spec.rb') != -1
-  if is_spec
-    let command = ':! bundle exec rspec ' . a:filename . ':' . a:line
-  else
-    if !exists('g:test_command')
-      let command = ':! bundle exec rspec spec/'
-    else
-      let command = g:test_command
-    endif
-  endif
-  let g:test_command = command
-  exec command
-endfunction
-
-function! RunTests_cucumber(filename, line)
-  exec ':! bundle exec cucumber ' . a:filename . ':' . a:line
-endfunction
-
-function! RunTests_python(filename, line)
-  let is_test_file = match(a:filename, '/test') != -1
-  if is_test_file
-    exec ':! py.test ' . a:filename
-  else
-    exec ':! py.test'
-  end
-endfunction
-
-function! RunTests_elixir(filename, line)
-  exec ':! mix test ' . a:filename . ':' . a:line
-endfunction
-
-function! RunTests()
-  :wa
-  let filename = expand("%")
-  let line = line(".")
-  let test_runner = ':call RunTests_' . &ft . '("' . filename . '",' . line . ')'
-  exec test_runner
-endfunction
-
-map <leader>t :call RunTests()<cr>
-
 """"""""""""
 " Move between production code and specs
 """"""""""""
@@ -333,3 +289,7 @@ if has("persistent_undo")
   set undodir='~/.undodir/'
   set undofile
 endif
+
+" vim-test
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
