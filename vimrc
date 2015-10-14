@@ -110,11 +110,11 @@ augroup END
 """"""""""""
 function! OpenOnGitHub()
   let reporoot = substitute(system("git rev-parse --show-toplevel"), "\n", "", "")
-  let origin = substitute(substitute(split(system("git config --get remote.origin.url"), ":")[1], ".git", "", ""), "\n", "", "")
+  let origin = substitute(substitute(system("git config --get remote.origin.url"), "\\.git", "", ""), "\n", "", "")
   let branch = substitute(system("git rev-parse --abbrev-ref HEAD"), "\n", "", "")
   let filepath = substitute(expand('%:p'), reporoot, "", "")
   let linenumber = line('.')
-  let url = "https://github.com/" . origin . "/blob/" . branch . filepath . "#L" . linenumber
+  let url = origin . "/blob/" . branch . filepath . "#L" . linenumber
   call system("open " . url)
 endfunction
 
