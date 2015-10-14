@@ -7,21 +7,21 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'bling/vim-airline'
-Plugin 'edkolev/tmuxline.vim'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'janko-m/vim-test'
-Plugin 'junegunn/goyo.vim'
-Plugin 'mbbill/undotree'
-Plugin 'michaelavila/selecta.vim'
-Plugin 'Raimondi/delimitMate'
-Plugin 'reedes/vim-colors-pencil'
-Plugin 'reedes/vim-pencil'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
+Plugin 'bling/vim-airline'          " status line
+Plugin 'edkolev/tmuxline.vim'       " tmux status line integration
+Plugin 'elixir-lang/vim-elixir'     " elixir helpers
+Plugin 'janko-m/vim-test'           " test runner
+Plugin 'junegunn/goyo.vim'          " distraction-free writing
+Plugin 'mbbill/undotree'            " undo chain
+Plugin 'michaelavila/selecta.vim'   " selecta
+Plugin 'Raimondi/delimitMate'       " auto complete quotes, brackets, etc.
+Plugin 'reedes/vim-colors-pencil'   " color scheme
+Plugin 'reedes/vim-pencil'          " make vim a better writing tool
+Plugin 'scrooloose/syntastic'       " auto syntax checking
+Plugin 'tpope/vim-commentary'       " auto comment selected code
+Plugin 'tpope/vim-endwise'          " add `end` to ruby and other code
+Plugin 'tpope/vim-fugitive'         " git integration
+Plugin 'tpope/vim-surround'         " change surrounding quotes, brackets, etc.
 
 call vundle#end()
 filetype plugin indent on
@@ -90,6 +90,7 @@ augroup FiletypeOptions
   autocmd FileType gitcommit,mail,markdown,text call pencil#init()
   autocmd FileType markdown Goyo 80
   autocmd FileType vim setlocal keywordprg=:help
+  autocmd FileType ruby setlocal keywordprg=ri
 augroup END
 
 augroup jump_to_last_position
@@ -281,8 +282,18 @@ autocmd User GoyoEnter call <SID>goyo_enter()
 autocmd User GoyoLeave call <SID>goyo_leave()
 
 " Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
 let g:syntastic_ruby_checkers = ['rubocop', 'mri']
 let g:syntastic_python_checkers = ['pep8', 'pyflakes', 'python']
+
+nmap <leader>ss :SyntasticCheck<cr>
 
 " Undotree
 if has("persistent_undo")
@@ -293,3 +304,14 @@ endif
 " vim-test
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
+
+nmap fw :grep -r <cword> . <cr>
+map <leader>cn :cnext<cr>
+map <leader>cp :cprev<cr>
+map <leader>co :copen<cr>
+map <leader>cc :ccl<cr>
+
+set tags=.ctags;$HOME
+nmap <leader>tt :execute "!ctags -R -f ./.ctags ."<cr>
+nmap gd <C-]>
+nmap gb <C-t>
