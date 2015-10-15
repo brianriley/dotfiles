@@ -306,6 +306,9 @@ endif
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 
+" vim-pencil
+let g:pencil#wrapModeDefault = 'soft'
+
 nmap fw :grep -r <cword> . <cr>
 map <leader>cn :cnext<cr>
 map <leader>cp :cprev<cr>
