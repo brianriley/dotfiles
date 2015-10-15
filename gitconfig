@@ -17,3 +17,5 @@
   excludesfile = ~/.gitignore
 [credential]
   helper = osxkeychain
+[merge]
+  tool = vimdiff
