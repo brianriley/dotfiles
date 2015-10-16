@@ -7,8 +7,6 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'bling/vim-airline'          " status line
-Plugin 'edkolev/tmuxline.vim'       " tmux status line integration
 Plugin 'elixir-lang/vim-elixir'     " elixir helpers
 Plugin 'janko-m/vim-test'           " test runner
 Plugin 'junegunn/goyo.vim'          " distraction-free writing
@@ -236,19 +234,6 @@ nnoremap <leader>b :call SelectaBuffer()<cr>
 """"""""""""
 " Plugins
 """"""""""""
-" Airline
-let g:airline_powerline_fonts = 1
-let g:airline_theme = "pencil"
-" Tmuxline
-let g:tmuxline_preset = {
-      \'a'    : '#S',
-      \'b'    : '#W',
-      \'win'  : '#I #W',
-      \'cwin' : '#I #W',
-      \'z'    : '%a %b %d %R'}
-let g:tmuxline_powerline_separators = 0
-
-
 " Goyo
 " From
 " https://github.com/junegunn/goyo.vim/wiki/Customization#ensure-q-to-quit-even-when-goyo-is-active
@@ -319,3 +304,15 @@ set tags=.ctags;$HOME
 nmap <leader>tt :execute "!ctags -R -f ./.ctags ."<cr>
 nmap gd <C-]>
 nmap gb <C-t>
+
+""""""""""""
+" Status
+""""""""""""
+set statusline=%f\ %y\ %m%=%cC
+
+" proper coloring in diff mode
+hi User1 guifg=#eea040 guibg=#222222
+hi User2 guifg=#dd3333 guibg=#222222
+hi User3 guifg=#ff66ff guibg=#222222
+hi User4 guifg=#a0ee40 guibg=#222222
+hi User5 guifg=#eeee40 guibg=#222222
