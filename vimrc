@@ -12,8 +12,8 @@ Plugin 'janko-m/vim-test'           " test runner
 Plugin 'junegunn/goyo.vim'          " distraction-free writing
 Plugin 'mbbill/undotree'            " undo chain
 Plugin 'michaelavila/selecta.vim'   " selecta
+Plugin 'NLKNguyen/papercolor-theme' " color scheme
 Plugin 'Raimondi/delimitMate'       " auto complete quotes, brackets, etc.
-Plugin 'reedes/vim-colors-pencil'   " color scheme
 Plugin 'reedes/vim-pencil'          " make vim a better writing tool
 Plugin 'scrooloose/syntastic'       " auto syntax checking
 Plugin 'tpope/vim-commentary'       " auto comment selected code
@@ -72,7 +72,7 @@ set smartcase
 """"""""""
 set t_Co=256
 set background=light
-colorscheme pencil
+colorscheme papercolor
 set cursorline
 
 augroup SetFiletypes
@@ -308,7 +308,7 @@ nmap gb <C-t>
 """"""""""""
 " Status
 """"""""""""
-set statusline=%f\ %y\ %m%=%cC
+set statusline=\ %f\ %y\ %m%=%cC\ 
 
 " proper coloring in diff mode
 hi User1 guifg=#eea040 guibg=#222222
