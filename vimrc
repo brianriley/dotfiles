@@ -308,7 +308,7 @@ nmap gb <C-t>
 """"""""""""
 " Status
 """"""""""""
-set statusline=\ %f%m%=%cC\ %y\  
+set statusline=\ %f\ %m%=%cC\ %y\  
 
 " proper coloring in diff mode
 hi User1 guifg=#eea040 guibg=#222222
