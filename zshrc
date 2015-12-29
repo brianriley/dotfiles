@@ -101,8 +101,12 @@ bindkey '^R' history-incremental-search-backward
 #######################
 #### rubby
 #######################
-eval "$(rbenv init - $SHELL)"
+if hash rbenv 2>/dev/null; then
+  eval "$(rbenv init -)"
+fi
 [ -f ~/bundler.plugin.zsh ] && source ~/bundler.plugin.zsh
 
-. `brew --prefix`/etc/profile.d/z.sh
+if hash brew 2>/dev/null; then
+  . `brew --prefix`/etc/profile.d/z.sh
+fi
 setopt autocd
