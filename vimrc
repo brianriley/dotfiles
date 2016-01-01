@@ -7,7 +7,6 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'elixir-lang/vim-elixir'     " elixir helpers
 Plugin 'janko-m/vim-test'           " test runner
 Plugin 'junegunn/goyo.vim'          " distraction-free writing
 Plugin 'mbbill/undotree'            " undo chain
@@ -16,6 +15,7 @@ Plugin 'NLKNguyen/papercolor-theme' " color scheme
 Plugin 'Raimondi/delimitMate'       " auto complete quotes, brackets, etc.
 Plugin 'reedes/vim-pencil'          " make vim a better writing tool
 Plugin 'scrooloose/syntastic'       " auto syntax checking
+Plugin 'sheerun/vim-polyglot'       " all the languages
 Plugin 'tpope/vim-commentary'       " auto comment selected code
 Plugin 'tpope/vim-endwise'          " add `end` to ruby and other code
 Plugin 'tpope/vim-fugitive'         " git integration
