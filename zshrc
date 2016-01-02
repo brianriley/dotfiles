@@ -45,6 +45,10 @@ export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
+# coreutils
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+
 export EDITOR="vi"
 
 # Path to the .zsh directory

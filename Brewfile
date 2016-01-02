@@ -1,3 +1,4 @@
+brew 'coreutils'
 brew 'ctags'
 brew 'git'
 brew 'heroku-toolbelt'
