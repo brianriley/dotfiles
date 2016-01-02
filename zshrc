@@ -106,7 +106,4 @@ if hash rbenv 2>/dev/null; then
 fi
 [ -f ~/bundler.plugin.zsh ] && source ~/bundler.plugin.zsh
 
-if hash brew 2>/dev/null; then
-  . `brew --prefix`/etc/profile.d/z.sh
-fi
 setopt autocd
