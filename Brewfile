@@ -1,6 +1,8 @@
 brew 'coreutils'
 brew 'ctags'
 brew 'git'
+brew 'gpg2'
+brew 'gpg-agent'
 brew 'heroku-toolbelt'
 brew 'hub'
 brew 'postgresql'
