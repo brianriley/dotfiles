@@ -6,6 +6,9 @@ autoload -U colors && colors
 setopt prompt_subst
 autoload -U promptinit && promptinit
 
+# typing the dir name will cd into it
+setopt autocd
+
 # enable completion
 autoload -U compinit && compinit
 zstyle ':completion:*' menu select
@@ -26,6 +29,11 @@ bindkey -e
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
+
+# source any other configs
+for config_file (~/.zsh/*.zsh); do
+ source $config_file
+done
 
 #######################
 #### Exports
@@ -108,6 +116,3 @@ bindkey '^R' history-incremental-search-backward
 if hash rbenv 2>/dev/null; then
   eval "$(rbenv init -)"
 fi
-[ -f ~/bundler.plugin.zsh ] && source ~/bundler.plugin.zsh
-
-setopt autocd
