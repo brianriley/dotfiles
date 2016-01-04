@@ -15,7 +15,7 @@ brew 'ruby-build'
 brew 'the_silver_searcher'
 brew 'tmux'
 brew 'vim'
-brew 'weechat'
+brew 'weechat', args: ['with-perl', 'with-python']
 brew 'zsh'
 brew 'zsh-syntax-highlighting'
 
