@@ -81,7 +81,7 @@ esac
 #######################
 #### Aliases
 #######################
-alias ls='ls -G'
+alias ls='ls -G --color'
 alias ll='ls -lh'
 
 alias whats-my-ip="curl -s checkip.dyndns.org | grep -Eo '[0-9\.]+'"
