@@ -6,6 +6,7 @@ brew 'gpg2'
 brew 'gpg-agent'
 brew 'heroku-toolbelt'
 brew 'hub'
+brew 'mutt'
 brew 'postgresql'
 brew 'python'
 brew 'qt5' # for capybara-webkit
