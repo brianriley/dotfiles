@@ -48,4 +48,7 @@ if ! grep "$(which zsh)" /etc/shells; then
 fi
 chsh -s "$(which zsh)"
 
+fancy_echo "Installing Python packages..."
+pip install --upgrade --user -r requirements.pip
+
 source system/osx.sh

@@ -1,1 +1,1 @@
-EXCLUDES="README.md Brewfile install.sh"
+EXCLUDES="README.md Brewfile install.sh requirements.pip"

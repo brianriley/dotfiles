@@ -7,6 +7,7 @@ brew 'gpg-agent'
 brew 'heroku-toolbelt'
 brew 'hub'
 brew 'postgresql'
+brew 'python'
 brew 'qt5' # for capybara-webkit
 brew 'rbenv'
 brew 'reattach-to-user-namespace'
@@ -15,7 +16,7 @@ brew 'ruby-build'
 brew 'the_silver_searcher'
 brew 'tmux'
 brew 'vim'
-brew 'weechat'
+brew 'weechat', args: ['with-perl', 'with-python']
 brew 'zsh'
 brew 'zsh-syntax-highlighting'
 
