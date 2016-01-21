@@ -152,7 +152,7 @@ set wildignore+=*.pyc
 set wildmenu
 
 map <leader>w :w<cr>
-map <leader>W :wqa<cr>
+map <leader>W :wa<cr>
 map <leader>q :q<cr>
 map <leader>Q :qa<cr>
 map <leader>v :v 
