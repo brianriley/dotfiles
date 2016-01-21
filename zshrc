@@ -116,3 +116,12 @@ bindkey '^R' history-incremental-search-backward
 if hash rbenv 2>/dev/null; then
   eval "$(rbenv init -)"
 fi
+
+GRC=`which grc`
+if [ -n "$GRC" ]
+then
+  source "`brew --prefix`/etc/grc.bashrc"
+
+  alias ll='grc ls -lh --color'
+  alias ifconfig='grc ifconfig'
+fi
