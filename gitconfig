@@ -4,9 +4,10 @@
 [alias]
   st = status
   graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+  join = merge --no-ff
   rollback = reset HEAD^
-  unstage = reset HEAD --
   search = "!f() { git log --all --grep=$1; }; f"
+  unstage = reset HEAD --
 [color]
   ui = true
 [push]
