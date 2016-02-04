@@ -68,5 +68,9 @@ defaults write com.apple.Safari IncludeDevelopMenu -bool true
 echo "Change default search engine to DuckDuckGo"
 defaults write com.apple.Safari SearchProviderIdentifier -string "com.duckduckgo"
 
+echo "Require password immediately after sleep or screen saver begins"
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 0
+
 echo "Kill affected applications"
 for app in Safari Finder Dock SystemUIServer; do killall "$app" >/dev/null 2>&1; done
