@@ -52,3 +52,6 @@ fancy_echo "Installing Python packages..."
 pip install --upgrade --user -r requirements.pip
 
 source system/osx.sh
+
+mkdir -p $HOME/Library/KeyBindings
+ln -s source/DefaultKeyBinding.dict $HOME/Library/KeyBindings/DefaultKeyBinding.dict
