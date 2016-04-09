@@ -18,9 +18,6 @@ defaults write com.apple.dock tilesize -int 36
 echo "Empty trash securely"
 defaults write com.apple.finder EmptyTrashSecurely -bool true
 
-echo "Show hidden files"
-defaults write com.apple.finder AppleShowAllFiles -bool true
-
 echo "Finder: Always open everything in column view"
 defaults write com.apple.Finder FXPreferredViewStyle clmv
 
