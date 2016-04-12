@@ -86,7 +86,8 @@ augroup FiletypeOptions
   autocmd!
   autocmd FileType python,markdown set sw=4 sts=4 et
   autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:>
-  autocmd FileType gitcommit,mail,markdown,text call pencil#init()
+  autocmd FileType mail,markdown,text call pencil#init()
+  autocmd Filetype gitcommit setlocal spell textwidth=72
   autocmd FileType markdown Goyo 80
   autocmd FileType vim setlocal keywordprg=:help
   autocmd FileType ruby setlocal keywordprg=ri
