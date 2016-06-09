@@ -88,7 +88,6 @@ augroup FiletypeOptions
   autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:>
   autocmd FileType mail,markdown,text call pencil#init()
   autocmd Filetype gitcommit setlocal spell textwidth=72
-  autocmd FileType markdown Goyo 80
   autocmd FileType vim setlocal keywordprg=:help
   autocmd FileType ruby setlocal keywordprg=ri
 augroup END
@@ -240,7 +239,6 @@ nnoremap <leader>b :call SelectaBuffer()<cr>
 " From
 " https://github.com/junegunn/goyo.vim/wiki/Customization#ensure-q-to-quit-even-when-goyo-is-active
 function! s:goyo_enter()
-  silent !tmux set status off
   set noshowmode
   set noshowcmd
   set scrolloff=999
