@@ -46,6 +46,7 @@ export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
 
 # npm'z
 export PATH="/usr/local/share/npm/bin:$PATH"
+export PATH="./node_modules/.bin:$PATH"
 
 # add home bin folders to path
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
