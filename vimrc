@@ -7,6 +7,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'ervandew/supertab'          " tab auto complete
 Plugin 'jamessan/vim-gnupg'         " gpg in vim
 Plugin 'janko-m/vim-test'           " test runner
 Plugin 'junegunn/goyo.vim'          " distraction-free writing
@@ -25,6 +26,7 @@ Plugin 'tpope/vim-surround'         " change surrounding quotes, brackets, etc.
 call vundle#end()
 filetype plugin indent on
 syntax on
+set omnifunc=syntaxcomplete#Complete
 
 runtime! macros/matchit.vim
 
@@ -164,18 +166,6 @@ map <leader><leader> :b#<cr>
 nmap <leader><CR> o<Esc>
 nmap <leader><S-CR> O<Esc>
 
-" From https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
-function! InsertTabWrapper()
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-      return "\<tab>"
-  else
-      return "\<c-p>"
-  endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <s-tab> <c-n>
-
 nmap <Up> <nop>
 nmap <Down> <nop>
 nmap <Left> <nop>
@@ -293,6 +283,15 @@ nmap <silent> <leader>T :TestFile<CR>
 
 " vim-pencil
 let g:pencil#wrapModeDefault = 'soft'
+
+" supertab
+let g:SuperTabDefaultCompletionType = "context"
+
+autocmd FileType *
+  \ if &omnifunc != '' |
+  \   call SuperTabChain(&omnifunc, "<c-p>") |
+  \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+  \ endif
 
 nmap fw :grep -r <cword> . <cr>
 map <leader>cn :cnext<cr>
