@@ -153,14 +153,15 @@ au VimResized * :wincmd =
 set wildignore+=*.pyc
 set wildmenu
 
-map <leader>w :w<cr>
-map <leader>W :wa<cr>
 map <leader>q :q<cr>
 map <leader>Q :qa<cr>
-map <leader>v :v 
 map <leader>r :r 
+map <leader>v :v 
+map <leader>w :w<cr>
+map <leader>W :wa<cr>
 map <leader>x :x<cr>
 map <leader><leader> :b#<cr>
+map <leader>1 :! 
 
 " Insert blank lines w/o leaving normal mode
 nmap <leader><CR> o<Esc>
