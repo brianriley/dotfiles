@@ -300,7 +300,7 @@ map <leader>cp :cprev<cr>
 map <leader>co :copen<cr>
 map <leader>cc :ccl<cr>
 
-set tags=.ctags;$HOME
+set tags=.git/tags;$HOME
 nmap <leader>ct :execute "!ctags -R -f ./.ctags ."<cr>
 nmap gd <C-]>
 nmap gb <C-t>
