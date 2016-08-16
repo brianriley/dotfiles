@@ -320,6 +320,17 @@ nmap <leader>ct :execute "!ctags -R -f ./.ctags ."<cr>
 nmap gd <C-]>
 nmap gb <C-t>
 
+" vim-surround
+nmap <leader>' ysiw'
+nmap <leader>" ysiw"
+nmap <leader>] ysiw[
+nmap <leader>] ysiw]
+nmap <leader>{ ysiw{
+nmap <leader>} ysiw}
+nmap <leader>( ysiw(
+nmap <leader>) ysiw)
+nmap <leader>` ysiw`
+
 """"""""""""
 " Status
 """"""""""""
