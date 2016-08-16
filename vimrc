@@ -12,7 +12,6 @@ Plugin 'jamessan/vim-gnupg'         " gpg in vim
 Plugin 'janko-m/vim-test'           " test runner
 Plugin 'junegunn/goyo.vim'          " distraction-free writing
 Plugin 'mbbill/undotree'            " undo chain
-Plugin 'michaelavila/selecta.vim'   " selecta
 Plugin 'NLKNguyen/papercolor-theme' " color scheme
 Plugin 'Raimondi/delimitMate'       " auto complete quotes, brackets, etc.
 Plugin 'reedes/vim-pencil'          " make vim a better writing tool
@@ -64,11 +63,35 @@ let mapleader=","
 set incsearch
 set hlsearch
 " clear highlight on carriage return
-nnoremap <CR> :nohlsearch<cr>
+nmap <CR> :nohlsearch<CR>
+autocmd BufReadPost quickfix nmap <buffer> <CR> <CR>
 " make regexes Perl style
 set magic
 set ignorecase
 set smartcase
+" Automatically open, but do not go to (if there are errors) the quickfix /
+" location list window, or close it when is has become empty.
+"
+" Note: Must allow nesting of autocmds to enable any customizations for
+" quickfix buffers.
+"
+" Note: Normally, :cwindow jumps to the quickfix window if the command opens
+" it (but not if it's already open). However, as part of the autocmd, this
+" doesn't seem to happen.
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --vimgrep
+endif
+" bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+nnoremap <leader>f :grep<SPACE>
+if executable('fzf')
+  set rtp+=/usr/local/opt/fzf
+  nnoremap <leader>e :FZF<cr>
+endif
 
 """"""""""
 " colors "
@@ -155,13 +178,13 @@ set wildmenu
 
 map <leader>q :q<cr>
 map <leader>Q :qa<cr>
-map <leader>r :r 
-map <leader>v :v 
+map <leader>r :r<SPACE>
+map <leader>v :v<SPACE>
 map <leader>w :w<cr>
 map <leader>W :wa<cr>
 map <leader>x :x<cr>
 map <leader><leader> :b#<cr>
-map <leader>1 :! 
+map <leader>1 :!<SPACE>
 
 " Insert blank lines w/o leaving normal mode
 nmap <leader><CR> o<Esc>
@@ -214,14 +237,6 @@ function! MoveBetweenProdAndSpec()
 endfunction
 
 map <leader>. :call MoveBetweenProdAndSpec()<cr>
-
-" Find all files in all non-dot directories starting in the working directory.
-" Fuzzy select one of those. Open the selected file with :e.
-nnoremap <leader>e :call SelectaFile()<cr>
-
-" Find all buffers that have been opened.
-" Fuzzy select one of those. Open the selected file with :e.
-nnoremap <leader>b :call SelectaBuffer()<cr>
 
 """"""""""""
 " Plugins

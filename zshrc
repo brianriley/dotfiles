@@ -126,3 +126,10 @@ then
   alias ll='grc ls -lh --color'
   alias ifconfig='grc ifconfig'
 fi
+
+
+#######################
+#### gpg
+#######################
+GPG_TTY=$(tty)
+export GPG_TTY
