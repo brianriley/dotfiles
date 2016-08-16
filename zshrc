@@ -127,9 +127,13 @@ then
   alias ifconfig='grc ifconfig'
 fi
 
-
 #######################
 #### gpg
 #######################
 GPG_TTY=$(tty)
 export GPG_TTY
+
+#######################
+#### fzf
+#######################
+export FZF_DEFAULT_COMMAND='ag -g ""'
