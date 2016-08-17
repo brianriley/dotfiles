@@ -17,6 +17,7 @@ Plugin 'Raimondi/delimitMate'       " auto complete quotes, brackets, etc.
 Plugin 'reedes/vim-pencil'          " make vim a better writing tool
 Plugin 'scrooloose/syntastic'       " auto syntax checking
 Plugin 'sheerun/vim-polyglot'       " all the languages
+Plugin 'tpope/vim-abolish.git'      " `crs` for snake case and `crc` for camel case!
 Plugin 'tpope/vim-commentary'       " auto comment selected code
 Plugin 'tpope/vim-endwise'          " add `end` to ruby and other code
 Plugin 'tpope/vim-fugitive'         " git integration
