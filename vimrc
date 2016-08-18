@@ -316,8 +316,8 @@ map <leader>cp :cprev<cr>
 map <leader>co :copen<cr>
 map <leader>cc :ccl<cr>
 
-set tags=.git/tags;$HOME
-nmap <leader>ct :execute "!ctags -R -f ./.ctags ."<cr>
+set tags=.git/tags;$HOME/tags
+nmap <leader>ct :execute "!ctags -R ."<cr>
 nmap gd <C-]>
 nmap gb <C-t>
 
