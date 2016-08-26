@@ -99,7 +99,7 @@ endif
 """"""""""
 set t_Co=256
 set background=light
-colorscheme papercolor
+colorscheme PaperColor
 set cursorline
 
 augroup SetFiletypes
