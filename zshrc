@@ -70,7 +70,7 @@ setopt correct
 #### Prompt
 #######################
 PROMPT_TIME="[%{$fg[cyan]%}%*%{$reset_color%}]"
-PROMPT_PATH="%{$fg[grey]%}%~%{$reset_color%}"
+PROMPT_PATH="%~"
 PROMPT_CHAR="%(!.#.>)"
 
 PROMPT='$PROMPT_PATH ${vcs_info_msg_0_}
