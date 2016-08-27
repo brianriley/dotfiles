@@ -100,8 +100,16 @@ endif
 """"""""""
 set t_Co=256
 colorscheme PaperColor
+if $SHELLBG == 'dark'
+  set background=dark
+else
+  set background=light
+endif
 
-set background=dark
+" Source the vimrc file after saving it
+if has("autocmd")
+  autocmd bufwritepost .vimrc,vimrc source $MYVIMRC
+endif
 
 augroup SetFiletypes
   autocmd!
