@@ -35,21 +35,22 @@ set laststatus=2
 set encoding=utf-8
 set fileencoding=utf-8
 
-set history=10000
-set backspace=2 " allow erasing previously entered characters
-set softtabstop=2
-set shiftwidth=2
-set tabstop=2
 set autoindent
+set backspace=2         " allow erasing previously entered characters
+set clipboard=unnamed   " system clipboard
+set cursorline          " highlight the screen line the cursor is on
 set expandtab
-set ruler
-set noswapfile
+set history=10000
 set nohls
-set scrolloff=3
-set clipboard=unnamed
-set t_ti= t_te=
-set shell=bash
+set noswapfile
 set number
+set ruler
+set scrolloff=3
+set softtabstop=2
+set shell=zsh
+set shiftwidth=2
+set t_ti= t_te=
+set tabstop=2
 set whichwrap+=<,>,h,l,[,]
 set wrap linebreak nolist
 
@@ -98,9 +99,9 @@ endif
 " colors "
 """"""""""
 set t_Co=256
-set background=light
 colorscheme PaperColor
-set cursorline
+
+set background=dark
 
 augroup SetFiletypes
   autocmd!
