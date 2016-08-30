@@ -67,6 +67,21 @@ export ZSH=$HOME/.zsh
 setopt correct
 
 #######################
+#### Colors
+#######################
+export SHELLBG="dark"
+
+darken () {
+  export SHELLBG="dark"
+  tmux source-file ~/.tmux/status-dark.conf
+}
+
+lighten () {
+  export SHELLBG="light"
+  tmux source-file ~/.tmux/status-light.conf
+}
+
+#######################
 #### Prompt
 #######################
 PROMPT_TIME="[%{$fg[cyan]%}%*%{$reset_color%}]"
