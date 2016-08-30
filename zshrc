@@ -73,14 +73,18 @@ export SHELLBG="dark"
 
 darken () {
   export SHELLBG="dark"
-  tmux source-file ~/.tmux/status-dark.conf
   osascript ~/.system/SetTermTheme.scpt Paper\ Dark
+  if [ -n "$TMUX" ]; then
+    tmux source-file ~/.tmux/status-dark.conf
+  fi
 }
 
 lighten () {
   export SHELLBG="light"
-  tmux source-file ~/.tmux/status-light.conf
   osascript ~/.system/SetTermTheme.scpt Paper
+  if [ -n "$TMUX" ]; then
+    tmux source-file ~/.tmux/status-light.conf
+  fi
 }
 
 #######################
