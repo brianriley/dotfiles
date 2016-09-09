@@ -20,6 +20,7 @@ Plugin 'sheerun/vim-polyglot'       " all the languages
 Plugin 'tpope/vim-abolish.git'      " `crs` for snake case and `crc` for camel case!
 Plugin 'tpope/vim-commentary'       " auto comment selected code
 Plugin 'tpope/vim-endwise'          " add `end` to ruby and other code
+Plugin 'tpope/vim-eunuch'           " shell commands: :Move, :Rename, :Mkdir, etc.
 Plugin 'tpope/vim-fugitive'         " git integration
 Plugin 'tpope/vim-surround'         " change surrounding quotes, brackets, etc.
 
