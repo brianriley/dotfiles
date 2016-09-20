@@ -307,6 +307,8 @@ endif
 " vim-test
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
+let test#javascript#jasmine#file_pattern = '\-test\.js'
+let test#javascript#jasmine#executable = 'npm test'
 
 " vim-pencil
 let g:pencil#wrapModeDefault = 'soft'
