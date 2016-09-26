@@ -95,6 +95,8 @@ if executable('fzf')
   set rtp+=/usr/local/opt/fzf
   nnoremap <leader>e :FZF<cr>
 endif
+" search for the visual selection with //
+vnoremap // y/<C-R>"<CR>"
 
 """"""""""
 " colors "
