@@ -43,7 +43,7 @@ kwmc config padding 20 20 20 20
 kwmc config gap 15 15
 
 # Default tiling mode for Kwm (bsp | monocle | float)
-kwmc config tiling bsp
+kwmc config tiling monocle
 
 # Automatically float windows that fail to resize
 kwmc config float-non-resizable on
