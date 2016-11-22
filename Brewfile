@@ -33,7 +33,4 @@ tap 'thoughtbot/formulae'
 brew 'rcm'
 
 # Cask: install binaries
-cask '1password'
-cask 'bittorrent-sync'
-cask 'dropbox'
 cask 'flux'
