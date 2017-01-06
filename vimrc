@@ -353,17 +353,15 @@ nmap <leader>) ysiw)
 nmap <leader>` ysiw`
 
 " incsearch
-
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 
 " vimfiler
-
 let g:vimfiler_as_default_explorer = 1
+nmap <leader><space> :VimFilerExplorer<cr>
 
 " gitgutter
-
 nmap <leader>d :GitGutterToggle<cr>
 
 """"""""""""
