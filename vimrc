@@ -7,7 +7,10 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'airblade/vim-gitgutter'     " show git diff in gutter
+Plugin 'bogado/file-line'           " open files by line number: vim file.txt:123
 Plugin 'ervandew/supertab'          " tab auto complete
+Plugin 'haya14busa/incsearch.vim'   " highlight all patterns
 Plugin 'jamessan/vim-gnupg'         " gpg in vim
 Plugin 'janko-m/vim-test'           " test runner
 Plugin 'junegunn/goyo.vim'          " distraction-free writing
@@ -17,6 +20,8 @@ Plugin 'Raimondi/delimitMate'       " auto complete quotes, brackets, etc.
 Plugin 'reedes/vim-pencil'          " make vim a better writing tool
 Plugin 'scrooloose/syntastic'       " auto syntax checking
 Plugin 'sheerun/vim-polyglot'       " all the languages
+Plugin 'Shougo/unite.vim'           " required for vimfiler (must come before)
+Plugin 'Shougo/vimfiler.vim'        " lightweight file explorer
 Plugin 'tpope/vim-abolish.git'      " `crs` for snake case and `crc` for camel case!
 Plugin 'tpope/vim-commentary'       " auto comment selected code
 Plugin 'tpope/vim-endwise'          " add `end` to ruby and other code
@@ -346,6 +351,20 @@ nmap <leader>} ysiw}
 nmap <leader>( ysiw(
 nmap <leader>) ysiw)
 nmap <leader>` ysiw`
+
+" incsearch
+
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+" vimfiler
+
+let g:vimfiler_as_default_explorer = 1
+
+" gitgutter
+
+nmap <leader>d :GitGutterToggle<cr>
 
 """"""""""""
 " Status
