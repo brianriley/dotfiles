@@ -31,3 +31,6 @@ tap 'homebrew/services' # `brew services restart postgres`, etc
 # for rcm
 tap 'thoughtbot/formulae'
 brew 'rcm'
+
+# Cask: install binaries
+cask 'sidestep'
