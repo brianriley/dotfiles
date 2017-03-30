@@ -33,4 +33,4 @@ tap 'thoughtbot/formulae'
 brew 'rcm'
 
 # Cask: install binaries
-cask 'sidestep'
+cask 'tunnelblick'
