@@ -18,7 +18,6 @@ Plugin 'mbbill/undotree'            " undo chain
 Plugin 'NLKNguyen/papercolor-theme' " color scheme
 Plugin 'Raimondi/delimitMate'       " auto complete quotes, brackets, etc.
 Plugin 'reedes/vim-pencil'          " make vim a better writing tool
-Plugin 'scrooloose/syntastic'       " auto syntax checking
 Plugin 'sheerun/vim-polyglot'       " all the languages
 Plugin 'Shougo/unite.vim'           " required for vimfiler (must come before)
 Plugin 'Shougo/vimfiler.vim'        " lightweight file explorer
@@ -29,6 +28,7 @@ Plugin 'tpope/vim-eunuch'           " shell commands: :Move, :Rename, :Mkdir, et
 Plugin 'tpope/vim-fireplace'        " Clojure repl support
 Plugin 'tpope/vim-fugitive'         " git integration
 Plugin 'tpope/vim-surround'         " change surrounding quotes, brackets, etc.
+Plugin 'vim-syntastic/syntastic'    " auto syntax checking
 
 call vundle#end()
 filetype plugin indent on
