@@ -138,7 +138,7 @@ fi
 GRC=`which grc`
 if [ -n "$GRC" ]
 then
-  source "`brew --prefix`/etc/grc.bashrc"
+  source "`brew --prefix`/etc/grc.zsh"
 
   alias ll='grc ls -lh --color'
   alias ifconfig='grc ifconfig'
