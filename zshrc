@@ -74,20 +74,17 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 
 light() {
   base16_default-light
-  PROMPT_PATH="%{$fg[0]%}%~%{$reset_color%}"
 }
 
 dark() {
   base16_default-dark
-  PROMPT_PATH="%{$fg[255]%}%~%{$reset_color%}"
 }
-
-dark
 
 #######################
 #### Prompt
 #######################
 PROMPT_TIME="[%{$fg[cyan]%}%*%{$reset_color%}]"
+PROMPT_PATH="%{$fg_bold[black]%}%~%{$reset_color%}"
 PROMPT_CHAR="%(!.#.>)"
 
 PROMPT='$PROMPT_PATH ${vcs_info_msg_0_}
