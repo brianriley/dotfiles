@@ -9,13 +9,13 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'airblade/vim-gitgutter'     " show git diff in gutter
 Plugin 'bogado/file-line'           " open files by line number: vim file.txt:123
+Plugin 'chriskempson/base16-vim'    " base16 for colors
 Plugin 'ervandew/supertab'          " tab auto complete
 Plugin 'haya14busa/incsearch.vim'   " highlight all patterns
 Plugin 'jamessan/vim-gnupg'         " gpg in vim
 Plugin 'janko-m/vim-test'           " test runner
 Plugin 'junegunn/goyo.vim'          " distraction-free writing
 Plugin 'mbbill/undotree'            " undo chain
-Plugin 'NLKNguyen/papercolor-theme' " color scheme
 Plugin 'Raimondi/delimitMate'       " auto complete quotes, brackets, etc.
 Plugin 'reedes/vim-pencil'          " make vim a better writing tool
 Plugin 'sheerun/vim-polyglot'       " all the languages
@@ -108,11 +108,9 @@ vnoremap // y/<C-R>"<CR>"
 " colors "
 """"""""""
 set t_Co=256
-colorscheme PaperColor
-if $SHELLBG == 'dark'
-  set background=dark
-else
-  set background=light
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
 endif
 
 " Source the vimrc file after saving it

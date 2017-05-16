@@ -69,29 +69,25 @@ setopt correct
 #######################
 #### Colors
 #######################
-export SHELLBG="dark"
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
-darken () {
-  export SHELLBG="dark"
-  osascript ~/.system/SetTermTheme.scpt Paper\ Dark
-  if [ -n "$TMUX" ]; then
-    tmux source-file ~/.tmux/status-dark.conf
-  fi
+light() {
+  base16_default-light
+  PROMPT_PATH="%{$fg[0]%}%~%{$reset_color%}"
 }
 
-lighten () {
-  export SHELLBG="light"
-  osascript ~/.system/SetTermTheme.scpt Paper
-  if [ -n "$TMUX" ]; then
-    tmux source-file ~/.tmux/status-light.conf
-  fi
+dark() {
+  base16_default-dark
+  PROMPT_PATH="%{$fg[255]%}%~%{$reset_color%}"
 }
+
+dark
 
 #######################
 #### Prompt
 #######################
 PROMPT_TIME="[%{$fg[cyan]%}%*%{$reset_color%}]"
-PROMPT_PATH="%{$fg[black]%}%~%{$reset_color%}"
 PROMPT_CHAR="%(!.#.>)"
 
 PROMPT='$PROMPT_PATH ${vcs_info_msg_0_}
