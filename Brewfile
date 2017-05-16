@@ -8,8 +8,8 @@ brew 'gpg-agent'
 brew 'grc'
 brew 'heroku-toolbelt'
 brew 'hub'
-brew 'koekeishiya/khd/khd'
-brew 'koekeishiya/kwm/kwm'
+brew 'koekeishiya/formulae/khd', restart_service: :changed
+brew 'koekeishiya/formulae/kwm', restart_service: :changed
 brew 'libotr'
 brew 'mutt'
 brew 'postgresql'
