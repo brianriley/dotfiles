@@ -17,6 +17,15 @@ else
   fancy_echo "Homebrew already installed. Skipping ..."
 fi
 
+fancy_echo "Installing base16-shell..."
+if test -e ~/.config/base16-shell; then
+  pushd ~/.config/base16-shell
+  git pull
+  popd
+else
+  git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+fi
+
 fancy_echo "Installing Homebrew packages..."
 brew update
 brew tap homebrew/bundle
