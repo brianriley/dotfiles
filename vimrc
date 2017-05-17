@@ -29,6 +29,7 @@ Plugin 'tpope/vim-fireplace'        " Clojure repl support
 Plugin 'tpope/vim-fugitive'         " git integration
 Plugin 'tpope/vim-surround'         " change surrounding quotes, brackets, etc.
 Plugin 'vim-syntastic/syntastic'    " auto syntax checking
+Plugin 'vimwiki/vimwiki'            " for personal and work wikis
 
 call vundle#end()
 filetype plugin indent on
@@ -361,6 +362,9 @@ nmap <leader><space> :VimFilerExplorer<cr>
 
 " gitgutter
 nmap <leader>d :GitGutterToggle<cr>
+
+" vimwiki
+let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki'}]
 
 """"""""""""
 " Status
