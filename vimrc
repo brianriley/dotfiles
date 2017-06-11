@@ -61,6 +61,7 @@ set t_ti= t_te=
 set tabstop=2
 set whichwrap+=<,>,h,l,[,]
 set wrap linebreak nolist
+set mouse=a             " turn on mouse for the optional interaction
 
 " split windows to the right or below the current window
 set splitright splitbelow
