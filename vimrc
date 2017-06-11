@@ -44,11 +44,13 @@ set encoding=utf-8
 set fileencoding=utf-8
 
 set autoindent
+set autoread            " update buffer when change detected outside of vim
 set backspace=2         " allow erasing previously entered characters
 set clipboard=unnamed   " system clipboard
 set cursorline          " highlight the screen line the cursor is on
 set expandtab
 set history=10000
+set mouse=a             " turn on mouse for the optional interaction
 set nohls
 set noswapfile
 set number
@@ -61,7 +63,6 @@ set t_ti= t_te=
 set tabstop=2
 set whichwrap+=<,>,h,l,[,]
 set wrap linebreak nolist
-set mouse=a             " turn on mouse for the optional interaction
 
 " split windows to the right or below the current window
 set splitright splitbelow
