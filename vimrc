@@ -28,8 +28,8 @@ Plugin 'tpope/vim-eunuch'           " shell commands: :Move, :Rename, :Mkdir, et
 Plugin 'tpope/vim-fireplace'        " Clojure repl support
 Plugin 'tpope/vim-fugitive'         " git integration
 Plugin 'tpope/vim-surround'         " change surrounding quotes, brackets, etc.
-Plugin 'vim-syntastic/syntastic'    " auto syntax checking
 Plugin 'vimwiki/vimwiki'            " for personal and work wikis
+Plugin 'w0rp/ale'                   " Asynchronous linter
 
 call vundle#end()
 filetype plugin indent on
@@ -291,21 +291,6 @@ endfunction
 
 autocmd User GoyoEnter call <SID>goyo_enter()
 autocmd User GoyoLeave call <SID>goyo_leave()
-
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_mode_map = { "mode": "passive" }
-let g:syntastic_ruby_checkers = ['rubocop', 'mri']
-let g:syntastic_python_checkers = ['pep8', 'pyflakes', 'python']
-
-nmap <leader>ss :SyntasticCheck<cr>
 
 " Undotree
 if has("persistent_undo")
