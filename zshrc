@@ -30,6 +30,9 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
 
+# Batch rename files: http://www.drbunsen.org/batch-file-renaming/
+autoload zmv
+
 # source any other configs
 for config_file (~/.zsh/*.zsh); do
  source $config_file
@@ -136,9 +139,6 @@ GRC=`which grc`
 if [ -n "$GRC" ]
 then
   source "`brew --prefix`/etc/grc.zsh"
-
-  alias ll='grc ls -lh --color'
-  alias ifconfig='grc ifconfig'
 fi
 
 #######################
