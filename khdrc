@@ -4,8 +4,21 @@
 #                   <keysym> [!] [<app list>] [->] : <command>
 #                   where
 #                       <keysym>   = mode + mod + ... + mod - literal
-#                       <keysym>   = mode + mod + ... + mod - keycode (must have 0x prefix)
-#                       <keysym>   = mode + mod + ... + mod (modifier only binding)
+#
+#                       <keysym>   = mode + mod + ... + mod - keycode
+#                                    keycode must have 0x prefix
+#
+#                       <keysym>   = mode + mod + ... + mod - button#
+#                                    replace '#' with mouse-button id; id >= 3
+#
+#                       modifier only binding
+#                       <keysym>   = mode + mod + ... + mod
+#
+#                       literal only binding
+#                       <keysym>   = - literal
+#
+#                       keycode only binding
+#                       <keysym>   = - keycode
 #
 #                       [<app,
 #                         app,     = optional list '[app1, ..., appN]' of applications
@@ -65,6 +78,10 @@
 # lcmd   : khd -p "shift + alt - 8"
 # rcmd   : khd -p "shift + alt - 9"
 
+# NOTE(koekeishiya) Bind mouse-buttons
+# - button3 : khd -w "mouse-button 3 pressed"
+# - button4 : khd -w "mouse-button 4 pressed"
+
 # TODO(koekeishiya): possibly allow combined syntax such as
 # [switcher,ytd] + ctrl - f : khd -e "mode activate default"
 
@@ -106,19 +123,21 @@ lctrl - x         ![HyperTerm,Terminal,iTerm2]      :   khd -p "- delete"
 
 
 
-# enable kwm compatibility mode
-khd kwm on
+# suppress unregistered keybinds outside default mode
+# enabled by default! must be explicitly set to 'off'
+# khd void_unlisted_bind off
+
 
 
 
 # set border color for different modes
-khd mode default color 0xddd5c4a1
-khd mode switcher color 0xddbdd322
-khd mode ytd color 0xddd75f5f
-khd mode swap color 0xdd458588
-khd mode tree color 0xddfabd2f
-khd mode space color 0xddb16286
-khd mode info color 0xddcd950c
+khd mode default on_enter kwmc config border focused color 0xddd5c4a1
+khd mode switcher on_enter kwmc config border focused color 0xddbdd322
+khd mode ytd on_enter kwmc config border focused color 0xddd75f5f
+khd mode swap on_enter kwmc config border focused color 0xdd458588
+khd mode tree on_enter kwmc config border focused color 0xddfabd2f
+khd mode space on_enter kwmc config border focused color 0xddb16286
+khd mode info on_enter kwmc config border focused color 0xddcd950c
 
 
 
@@ -222,9 +241,9 @@ swap + shift - 3        :   kwmc window -m display 2
 
 
 # space mode
-cmd + ctrl - a               :   kwmc space -t bsp
-cmd + ctrl - s               :   kwmc space -t monocle
-cmd + ctrl - d               :   kwmc space -t float
+space - a               :   kwmc space -t bsp
+space - s               :   kwmc space -t monocle
+space - d               :   kwmc space -t float
 
 space - x               :   kwmc space -g increase horizontal
 space - y               :   kwmc space -g increase vertical
@@ -282,6 +301,7 @@ cmd + alt + ctrl - l    :   kwmc window -mk east wrap
 cmd + alt + ctrl - j    :   kwmc window -mk south wrap
 cmd + alt + ctrl - k    :   kwmc window -mk north wrap
 
+cmd - 0x2A              :   khd -w "aasvi93@hotmail.com"
 cmd - 7                 :   khd -w "\\"
 cmd - 8                 :   khd -w "{"
 cmd - 9                 :   khd -w "}"
