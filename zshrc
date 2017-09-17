@@ -135,12 +135,6 @@ if hash rbenv 2>/dev/null; then
   eval "$(rbenv init -)"
 fi
 
-GRC=`which grc`
-if [ -n "$GRC" ]
-then
-  source "`brew --prefix`/etc/grc.zsh"
-fi
-
 #######################
 #### gpg
 #######################

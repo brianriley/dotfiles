@@ -5,7 +5,6 @@ brew 'git'
 brew 'gpg'
 brew 'gpg2'
 brew 'gpg-agent'
-brew 'grc'
 brew 'heroku-toolbelt'
 brew 'hub'
 brew 'koekeishiya/formulae/khd', restart_service: :changed
