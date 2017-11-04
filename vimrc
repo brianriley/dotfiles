@@ -11,7 +11,7 @@ Plugin 'airblade/vim-gitgutter'     " show git diff in gutter
 Plugin 'bogado/file-line'           " open files by line number: vim file.txt:123
 Plugin 'chriskempson/base16-vim'    " base16 for colors
 Plugin 'ervandew/supertab'          " tab auto complete
-Plugin 'haya14busa/incsearch.vim'   " highlight all patterns
+Plugin 'haya14busa/is.vim'          " search improvements
 Plugin 'jamessan/vim-gnupg'         " gpg in vim
 Plugin 'janko-m/vim-test'           " test runner
 Plugin 'junegunn/goyo.vim'          " distraction-free writing
@@ -337,11 +337,6 @@ nmap <leader>} ysiw}
 nmap <leader>( ysiw(
 nmap <leader>) ysiw)
 nmap <leader>` ysiw`
-
-" incsearch
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
 
 " vimfiler
 let g:vimfiler_as_default_explorer = 1
