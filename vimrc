@@ -352,6 +352,7 @@ nmap <leader>d :GitGutterToggle<cr>
 
 " vimwiki
 let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki'}]
+let g:vimwiki_map_prefix = '<Leader>i'
 
 """"""""""""
 " Status
