@@ -64,6 +64,10 @@ set tabstop=2
 set whichwrap+=<,>,h,l,[,]
 set wrap linebreak nolist
 
+" Don't ring the bell
+set visualbell
+set t_vb=
+
 " split windows to the right or below the current window
 set splitright splitbelow
 
