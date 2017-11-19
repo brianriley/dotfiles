@@ -116,6 +116,10 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 
+" Hightlight trailing whitespace
+highlight TrailingWhitespace ctermbg=240 guibg=red
+match TrailingWhitespace /\s\+$/
+
 " Source the vimrc file after saving it
 if has("autocmd")
   autocmd bufwritepost .vimrc,vimrc source $MYVIMRC
