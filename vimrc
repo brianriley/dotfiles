@@ -38,8 +38,6 @@ set omnifunc=syntaxcomplete#Complete
 
 runtime! macros/matchit.vim
 
-set laststatus=2
-
 set encoding=utf-8
 set fileencoding=utf-8
 
@@ -54,7 +52,6 @@ set mouse=a             " turn on mouse for the optional interaction
 set nohls
 set noswapfile
 set number
-set ruler
 set scrolloff=3
 set softtabstop=2
 set shell=zsh
@@ -360,6 +357,7 @@ let g:vimwiki_map_prefix = '<Leader>k'
 """"""""""""
 " Status
 """"""""""""
+set laststatus=2 " always show the status line
 set statusline=\ %f\ %m%=%cC\ %y\  
 
 " proper coloring in diff mode
