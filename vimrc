@@ -47,7 +47,6 @@ set backspace=2         " allow erasing previously entered characters
 set clipboard=unnamed   " system clipboard
 set cursorline          " highlight the screen line the cursor is on
 set expandtab
-set foldmethod=syntax   " fold via syntax
 set history=10000
 set mouse=a             " turn on mouse for the optional interaction
 set nohls
@@ -70,6 +69,12 @@ set t_vb=
 set splitright splitbelow
 
 let mapleader=","
+
+""""""""""
+" folds  "
+""""""""""
+" toggle individual folds
+nnoremap <Space> za
 
 """"""""""
 " search "
