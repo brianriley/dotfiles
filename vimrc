@@ -363,14 +363,14 @@ let g:vimwiki_map_prefix = '<Leader>k'
 """"""""""""
 " Status
 """"""""""""
+hi StatusLine ctermbg=0
 set laststatus=2 " always show the status line
-set statusline=\ %f     " relative path to file
-set statusline+=\ %m    " modifiable
-set statusline+=%=      " switch to the right side
-set statusline+=%cC     " column number followed by a 'C'
-set statusline+=\ %p%%  " percent through file
-set statusline+=\ %y    " filetype
-set statusline+=\       " trailing space
+set statusline=%=           " switch to the right side
+set statusline+=\ %f        " relative path to file
+set statusline+=\ \|\ %2cC  " column number followed by a 'C'
+set statusline+=\ \|\ %3p%% " percent through file
+set statusline+=\ %y        " filetype
+set statusline+=\           " trailing space
 
 " proper coloring in diff mode
 hi User1 guifg=#eea040 guibg=#222222
