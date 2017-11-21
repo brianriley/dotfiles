@@ -364,6 +364,7 @@ let g:vimwiki_map_prefix = '<Leader>k'
 " Status
 """"""""""""
 hi StatusLine ctermbg=0
+hi StatusLineNC ctermbg=0
 set laststatus=2 " always show the status line
 set statusline=%=           " switch to the right side
 set statusline+=\ %f        " relative path to file
