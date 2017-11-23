@@ -19,7 +19,8 @@ Plugin 'mbbill/undotree'            " undo chain
 Plugin 'Raimondi/delimitMate'       " auto complete quotes, brackets, etc.
 Plugin 'reedes/vim-pencil'          " make vim a better writing tool
 Plugin 'sheerun/vim-polyglot'       " all the languages
-Plugin 'Shougo/unite.vim'           " required for vimfiler (must come before)
+Plugin 'Shougo/denite.nvim'         " better async unite
+Plugin 'Shougo/unite.vim'           " required for vimfiler (must come before; remove when there's a denite option)
 Plugin 'Shougo/vimfiler.vim'        " lightweight file explorer
 Plugin 'tpope/vim-abolish.git'      " `crs` for snake case and `crc` for camel case!
 Plugin 'tpope/vim-commentary'       " auto comment selected code
@@ -106,11 +107,12 @@ if executable('ag')
 endif
 " bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-nnoremap <leader>f :grep<SPACE>
-if executable('fzf')
-  set rtp+=/usr/local/opt/fzf
-  nnoremap <leader>e :FZF<cr>
-endif
+" search within the project
+nnoremap <leader>f :Denite grep<cr>
+" search for filename
+nnoremap <leader>e :Denite file_rec<cr>
+" search for buffer name
+nnoremap <leader>b :Denite buffer<cr>
 " search for the visual selection with //
 vnoremap // y/<C-R>"<CR>"
 
