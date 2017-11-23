@@ -370,6 +370,7 @@ hi StatusLine ctermbg=0
 hi StatusLineNC ctermbg=0
 set laststatus=2 " always show the status line
 set statusline=%=           " switch to the right side
+set statusline+=%m          " is the file modified?
 set statusline+=\ %f        " relative path to file
 set statusline+=\ \|\ %2cC  " column number followed by a 'C'
 set statusline+=\ \|\ %3p%% " percent through file
