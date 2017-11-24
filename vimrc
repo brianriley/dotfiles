@@ -101,19 +101,27 @@ set smartcase
 " doesn't seem to happen.
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
-" The Silver Searcher
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --vimgrep
-endif
-" bind K to grep word under cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" bind F to grep word under cursor
+nnoremap F :DeniteCursorWord grep<cr>
+
 " search within the project
+if executable('rg')
+  call denite#custom#var('grep', 'command', ['rg'])
+  call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading', '-i'])
+  call denite#custom#var('grep', 'recursive_opts', [])
+  call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+  call denite#custom#var('grep', 'separator', ['--'])
+  call denite#custom#var('grep', 'final_opts', [])
+endif
 nnoremap <leader>f :Denite grep<cr>
+
 " search for filename
 nnoremap <leader>e :Denite file_rec<cr>
+
 " search for buffer name
 nnoremap <leader>b :Denite buffer<cr>
+
 " search for the visual selection with //
 vnoremap // y/<C-R>"<CR>"
 
