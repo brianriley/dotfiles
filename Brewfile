@@ -17,8 +17,8 @@ brew 'qt5' # for capybara-webkit
 brew 'rbenv'
 brew 'reattach-to-user-namespace'
 brew 'redis'
-brew 'ripgrep'
 brew 'ruby-build'
+brew 'the_silver_searcher'
 brew 'tmux'
 brew 'vim'
 brew 'weechat', args: ['with-perl', 'with-python']
