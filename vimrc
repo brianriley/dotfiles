@@ -14,13 +14,13 @@ Plugin 'ervandew/supertab'          " tab auto complete
 Plugin 'haya14busa/is.vim'          " search improvements
 Plugin 'jamessan/vim-gnupg'         " gpg in vim
 Plugin 'janko-m/vim-test'           " test runner
+Plugin 'junegunn/fzf.vim'           " all my fuzzy finding needs
 Plugin 'junegunn/goyo.vim'          " distraction-free writing
 Plugin 'mbbill/undotree'            " undo chain
 Plugin 'Raimondi/delimitMate'       " auto complete quotes, brackets, etc.
 Plugin 'reedes/vim-pencil'          " make vim a better writing tool
 Plugin 'sheerun/vim-polyglot'       " all the languages
-Plugin 'Shougo/denite.nvim'         " better async unite
-Plugin 'Shougo/unite.vim'           " required for vimfiler (must come before; remove when there's a denite option)
+Plugin 'Shougo/unite.vim'           " required for vimfiler (must come before)
 Plugin 'Shougo/vimfiler.vim'        " lightweight file explorer
 Plugin 'tpope/vim-abolish.git'      " `crs` for snake case and `crc` for camel case!
 Plugin 'tpope/vim-commentary'       " auto comment selected code
@@ -102,28 +102,21 @@ set smartcase
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
-" let's not take up so much space for the results
-call denite#custom#option('default', 'winheight', 15)
+if executable('fzf')
+  set rtp+=/usr/local/opt/fzf
 
-" bind F to grep word under cursor
-nnoremap F :DeniteCursorWord grep<cr>
+  " search for text within the project
+  nnoremap <leader>f :Ag<cr>
 
-" search within the project
-if executable('rg')
-  call denite#custom#var('grep', 'command', ['rg'])
-  call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading', '-i'])
-  call denite#custom#var('grep', 'recursive_opts', [])
-  call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-  call denite#custom#var('grep', 'separator', ['--'])
-  call denite#custom#var('grep', 'final_opts', [])
+  " search for word under cursor
+  nnoremap F :Ag <C-R><C-W><cr>
+
+  " search for filename
+  nnoremap <leader>e :Files<cr>
+
+  " search for buffer name
+  nnoremap <leader>b :Buffers<cr>
 endif
-nnoremap <leader>f :Denite grep<cr>
-
-" search for filename
-nnoremap <leader>e :Denite file_rec<cr>
-
-" search for buffer name
-nnoremap <leader>b :Denite buffer<cr>
 
 " search for the visual selection with //
 vnoremap // y/<C-R>"<CR>"
