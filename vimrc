@@ -102,6 +102,9 @@ set smartcase
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
+" let's not take up so much space for the results
+call denite#custom#option('default', 'winheight', 15)
+
 " bind F to grep word under cursor
 nnoremap F :DeniteCursorWord grep<cr>
 
