@@ -28,7 +28,8 @@ call plug#end()
 
 set omnifunc=syntaxcomplete#Complete
 
-runtime! macros/matchit.vim
+" jump between matching code constructs with %
+runtime macros/matchit.vim
 
 set encoding=utf-8
 set fileencoding=utf-8
