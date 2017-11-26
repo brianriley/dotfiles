@@ -33,23 +33,18 @@ brew bundle
 brew unlink qt 2>/dev/null || true
 brew link --force qt5
 
-fancy_echo "Installing Vundler..."
-if test -e ~/.vim/bundle/Vundle.vim; then
-  pushd ~/.vim/bundle/Vundle.vim
-  git pull
-  popd
-else
-  mkdir -p ~/.vim/bundle
-  pushd ~/.vim/bundle
-  git clone https://github.com/gmarik/Vundle.vim.git
-  popd
-fi
-
 fancy_echo "Linking dotfiles into ~..."
 RCRC=rcrc rcup -v
 
+fancy_echo "Installing vim-plug..."
+if (test -e ~/.vim/autoload/plug.vim); then
+  fancy_echo "already installed"
+else
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
+
 fancy_echo "Installing Vim packages..."
-vim +PluginUpdate +qall
+vim +PlugInstall +qall
 
 fancy_echo "Changing your shell to zsh ..."
 if ! grep "$(which zsh)" /etc/shells; then
