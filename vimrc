@@ -116,6 +116,9 @@ if executable('fzf')
 
   " search for buffer name
   nnoremap <leader>b :Buffers<cr>
+
+  " search for text in open buffers
+  nnoremap <leader>/ :Lines<cr>
 endif
 
 " search for the visual selection with //
