@@ -329,15 +329,6 @@ let test#javascript#jasmine#executable = 'npm test'
 " vim-pencil
 let g:pencil#wrapModeDefault = 'soft'
 
-" supertab
-let g:SuperTabDefaultCompletionType = "context"
-
-autocmd FileType *
-  \ if &omnifunc != '' |
-  \   call SuperTabChain(&omnifunc, "<c-p>") |
-  \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
-  \ endif
-
 nmap fw :grep -r <cword> . <cr>
 map <leader>cn :cnext<cr>
 map <leader>cp :cprev<cr>
