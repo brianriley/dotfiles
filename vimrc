@@ -46,6 +46,7 @@ set mouse=a                  " turn on mouse for the optional interaction
 set nohls
 set noswapfile
 set number
+set re=1                     " Ruby syntax highlighting is very slow with the new regex engine; use the old one
 set scrolloff=3
 set softtabstop=2
 set shell=zsh
