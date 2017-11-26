@@ -1,40 +1,31 @@
 set nocompatible
-filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/bundle')
+Plug 'airblade/vim-gitgutter'                           " show git diff in gutter
+Plug 'bogado/file-line'                                 " open files by line number: vim file.txt:123
+Plug 'chriskempson/base16-vim'                          " base16 for colors
+Plug 'ervandew/supertab'                                " tab auto complete
+Plug 'haya14busa/is.vim'                                " search improvements
+Plug 'jamessan/vim-gnupg'                               " gpg in vim
+Plug 'janko-m/vim-test'                                 " test runner
+Plug 'junegunn/fzf.vim'                                 " all my fuzzy finding needs
+Plug 'junegunn/goyo.vim'                                " distraction-free writing
+Plug 'mbbill/undotree'                                  " undo chain
+Plug 'Raimondi/delimitMate'                             " auto complete quotes, brackets, etc.
+Plug 'reedes/vim-pencil'                                " make vim a better writing tool
+Plug 'sheerun/vim-polyglot'                             " all the languages
+Plug 'Shougo/unite.vim'                                 " required for vimfiler (must come before)
+Plug 'Shougo/vimfiler.vim'                              " lightweight file explorer
+Plug 'tpope/vim-commentary'                             " auto comment selected code
+Plug 'tpope/vim-endwise'                                " add `end` to ruby and other code
+Plug 'tpope/vim-eunuch'                                 " shell commands: :Move, :Rename, :Mkdir, etc.
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }        " Clojure repl support
+Plug 'tpope/vim-fugitive'                               " git integration
+Plug 'tpope/vim-surround'                               " change surrounding quotes, brackets, etc.
+Plug 'vimwiki/vimwiki'                                  " for personal and work wikis
+Plug 'w0rp/ale'                                         " Asynchronous linter
+call plug#end()
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-Plugin 'airblade/vim-gitgutter'     " show git diff in gutter
-Plugin 'bogado/file-line'           " open files by line number: vim file.txt:123
-Plugin 'chriskempson/base16-vim'    " base16 for colors
-Plugin 'ervandew/supertab'          " tab auto complete
-Plugin 'haya14busa/is.vim'          " search improvements
-Plugin 'jamessan/vim-gnupg'         " gpg in vim
-Plugin 'janko-m/vim-test'           " test runner
-Plugin 'junegunn/fzf.vim'           " all my fuzzy finding needs
-Plugin 'junegunn/goyo.vim'          " distraction-free writing
-Plugin 'mbbill/undotree'            " undo chain
-Plugin 'Raimondi/delimitMate'       " auto complete quotes, brackets, etc.
-Plugin 'reedes/vim-pencil'          " make vim a better writing tool
-Plugin 'sheerun/vim-polyglot'       " all the languages
-Plugin 'Shougo/unite.vim'           " required for vimfiler (must come before)
-Plugin 'Shougo/vimfiler.vim'        " lightweight file explorer
-Plugin 'tpope/vim-abolish.git'      " `crs` for snake case and `crc` for camel case!
-Plugin 'tpope/vim-commentary'       " auto comment selected code
-Plugin 'tpope/vim-endwise'          " add `end` to ruby and other code
-Plugin 'tpope/vim-eunuch'           " shell commands: :Move, :Rename, :Mkdir, etc.
-Plugin 'tpope/vim-fireplace'        " Clojure repl support
-Plugin 'tpope/vim-fugitive'         " git integration
-Plugin 'tpope/vim-surround'         " change surrounding quotes, brackets, etc.
-Plugin 'vimwiki/vimwiki'            " for personal and work wikis
-Plugin 'w0rp/ale'                   " Asynchronous linter
-
-call vundle#end()
-filetype plugin indent on
-syntax on
 set omnifunc=syntaxcomplete#Complete
 
 runtime! macros/matchit.vim
