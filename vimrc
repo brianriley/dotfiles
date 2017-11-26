@@ -329,17 +329,6 @@ let test#javascript#jasmine#executable = 'npm test'
 " vim-pencil
 let g:pencil#wrapModeDefault = 'soft'
 
-nmap fw :grep -r <cword> . <cr>
-map <leader>cn :cnext<cr>
-map <leader>cp :cprev<cr>
-map <leader>co :copen<cr>
-map <leader>cc :ccl<cr>
-
-set tags=.git/tags;$HOME/tags
-nmap <leader>ct :execute "!ctags -R ."<cr>
-nmap gd <C-]>
-nmap gb <C-t>
-
 " vim-surround
 nmap <leader>' ysiw'
 nmap <leader>" ysiw"
@@ -375,3 +364,11 @@ set statusline+=\ \|\ %2cC  " column number followed by a 'C'
 set statusline+=\ \|\ %3p%% " percent through file
 set statusline+=\ %y        " filetype
 set statusline+=\           " trailing space
+
+""""""""""""
+" ctags
+""""""""""""
+set tags=.git/tags;$HOME/tags
+nmap <leader>ct :execute "!ctags -R ."<cr>
+nmap gd <C-]>
+nmap gb <C-t>
