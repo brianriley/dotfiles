@@ -54,6 +54,8 @@ set t_ti= t_te=
 set tabstop=2
 set updatetime=250           " speeds up the update from 4 s to 250 ms
 set whichwrap+=<,>,h,l,[,]
+set wildignore+=*.pyc
+set wildmenu
 set wrap linebreak nolist
 
 " Don't ring the bell
@@ -210,12 +212,6 @@ let &winheight = &lines * 6 / 10
 let &winwidth = &columns * 6 / 10
 " ...and resize when the window has been resized
 au VimResized * :wincmd =
-
-""""""""""""
-" Search
-""""""""""""
-set wildignore+=*.pyc
-set wildmenu
 
 map <leader>q :q<cr>
 map <leader>Q :qa<cr>
