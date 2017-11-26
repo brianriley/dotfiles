@@ -9,13 +9,13 @@ Plug 'haya14busa/is.vim'                                " search improvements
 Plug 'jamessan/vim-gnupg'                               " gpg in vim
 Plug 'janko-m/vim-test'                                 " test runner
 Plug 'junegunn/fzf.vim'                                 " all my fuzzy finding needs
-Plug 'junegunn/goyo.vim'                                " distraction-free writing
-Plug 'mbbill/undotree'                                  " undo chain
+Plug 'junegunn/goyo.vim', { 'for': 'markdown' }         " distraction-free writing
+Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }      " undo chain
 Plug 'Raimondi/delimitMate'                             " auto complete quotes, brackets, etc.
 Plug 'reedes/vim-pencil'                                " make vim a better writing tool
 Plug 'sheerun/vim-polyglot'                             " all the languages
 Plug 'Shougo/unite.vim'                                 " required for vimfiler (must come before)
-Plug 'Shougo/vimfiler.vim'                              " lightweight file explorer
+Plug 'Shougo/vimfiler.vim', { 'on': 'VimFilerExplorer'} " lightweight file explorer
 Plug 'tpope/vim-commentary'                             " auto comment selected code
 Plug 'tpope/vim-endwise'                                " add `end` to ruby and other code
 Plug 'tpope/vim-eunuch'                                 " shell commands: :Move, :Rename, :Mkdir, etc.
@@ -309,6 +309,7 @@ if has("persistent_undo")
   set undodir='~/.undodir/'
   set undofile
 endif
+nnoremap U :UndotreeToggle<cr>
 
 " vim-test
 nmap <silent> <leader>t :TestNearest<CR>
