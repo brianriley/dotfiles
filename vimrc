@@ -124,6 +124,13 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 
+" proper coloring in diff mode
+hi User1 guifg=#eea040 guibg=#222222
+hi User2 guifg=#dd3333 guibg=#222222
+hi User3 guifg=#ff66ff guibg=#222222
+hi User4 guifg=#a0ee40 guibg=#222222
+hi User5 guifg=#eeee40 guibg=#222222
+
 " Hightlight trailing whitespace
 highlight TrailingWhitespace ctermbg=240 guibg=red
 match TrailingWhitespace /\s\+$/
@@ -375,10 +382,3 @@ set statusline+=\ \|\ %2cC  " column number followed by a 'C'
 set statusline+=\ \|\ %3p%% " percent through file
 set statusline+=\ %y        " filetype
 set statusline+=\           " trailing space
-
-" proper coloring in diff mode
-hi User1 guifg=#eea040 guibg=#222222
-hi User2 guifg=#dd3333 guibg=#222222
-hi User3 guifg=#ff66ff guibg=#222222
-hi User4 guifg=#a0ee40 guibg=#222222
-hi User5 guifg=#eeee40 guibg=#222222
