@@ -34,14 +34,14 @@ set encoding=utf-8
 set fileencoding=utf-8
 
 set autoindent
-set autoread            " update buffer when change detected outside of vim
-set backspace=2         " allow erasing previously entered characters
-set clipboard=unnamed   " system clipboard
-set cursorline          " highlight the screen line the cursor is on
+set autoread                 " update buffer when change detected outside of vim
+set backspace=2              " allow erasing previously entered characters
+set clipboard=unnamed        " system clipboard
+set cursorline               " highlight the screen line the cursor is on
 set expandtab
-set hidden              " allow unsaved buffers and remember undos
+set hidden                   " allow unsaved buffers and remember undos
 set history=10000
-set mouse=a             " turn on mouse for the optional interaction
+set mouse=a                  " turn on mouse for the optional interaction
 set nohls
 set noswapfile
 set number
@@ -51,6 +51,7 @@ set shell=zsh
 set shiftwidth=2
 set t_ti= t_te=
 set tabstop=2
+set updatetime=250           " speeds up the update from 4 s to 250 ms
 set whichwrap+=<,>,h,l,[,]
 set wrap linebreak nolist
 
