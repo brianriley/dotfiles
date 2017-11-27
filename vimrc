@@ -13,6 +13,7 @@ Plug 'junegunn/goyo.vim', { 'for': 'markdown' }         " distraction-free writi
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }      " undo chain
 Plug 'Raimondi/delimitMate'                             " auto complete quotes, brackets, etc.
 Plug 'reedes/vim-pencil'                                " make vim a better writing tool
+Plug 'roman/golden-ratio'                               " auto-resize active pane based on golden ratio
 Plug 'sheerun/vim-polyglot'                             " all the languages
 Plug 'Shougo/unite.vim'                                 " required for vimfiler (must come before)
 Plug 'Shougo/vimfiler.vim', { 'on': 'VimFilerExplorer'} " lightweight file explorer
@@ -207,12 +208,6 @@ map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-H> <C-W>h
 map <C-L> <C-W>l
-
-" auto-resize panes to 60% of window...
-let &winheight = &lines * 6 / 10
-let &winwidth = &columns * 6 / 10
-" ...and resize when the window has been resized
-au VimResized * :wincmd =
 
 map <leader>q :q<cr>
 map <leader>Q :qa<cr>
