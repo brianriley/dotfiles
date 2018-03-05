@@ -10,6 +10,7 @@ Plug 'jamessan/vim-gnupg'                               " gpg in vim
 Plug 'janko-m/vim-test'                                 " test runner
 Plug 'junegunn/fzf.vim'                                 " all my fuzzy finding needs
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }         " distraction-free writing
+Plug 'machakann/vim-highlightedyank'                    " briefly highlight yanked text
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }      " undo chain
 Plug 'Raimondi/delimitMate'                             " auto complete quotes, brackets, etc.
 Plug 'reedes/vim-pencil'                                " make vim a better writing tool
