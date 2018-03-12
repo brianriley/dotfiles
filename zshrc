@@ -90,7 +90,8 @@ PROMPT_TIME="[%{$fg[cyan]%}%*%{$reset_color%}]"
 PROMPT_PATH="%{$fg_bold[black]%}%~%{$reset_color%}"
 PROMPT_CHAR="%(!.#.>)"
 
-PROMPT='$PROMPT_PATH ${vcs_info_msg_0_}
+PROMPT="\$(repeat \$COLUMNS printf '-')"
+PROMPT+='$PROMPT_PATH ${vcs_info_msg_0_}
 $PROMPT_CHAR '
 RPROMPT='$PROMPT_TIME'
 
