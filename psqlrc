@@ -1,4 +1,4 @@
-\set HISTFILE ~/.psql_history- :DBNAME
+\set HISTFILE ~/.psql/history- :DBNAME
 
 -- If a command is run more than once in a row, only store it once in the
 -- history.
