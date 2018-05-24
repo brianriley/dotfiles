@@ -31,7 +31,4 @@ brew 'rcm'
 
 # Cask: install binaries
 cask 'tunnelblick'
-
-# iterm
-tap 'caskroom/versions'
 cask 'iterm2-nightly'
