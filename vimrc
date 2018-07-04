@@ -14,7 +14,6 @@ Plug 'machakann/vim-highlightedyank'                    " briefly highlight yank
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }      " undo chain
 Plug 'Raimondi/delimitMate'                             " auto complete quotes, brackets, etc.
 Plug 'reedes/vim-pencil'                                " make vim a better writing tool
-Plug 'roman/golden-ratio'                               " auto-resize active pane based on golden ratio
 Plug 'sheerun/vim-polyglot'                             " all the languages
 Plug 'Shougo/unite.vim'                                 " required for vimfiler (must come before)
 Plug 'Shougo/vimfiler.vim', { 'on': 'VimFilerExplorer'} " lightweight file explorer
@@ -26,6 +25,7 @@ Plug 'tpope/vim-fugitive'                               " git integration
 Plug 'tpope/vim-surround'                               " change surrounding quotes, brackets, etc.
 Plug 'vimwiki/vimwiki'                                  " for personal and work wikis
 Plug 'w0rp/ale'                                         " Asynchronous linter
+Plug 'zhaocai/GoldenView.Vim'                           " auto-resize panes based on golden ratio
 call plug#end()
 
 set omnifunc=syntaxcomplete#Complete
@@ -342,6 +342,9 @@ nmap <leader>d :GitGutterToggle<cr>
 " vimwiki
 let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki'}]
 let g:vimwiki_map_prefix = '<Leader>k'
+
+" GoldenView
+let g:goldenview__enable_default_mapping = 0
 
 """"""""""""
 " Status
