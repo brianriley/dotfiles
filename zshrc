@@ -146,3 +146,8 @@ export GPG_TTY
 #### fzf
 #######################
 export FZF_DEFAULT_COMMAND='ag -g ""'
+
+#######################
+#### fastlane
+#######################
+export PATH="$HOME/.fastlane/bin:$PATH"
