@@ -119,6 +119,8 @@ alias vi="vim"
 
 alias h="heroku"
 
+alias git="noglob git"
+
 #######################
 #### pip
 #######################
