@@ -30,4 +30,6 @@ brew 'rcm'
 
 # Cask: install binaries
 cask 'tunnelblick'
+
+tap 'homebrew/cask-versions'
 cask 'iterm2-nightly'
