@@ -25,7 +25,6 @@ Plug 'tpope/vim-fugitive'                               " git integration
 Plug 'tpope/vim-surround'                               " change surrounding quotes, brackets, etc.
 Plug 'vimwiki/vimwiki'                                  " for personal and work wikis
 Plug 'w0rp/ale'                                         " Asynchronous linter
-Plug 'zhaocai/GoldenView.Vim'                           " auto-resize panes based on golden ratio
 call plug#end()
 
 set omnifunc=syntaxcomplete#Complete
@@ -342,9 +341,6 @@ nmap <leader>d :GitGutterToggle<cr>
 " vimwiki
 let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki'}]
 let g:vimwiki_map_prefix = '<Leader>k'
-
-" GoldenView
-let g:goldenview__enable_default_mapping = 0
 
 """"""""""""
 " Status
