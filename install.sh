@@ -53,7 +53,7 @@ fi
 chsh -s "$(which zsh)"
 
 fancy_echo "Installing Python packages..."
-pip install --upgrade --user -r requirements.pip
+pip3 install --upgrade --user -r requirements.pip
 
 mkdir -p $HOME/Library/KeyBindings
 cp system/DefaultKeyBinding.dict $HOME/Library/KeyBindings/
