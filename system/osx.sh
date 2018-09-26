@@ -74,3 +74,6 @@ defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
 
 echo "Kill affected applications"
 for app in Safari Finder Dock SystemUIServer; do killall "$app" >/dev/null 2>&1; done
+
+echo "Show build times in Xcode"
+defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool YES
