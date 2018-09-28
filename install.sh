@@ -9,53 +9,32 @@ fancy_echo() {
   printf "\n$fmt\n" "$@"
 }
 
-if ! command -v brew >/dev/null; then
-  fancy_echo "Installing Homebrew..."
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  export PATH="/usr/local/bin:$PATH"
-else
-  fancy_echo "Homebrew already installed. Skipping ..."
-fi
+fancy_echo "Installing Homebrew..."
+source scripts/install-homebrew.sh
 
 fancy_echo "Installing base16-shell..."
-if test -e ~/.config/base16-shell; then
-  pushd ~/.config/base16-shell
-  git pull
-  popd
-else
-  git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
-fi
+source scripts/install-base16.sh
 
 fancy_echo "Installing Homebrew packages..."
-brew update
-brew tap homebrew/bundle
-brew bundle
-brew unlink qt 2>/dev/null || true
-brew link --force qt5
+source scripts/install-homebrew-packages.sh
 
 fancy_echo "Linking dotfiles into ~..."
-RCRC=rcrc rcup -v
+source scripts/rcup.sh
 
 fancy_echo "Installing vim-plug..."
-if (test -e ~/.vim/autoload/plug.vim); then
-  fancy_echo "already installed"
-else
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
+source scripts/install-vim-plug.sh
 
-fancy_echo "Installing Vim packages..."
-vim +PlugInstall +qall
+fancy_echo "Installing Vim plugins..."
+source scripts/update-vim-plugins.sh
 
 fancy_echo "Changing your shell to zsh ..."
-if ! grep "$(which zsh)" /etc/shells; then
-  sudo sh -c 'echo "$(which zsh)" >> /etc/shells'
-fi
-chsh -s "$(which zsh)"
+source scripts/set-zsh.sh
 
 fancy_echo "Installing Python packages..."
-pip3 install --upgrade --user -r requirements.pip
+source scripts/pip-install.sh
 
-mkdir -p $HOME/Library/KeyBindings
-cp system/DefaultKeyBinding.dict $HOME/Library/KeyBindings/
+fancy_echo "Install keybindings..."
+source scripts/install-keybindings.sh
 
+fancy_echo "Setup OS X..."
 source system/osx.sh
