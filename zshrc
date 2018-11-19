@@ -132,11 +132,10 @@ export PIP_DOWNLOAD_CACHE='/tmp/pip_cache'
 bindkey '^R' history-incremental-search-backward
 
 #######################
-#### rubby
+#### version management
 #######################
-if hash rbenv 2>/dev/null; then
-  eval "$(rbenv init -)"
-fi
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
 
 #######################
 #### gpg
