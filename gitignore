@@ -5,3 +5,6 @@ __pycache__
 *.DS_Store
 *~
 .sass-cache
+
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
