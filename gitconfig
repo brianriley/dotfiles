@@ -31,3 +31,10 @@
   gpgsign = true
 [help]
   autocorrect = 1
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[url "git@github.com:"]
+	insteadOf = https://github.com/
