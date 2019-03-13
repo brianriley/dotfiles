@@ -39,7 +39,7 @@ set autoindent
 set autoread                 " update buffer when change detected outside of vim
 set backspace=2              " allow erasing previously entered characters
 set clipboard=unnamed        " system clipboard
-set cursorline               " highlight the screen line the cursor is on
+" set cursorline               " highlight the screen line the cursor is on
 set expandtab
 set hidden                   " allow unsaved buffers and remember undos
 set history=10000
@@ -124,20 +124,11 @@ vnoremap // y/<C-R>"<CR>"
 " colors "
 """"""""""
 set t_Co=256
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
-
-" proper coloring in diff mode
-hi User1 guifg=#eea040 guibg=#222222
-hi User2 guifg=#dd3333 guibg=#222222
-hi User3 guifg=#ff66ff guibg=#222222
-hi User4 guifg=#a0ee40 guibg=#222222
-hi User5 guifg=#eeee40 guibg=#222222
+colorscheme dim
+set background=dark
 
 " Hightlight trailing whitespace
-highlight TrailingWhitespace ctermbg=240 guibg=red
+highlight TrailingWhitespace ctermbg=8
 match TrailingWhitespace /\s\+$/
 
 " Source the vimrc file after saving it
