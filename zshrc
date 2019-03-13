@@ -72,8 +72,11 @@ setopt correct
 #######################
 #### Colors
 #######################
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+  [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+    eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 light() {
   base16_material-lighter
@@ -87,7 +90,7 @@ dark() {
 #### Prompt
 #######################
 PROMPT_TIME="[%{$fg[cyan]%}%*%{$reset_color%}]"
-PROMPT_PATH="%{$fg_bold[black]%}%~%{$reset_color%}"
+PROMPT_PATH="%{$fg[white]%}%~%{$reset_color%}"
 PROMPT_CHAR="%(!.#.>)"
 
 PROMPT="\$(repeat \$COLUMNS printf '-')"
@@ -153,3 +156,9 @@ export FZF_DEFAULT_COMMAND='ag -g ""'
 #### fastlane
 #######################
 export PATH="$HOME/.fastlane/bin:$PATH"
+
+#######################
+#### direnv
+#######################
+eval "$(direnv hook zsh)"
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
