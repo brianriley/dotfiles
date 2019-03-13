@@ -15,14 +15,13 @@ Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }      " undo chain
 Plug 'Raimondi/delimitMate'                             " auto complete quotes, brackets, etc.
 Plug 'reedes/vim-pencil'                                " make vim a better writing tool
 Plug 'sheerun/vim-polyglot'                             " all the languages
-Plug 'Shougo/unite.vim'                                 " required for vimfiler (must come before)
-Plug 'Shougo/vimfiler.vim', { 'on': 'VimFilerExplorer'} " lightweight file explorer
 Plug 'tpope/vim-commentary'                             " auto comment selected code
 Plug 'tpope/vim-endwise'                                " add `end` to ruby and other code
 Plug 'tpope/vim-eunuch'                                 " shell commands: :Move, :Rename, :Mkdir, etc.
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }        " Clojure repl support
 Plug 'tpope/vim-fugitive'                               " git integration
 Plug 'tpope/vim-surround'                               " change surrounding quotes, brackets, etc.
+Plug 'tpope/vim-vinegar'                                " netrw improvements
 Plug 'vimwiki/vimwiki'                                  " for personal and work wikis
 Plug 'w0rp/ale'                                         " Asynchronous linter
 call plug#end()
@@ -321,10 +320,6 @@ nmap <leader>} ysiw}
 nmap <leader>( ysiw(
 nmap <leader>) ysiw)
 nmap <leader>` ysiw`
-
-" vimfiler
-let g:vimfiler_as_default_explorer = 1
-nmap <leader><space> :VimFilerExplorer<cr>
 
 " gitgutter
 nmap <leader>d :GitGutterToggle<cr>
