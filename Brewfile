@@ -11,7 +11,6 @@ brew 'mutt'
 brew 'postgresql'
 brew 'python'
 brew 'qt5' # for capybara-webkit
-brew 'reattach-to-user-namespace'
 brew 'redis'
 brew 'ruby-build'
 brew 'the_silver_searcher'
