@@ -43,6 +43,8 @@ set expandtab
 set hidden                   " allow unsaved buffers and remember undos
 set history=10000
 set mouse=a                  " turn on mouse for the optional interaction
+set number
+set ttymouse=sgr
 set nohls
 set noswapfile
 set re=1                     " Ruby syntax highlighting is very slow with the new regex engine; use the old one
@@ -61,6 +63,12 @@ set wrap linebreak nolist
 " Don't ring the bell
 set visualbell
 set t_vb=
+
+set mouse=a
+set ttymouse=sgr
+set balloondelay=250
+set ballooneval
+set balloonevalterm
 
 " split windows to the right or below the current window
 set splitright splitbelow
@@ -349,3 +357,7 @@ set tags=.git/tags;$HOME/tags
 nmap <leader>ct :execute "!ctags -R ."<cr>
 nmap gd <C-]>
 nmap gb <C-t>
+
+let g:ale_sign_column_always = 1
+let g:ale_completion_enabled = 1
+let g:ale_set_balloons = 1
