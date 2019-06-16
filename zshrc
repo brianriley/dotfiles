@@ -161,4 +161,8 @@ export PATH="$HOME/.fastlane/bin:$PATH"
 #### direnv
 #######################
 eval "$(direnv hook zsh)"
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+
+#######################
+#### project specifics
+#######################
+[ -f ~/.project.zsh ] && source ~/.project.zsh
