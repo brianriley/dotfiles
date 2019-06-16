@@ -1,6 +1,6 @@
 [user]
   name = Brian Riley
-  email = brian@btriley.com
+  email = 97886+brianriley@users.noreply.github.com
   signingkey = brian@btriley.com
 [alias]
   activity = ! git log --name-only --oneline | tail -n +2 | sort | uniq -c | sort
