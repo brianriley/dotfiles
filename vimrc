@@ -1,5 +1,3 @@
-set nocompatible
-
 call plug#begin('~/.vim/bundle')
 Plug 'airblade/vim-gitgutter'                           " show git diff in gutter
 Plug 'bogado/file-line'                                 " open files by line number: vim file.txt:123
@@ -130,18 +128,17 @@ vnoremap // y/<C-R>"<CR>"
 """"""""""
 " colors "
 """"""""""
+augroup MyColors
+  autocmd!
+
+  " Hightlight trailing whitespace
+  autocmd ColorScheme * highlight TrailingWhitespace ctermbg=8
+  autocmd BufEnter * match TrailingWhitespace /\s\+$/
+augroup END
+
 set t_Co=256
 colorscheme dim
 set background=dark
-
-" Hightlight trailing whitespace
-highlight TrailingWhitespace ctermbg=8
-match TrailingWhitespace /\s\+$/
-
-" Source the vimrc file after saving it
-if has("autocmd")
-  autocmd bufwritepost .vimrc,vimrc source $MYVIMRC
-endif
 
 augroup SetFiletypes
   autocmd!
@@ -174,7 +171,7 @@ augroup END
 """"""""""""
 " Open current file and line on GitHub
 """"""""""""
-function! OpenOnGitHub()
+function! OpenOnGitHub() abort
   let reporoot = substitute(system("git rev-parse --show-toplevel"), "\n", "", "")
   let origin = substitute(substitute(system("git config --get remote.origin.url"), "\\.git", "", ""), "\n", "", "")
   let branch = substitute(system("git rev-parse --abbrev-ref HEAD"), "\n", "", "")
@@ -233,18 +230,18 @@ imap <C-c> <Esc>
 """"""""""""
 " Move between production code and specs
 """"""""""""
-function! ProdFileName(filename)
+function! ProdFileName(filename) abort
   let prod_file = substitute(a:filename, '_spec', '', '')
   return substitute(prod_file, 'spec/', '', '')
 endfunction
 
-function! SpecFileName(filename)
+function! SpecFileName(filename) abort
   let _spec_file = substitute(a:filename, '.rb', '_spec.rb', '')
   let spec_file = substitute(_spec_file, 'app/', '', '')
   return 'spec/' . spec_file
 endfunction
 
-function! ExpandPath(filename)
+function! ExpandPath(filename) abort
   let is_rails = isdirectory('app')
   if is_rails
     return 'app/' . a:filename
@@ -253,7 +250,7 @@ function! ExpandPath(filename)
   endif
 endfunction
 
-function! GetOtherFile(filename)
+function! GetOtherFile(filename) abort
   let is_spec = match(a:filename, '_spec.rb') != -1
   if is_spec
     return ExpandPath(ProdFileName(a:filename))
@@ -262,7 +259,7 @@ function! GetOtherFile(filename)
   endif
 endfunction
 
-function! MoveBetweenProdAndSpec()
+function! MoveBetweenProdAndSpec() abort
   exec ':edit ' . GetOtherFile(expand("%"))
 endfunction
 
@@ -274,7 +271,7 @@ map <leader>. :call MoveBetweenProdAndSpec()<cr>
 " Goyo
 " From
 " https://github.com/junegunn/goyo.vim/wiki/Customization#ensure-q-to-quit-even-when-goyo-is-active
-function! s:goyo_enter()
+function! s:goyo_enter() abort
   set noshowmode
   set noshowcmd
   set scrolloff=999
@@ -284,7 +281,7 @@ function! s:goyo_enter()
   cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
 endfunction
 
-function! s:goyo_leave()
+function! s:goyo_leave() abort
   silent !tmux set status on
   set showmode
   set showcmd
@@ -299,8 +296,11 @@ function! s:goyo_leave()
   endif
 endfunction
 
-autocmd User GoyoEnter call <SID>goyo_enter()
-autocmd User GoyoLeave call <SID>goyo_leave()
+augroup Goyo
+  autocmd!
+  autocmd User GoyoEnter call <SID>goyo_enter()
+  autocmd User GoyoLeave call <SID>goyo_leave()
+augroup END
 
 " Undotree
 if has("persistent_undo")
