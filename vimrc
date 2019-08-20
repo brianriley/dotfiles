@@ -2,6 +2,7 @@ call plug#begin('~/.vim/bundle')
 Plug 'airblade/vim-gitgutter'                           " show git diff in gutter
 Plug 'bogado/file-line'                                 " open files by line number: vim file.txt:123
 Plug 'chriskempson/base16-vim'                          " base16 for colors
+Plug 'dense-analysis/ale'                               " Asynchronous linter
 Plug 'ervandew/supertab'                                " tab auto complete
 Plug 'haya14busa/is.vim'                                " search improvements
 Plug 'jamessan/vim-gnupg'                               " gpg in vim
@@ -21,7 +22,6 @@ Plug 'tpope/vim-fugitive'                               " git integration
 Plug 'tpope/vim-surround'                               " change surrounding quotes, brackets, etc.
 Plug 'tpope/vim-vinegar'                                " netrw improvements
 Plug 'vimwiki/vimwiki'                                  " for personal and work wikis
-Plug 'w0rp/ale'                                         " Asynchronous linter
 call plug#end()
 
 set omnifunc=syntaxcomplete#Complete
@@ -357,13 +357,10 @@ set statusline+=\ %y             " filetype
 set statusline+=\                " trailing space
 
 """"""""""""
-" ctags
+" ale
 """"""""""""
-set tags=.git/tags;$HOME/tags
-nmap <leader>ct :execute "!ctags -R ."<cr>
-nmap gd <C-]>
-nmap gb <C-t>
-
 let g:ale_sign_column_always = 1
 let g:ale_completion_enabled = 1
 let g:ale_set_balloons = 1
+
+nmap gd :ALEGoToDefinition<cr>
