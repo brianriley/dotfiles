@@ -1,27 +1,27 @@
 call plug#begin('~/.vim/bundle')
-Plug 'airblade/vim-gitgutter'                           " show git diff in gutter
-Plug 'bogado/file-line'                                 " open files by line number: vim file.txt:123
-Plug 'chriskempson/base16-vim'                          " base16 for colors
-Plug 'dense-analysis/ale'                               " Asynchronous linter
-Plug 'ervandew/supertab'                                " tab auto complete
-Plug 'haya14busa/is.vim'                                " search improvements
-Plug 'jamessan/vim-gnupg'                               " gpg in vim
-Plug 'janko-m/vim-test'                                 " test runner
-Plug 'junegunn/fzf.vim'                                 " all my fuzzy finding needs
-Plug 'junegunn/goyo.vim', { 'for': 'markdown' }         " distraction-free writing
-Plug 'machakann/vim-highlightedyank'                    " briefly highlight yanked text
-Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }      " undo chain
-Plug 'Raimondi/delimitMate'                             " auto complete quotes, brackets, etc.
-Plug 'reedes/vim-pencil'                                " make vim a better writing tool
-Plug 'sheerun/vim-polyglot'                             " all the languages
-Plug 'tpope/vim-commentary'                             " auto comment selected code
-Plug 'tpope/vim-endwise'                                " add `end` to ruby and other code
-Plug 'tpope/vim-eunuch'                                 " shell commands: :Move, :Rename, :Mkdir, etc.
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }        " Clojure repl support
-Plug 'tpope/vim-fugitive'                               " git integration
-Plug 'tpope/vim-surround'                               " change surrounding quotes, brackets, etc.
-Plug 'tpope/vim-vinegar'                                " netrw improvements
-Plug 'vimwiki/vimwiki'                                  " for personal and work wikis
+Plug 'airblade/vim-gitgutter'                                " show git diff in gutter
+Plug 'bogado/file-line'                                      " open files by line number: vim file.txt:123
+Plug 'chriskempson/base16-vim'                               " base16 for colors
+Plug 'ervandew/supertab'                                     " tab auto complete
+Plug 'haya14busa/is.vim'                                     " search improvements
+Plug 'jamessan/vim-gnupg'                                    " gpg in vim
+Plug 'janko-m/vim-test'                                      " test runner
+Plug 'junegunn/fzf.vim'                                      " all my fuzzy finding needs
+Plug 'junegunn/goyo.vim', { 'for': 'markdown' }              " distraction-free writing
+Plug 'machakann/vim-highlightedyank'                         " briefly highlight yanked text
+Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }           " undo chain
+Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}  " LSP support
+Plug 'Raimondi/delimitMate'                                  " auto complete quotes, brackets, etc.
+Plug 'reedes/vim-pencil'                                     " make vim a better writing tool
+Plug 'sheerun/vim-polyglot'                                  " all the languages
+Plug 'tpope/vim-commentary'                                  " auto comment selected code
+Plug 'tpope/vim-endwise'                                     " add `end` to ruby and other code
+Plug 'tpope/vim-eunuch'                                      " shell commands: :Move, :Rename, :Mkdir, etc.
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }             " Clojure repl support
+Plug 'tpope/vim-fugitive'                                    " git integration
+Plug 'tpope/vim-surround'                                    " change surrounding quotes, brackets, etc.
+Plug 'tpope/vim-vinegar'                                     " netrw improvements
+Plug 'vimwiki/vimwiki'                                       " for personal and work wikis
 call plug#end()
 
 set omnifunc=syntaxcomplete#Complete
@@ -357,10 +357,15 @@ set statusline+=\ %y             " filetype
 set statusline+=\                " trailing space
 
 """"""""""""
-" ale
+" coc.vim
 """"""""""""
-let g:ale_sign_column_always = 1
-let g:ale_completion_enabled = 1
-let g:ale_set_balloons = 1
+nmap <silent> gd <Plug>(coc-definition)
 
-nmap gd :ALEGoToDefinition<cr>
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
