@@ -360,6 +360,7 @@ set statusline+=\                " trailing space
 " coc.vim
 """"""""""""
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gr <Plug>(coc-references)
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
