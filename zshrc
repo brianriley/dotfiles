@@ -137,8 +137,8 @@ bindkey '^R' history-incremental-search-backward
 #######################
 #### version management
 #######################
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+. /usr/local/opt/asdf/asdf.sh
+. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
 
 #######################
 #### gpg
@@ -160,7 +160,7 @@ export PATH="$HOME/.fastlane/bin:$PATH"
 #######################
 #### direnv
 #######################
-eval "$(direnv hook zsh)"
+[ -f direnv ] && eval "$(direnv hook zsh)"
 
 #######################
 #### project specifics
