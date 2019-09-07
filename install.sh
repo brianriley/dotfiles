@@ -9,32 +9,36 @@ fancy_echo() {
   printf "\n$fmt\n" "$@"
 }
 
+pushd scripts
+
 fancy_echo "Installing Homebrew..."
-source scripts/install-homebrew.sh
+source install-homebrew.sh
 
 fancy_echo "Installing base16-shell..."
-source scripts/install-base16.sh
+source install-base16.sh
 
 fancy_echo "Installing Homebrew packages..."
-source scripts/install-homebrew-packages.sh
+source install-homebrew-packages.sh
 
 fancy_echo "Linking dotfiles into ~..."
-source scripts/rcup.sh
+source rcup.sh
 
 fancy_echo "Installing vim-plug..."
-source scripts/install-vim-plug.sh
+source install-vim-plug.sh
 
 fancy_echo "Installing Vim plugins..."
-source scripts/update-vim-plugins.sh
+source update-vim-plugins.sh
 
 fancy_echo "Changing your shell to zsh ..."
-source scripts/set-zsh.sh
+source set-zsh.sh
 
 fancy_echo "Installing Python packages..."
-source scripts/pip-install.sh
+source pip-install.sh
 
 fancy_echo "Install keybindings..."
-source scripts/install-keybindings.sh
+source install-keybindings.sh
+
+popd
 
 fancy_echo "Setup OS X..."
 source system/osx.sh

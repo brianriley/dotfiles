@@ -1,3 +1,4 @@
+brew 'asdf'
 brew 'coreutils'
 brew 'ctags'
 brew 'fzf'
@@ -8,7 +9,6 @@ brew 'hub'
 brew 'libotr'
 brew 'mutt'
 brew 'postgresql'
-brew 'python'
 brew 'qt5' # for capybara-webkit
 brew 'redis'
 brew 'ruby-build'
@@ -25,8 +25,4 @@ tap 'homebrew/services' # `brew services restart postgres`, etc
 tap 'thoughtbot/formulae'
 brew 'rcm'
 
-# Cask: install binaries
-cask 'tunnelblick'
-
-tap 'homebrew/cask-versions'
-cask 'iterm2-nightly'
+cask 'kitty'
