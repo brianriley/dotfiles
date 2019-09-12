@@ -160,7 +160,7 @@ export PATH="$HOME/.fastlane/bin:$PATH"
 #######################
 #### direnv
 #######################
-[ -f direnv ] && eval "$(direnv hook zsh)"
+[ -f $(which direnv) ] && eval "$(direnv hook zsh)"
 
 #######################
 #### project specifics
