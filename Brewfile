@@ -15,7 +15,7 @@ brew 'ruby-build'
 brew 'the_silver_searcher'
 brew 'tmux'
 brew 'vim'
-brew 'weechat', args: ['with-perl', 'with-python']
+# brew 'weechat', args: ['with-perl', 'with-python']
 brew 'zsh'
 brew 'zsh-syntax-highlighting'
 
@@ -26,3 +26,6 @@ tap 'thoughtbot/formulae'
 brew 'rcm'
 
 cask 'kitty'
+
+tap 'homebrew/cask-fonts'
+cask 'font-fira-code'
