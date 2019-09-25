@@ -79,11 +79,11 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
     eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 light() {
-  base16_material-lighter
+  base16_summerfruit-light
 }
 
 dark() {
-  base16_material-darker
+  base16_summerfruit-dark
 }
 
 #######################
