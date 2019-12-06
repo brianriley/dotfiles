@@ -10,6 +10,7 @@ autoload -U promptinit && promptinit
 setopt autocd
 
 # enable completion
+fpath+=~/.zfunc
 autoload -U compinit && compinit
 zstyle ':completion:*' menu select
 
@@ -125,12 +126,13 @@ alias h="heroku"
 alias git="noglob git"
 
 #######################
-#### pip
+#### python
 #######################
 # keep all logs in one place
 export PIP_LOG_FILE='/tmp/pip-log.txt'
 # use a cache
 export PIP_DOWNLOAD_CACHE='/tmp/pip_cache'
+export PATH="$PATH:$HOME/.poetry/bin"
 
 bindkey '^R' history-incremental-search-backward
 
