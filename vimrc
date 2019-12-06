@@ -2,7 +2,6 @@ call plug#begin('~/.vim/bundle')
 Plug 'airblade/vim-gitgutter'                                " show git diff in gutter
 Plug 'bogado/file-line'                                      " open files by line number: vim file.txt:123
 Plug 'chriskempson/base16-vim'                               " base16 for colors
-Plug 'ervandew/supertab'                                     " tab auto complete
 Plug 'haya14busa/is.vim'                                     " search improvements
 Plug 'jamessan/vim-gnupg'                                    " gpg in vim
 Plug 'janko-m/vim-test'                                      " test runner
@@ -369,4 +368,15 @@ function! s:show_documentation()
   else
     call CocAction('doHover')
   endif
+endfunction
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
