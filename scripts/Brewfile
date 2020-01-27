@@ -26,6 +26,7 @@ tap 'thoughtbot/formulae'
 brew 'rcm'
 
 cask 'kitty'
+cask 'phoenix'
 
 tap 'homebrew/cask-fonts'
 cask 'font-fira-code'
