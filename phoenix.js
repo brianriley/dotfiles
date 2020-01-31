@@ -46,3 +46,16 @@ Key.on('left', MODIFIERS, () => {
   maximize(nextScreen, window);
   center(nextScreen, window);
 });
+
+/* Apps */
+Key.on('t', MODIFIERS, () => {
+  App.launch('Kitty').focus();
+});
+
+Key.on('f', MODIFIERS, () => {
+  App.launch('Firefox Developer Edition').focus();
+});
+
+Key.on('s', MODIFIERS, () => {
+  App.launch('Slack').focus();
+})
