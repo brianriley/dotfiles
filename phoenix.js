@@ -1,33 +1,42 @@
 const MODIFIERS = [ 'ctrl', 'alt', 'cmd' ];
 
 /* Pseudo full screen */
-const maximize = (screen, window) => {
-  const newFrame = {
-    x: window.frame().x,
-    y: window.frame().y,
-    width: screen.width - 85,
-    height: screen.height - 55
-  };
+const maximize = (visibleFrame, window) => {
+  const margin = 75;
+  const newX      = visibleFrame.x + (margin / 2),
+        newY      = visibleFrame.y + (margin / 2),
+        newWidth  = visibleFrame.width - margin,
+        newHeight = visibleFrame.height - margin;
 
-  window.setFrame(newFrame);
+  window.setTopLeft({x: newX, y: newY});
+  window.setSize({width: newWidth, height: newHeight});
 };
 
-const center = (screen, window) => {
+const center = (visibleFrame, window) => {
   window.setTopLeft({
-    x: screen.x + (screen.width / 2) - (window.frame().width / 2),
-    y: screen.y + (screen.height / 2) - (window.frame().height / 2)
+    x: visibleFrame.x + (visibleFrame.width / 2) - (window.frame().width / 2),
+    y: visibleFrame.y + (visibleFrame.height / 2) - (window.frame().height / 2)
   });
 };
 
 /* Center */
 Key.on('c', MODIFIERS, () => {
-  const screen = Screen.main().flippedVisibleFrame();
+  const visibleFrame = Screen.main().flippedVisibleFrame();
   const window = Window.focused();
 
-  if (!window || !screen) return;
+  if (!window || !visibleFrame) return;
 
-  maximize(screen, window);
-  center(screen, window);
+  center(visibleFrame, window);
+});
+
+/* Center and maximize */
+Key.on('z', MODIFIERS, () => {
+  const visibleFrame = Screen.main().flippedVisibleFrame();
+  const window = Window.focused();
+
+  if (!window || !visibleFrame) return;
+
+  maximize(visibleFrame, window);
 });
 
 /* Reload */
