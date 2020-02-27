@@ -42,7 +42,7 @@ Key.on('z', MODIFIERS, () => {
 /* Reload */
 Key.on( 'r', MODIFIERS, () => Phoenix.reload() );
 
-/* Move window */
+/* Move window to different screen */
 Key.on('left', MODIFIERS, () => {
   const window = Window.focused();
   const currentScreen = window.screen();
@@ -54,6 +54,55 @@ Key.on('left', MODIFIERS, () => {
 
   maximize(nextScreen, window);
   center(nextScreen, window);
+});
+
+/* Move windoww to corners */
+Key.on('h', MODIFIERS, () => {
+  const visibleFrame = Screen.main().flippedVisibleFrame();
+  const window = Window.focused();
+
+  if (!window || !visibleFrame) return;
+
+  window.setTopLeft({
+    x: 0,
+    y: window.frame().y
+  });
+});
+
+Key.on('j', MODIFIERS, () => {
+  const visibleFrame = Screen.main().flippedVisibleFrame();
+  const window = Window.focused();
+
+  if (!window || !visibleFrame) return;
+
+  window.setTopLeft({
+    x: window.frame().x,
+    y: visibleFrame.y + (visibleFrame.height - window.frame().height)
+  });
+});
+
+Key.on('k', MODIFIERS, () => {
+  const visibleFrame = Screen.main().flippedVisibleFrame();
+  const window = Window.focused();
+
+  if (!window || !visibleFrame) return;
+
+  window.setTopLeft({
+    x: window.frame().x,
+    y: 0
+  });
+});
+
+Key.on('l', MODIFIERS, () => {
+  const visibleFrame = Screen.main().flippedVisibleFrame();
+  const window = Window.focused();
+
+  if (!window || !visibleFrame) return;
+
+  window.setTopLeft({
+    x: visibleFrame.x + (visibleFrame.width - window.frame().width),
+    y: window.frame().y
+  });
 });
 
 /* Apps */
