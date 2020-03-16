@@ -2,3 +2,4 @@ weechat/logs
 weechat/script
 weechat/sec.conf
 weechat/weechat.log
+Brewfile.lock.json
