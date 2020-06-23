@@ -56,6 +56,7 @@ set whichwrap+=<,>,h,l,[,]
 set wildignore+=*.pyc
 set wildmenu
 set wrap linebreak nolist
+syntax on
 
 " Don't ring the bell
 set visualbell
