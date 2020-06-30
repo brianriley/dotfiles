@@ -15,8 +15,6 @@ Plug 'reedes/vim-pencil'                                     " make vim a better
 Plug 'sheerun/vim-polyglot'                                  " all the languages
 Plug 'tpope/vim-commentary'                                  " auto comment selected code
 Plug 'tpope/vim-endwise'                                     " add `end` to ruby and other code
-Plug 'tpope/vim-eunuch'                                      " shell commands: :Move, :Rename, :Mkdir, etc.
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }             " Clojure repl support
 Plug 'tpope/vim-fugitive'                                    " git integration
 Plug 'tpope/vim-surround'                                    " change surrounding quotes, brackets, etc.
 Plug 'tpope/vim-vinegar'                                     " netrw improvements
@@ -44,7 +42,6 @@ set number
 set ttymouse=sgr
 set nohls
 set noswapfile
-set re=1                     " Ruby syntax highlighting is very slow with the new regex engine; use the old one
 set scrolloff=3
 set softtabstop=2
 set shell=zsh
