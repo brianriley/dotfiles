@@ -68,13 +68,7 @@ set balloonevalterm
 " split windows to the right or below the current window
 set splitright splitbelow
 
-let mapleader=","
-
-""""""""""
-" folds  "
-""""""""""
-" toggle individual folds
-nnoremap <Space> za
+let mapleader=" "
 
 """"""""""
 " search "
@@ -107,7 +101,7 @@ if executable('fzf')
   nnoremap <leader>f :Ag<cr>
 
   " search for word under cursor
-  nnoremap F :Ag <C-R><C-W><cr>
+  nnoremap <leader>* :Ag <C-R><C-W><cr>
 
   " search for filename
   nnoremap <leader>e :Files<cr>
@@ -219,6 +213,9 @@ map <leader>1 :!<SPACE>
 " Insert blank lines w/o leaving normal mode
 nmap <leader><CR> o<Esc>
 nmap <leader><S-CR> O<Esc>
+
+nmap <leader>o :only<cr>
+nmap <leader>, :e $MYVIMRC<cr>
 
 nmap <Up> <nop>
 nmap <Down> <nop>
