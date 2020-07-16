@@ -375,3 +375,11 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+""""""""""""
+" snippet hack
+""""""""""""
+augroup Snippets
+  autocmd!
+  autocmd filetype html iab html <!DOCTYPE html><CR><html><CR><head><CR><meta charset="UTF-8"><CR><meta name="viewport" content="width=device-width,initial-scale=1"><CR><title>TITLE</title><CR></head><CR><body><CR></body><CR></html>
+augroup END
