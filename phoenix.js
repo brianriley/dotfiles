@@ -52,7 +52,6 @@ Key.on('left', MODIFIERS, () => {
     .find(screen => screen.identifier() !== currentScreen.identifier())
     .flippedVisibleFrame();
 
-  maximize(nextScreen, window);
   center(nextScreen, window);
 });
 
