@@ -3,15 +3,12 @@ Plug 'airblade/vim-gitgutter'                                " show git diff in 
 Plug 'bogado/file-line'                                      " open files by line number: vim file.txt:123
 Plug 'chriskempson/base16-vim'                               " base16 for colors
 Plug 'haya14busa/is.vim'                                     " search improvements
-Plug 'jamessan/vim-gnupg'                                    " gpg in vim
 Plug 'janko-m/vim-test'                                      " test runner
 Plug 'junegunn/fzf.vim'                                      " all my fuzzy finding needs
-Plug 'junegunn/goyo.vim', { 'for': 'markdown' }              " distraction-free writing
 Plug 'machakann/vim-highlightedyank'                         " briefly highlight yanked text
-Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }           " undo chain
-Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}  " LSP support
+Plug 'mattn/vim-lsp-settings'                                " autoconfig for LSP
+Plug 'prabirshrestha/vim-lsp'                                " LSP support
 Plug 'Raimondi/delimitMate'                                  " auto complete quotes, brackets, etc.
-Plug 'reedes/vim-pencil'                                     " make vim a better writing tool
 Plug 'sheerun/vim-polyglot'                                  " all the languages
 Plug 'tpope/vim-commentary'                                  " auto comment selected code
 Plug 'tpope/vim-endwise'                                     " add `end` to ruby and other code
@@ -125,10 +122,8 @@ endif
 """"""""""
 " colors "
 """"""""""
-augroup MyColors
+augroup HighlightTrailingWhitespace
   autocmd!
-
-  " Hightlight trailing whitespace
   autocmd ColorScheme * highlight TrailingWhitespace ctermbg=8
   autocmd BufEnter * match TrailingWhitespace /\s\+$/
 augroup END
@@ -147,7 +142,6 @@ augroup FiletypeOptions
   autocmd!
   autocmd FileType python,markdown set sw=4 sts=4 et
   autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:>
-  autocmd FileType mail,markdown,text call pencil#init()
   autocmd Filetype gitcommit setlocal spell textwidth=72
   autocmd FileType vim setlocal keywordprg=:help
   autocmd FileType ruby setlocal keywordprg=ri
@@ -268,55 +262,11 @@ map <leader>. :call MoveBetweenProdAndSpec()<cr>
 """"""""""""
 " Plugins
 """"""""""""
-" Goyo
-" From
-" https://github.com/junegunn/goyo.vim/wiki/Customization#ensure-q-to-quit-even-when-goyo-is-active
-function! s:goyo_enter() abort
-  set noshowmode
-  set noshowcmd
-  set scrolloff=999
-  let b:quitting = 0
-  let b:quitting_bang = 0
-  autocmd QuitPre <buffer> let b:quitting = 1
-  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
-endfunction
-
-function! s:goyo_leave() abort
-  silent !tmux set status on
-  set showmode
-  set showcmd
-  set scrolloff=3
-  " Quit Vim if this is the only remaining buffer
-  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
-    if b:quitting_bang
-      qa!
-    else
-      qa
-    endif
-  endif
-endfunction
-
-augroup Goyo
-  autocmd!
-  autocmd User GoyoEnter call <SID>goyo_enter()
-  autocmd User GoyoLeave call <SID>goyo_leave()
-augroup END
-
-" Undotree
-if has("persistent_undo")
-  set undodir='~/.undodir/'
-  set undofile
-endif
-nnoremap U :UndotreeToggle<cr>
-
 " vim-test
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 let test#javascript#jasmine#file_pattern = '\-test\.js'
 let test#javascript#jasmine#executable = 'npm test'
-
-" vim-pencil
-let g:pencil#wrapModeDefault = 'soft'
 
 " vim-surround
 nmap <leader>' ysiw'
@@ -351,30 +301,14 @@ set statusline+=\ %y             " filetype
 set statusline+=\                " trailing space
 
 """"""""""""
-" coc.vim
+" vim-lsp
 """"""""""""
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gr <Plug>(coc-references)
-
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+nmap <leader>ld :LspDefinition<cr>
+nmap <leader>lf :LspDocumentFormat<cr>
+nmap <leader>lh :LspHover<cr>
+nmap <leader>lp :LspPeekDefinition<cr>
+nmap <leader>lr :LspRename<cr>
+nmap <leader>ls :LspDocumentSymbol<cr>
 
 """"""""""""
 " snippet hack
