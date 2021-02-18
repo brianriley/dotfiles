@@ -7,6 +7,8 @@ Plug 'janko-m/vim-test'                                      " test runner
 Plug 'junegunn/fzf.vim'                                      " all my fuzzy finding needs
 Plug 'machakann/vim-highlightedyank'                         " briefly highlight yanked text
 Plug 'mattn/vim-lsp-settings'                                " autoconfig for LSP
+Plug 'prabirshrestha/asyncomplete.vim'                       " autocompletions
+Plug 'prabirshrestha/asyncomplete-lsp.vim'                   " autocomplete for lsp
 Plug 'prabirshrestha/vim-lsp'                                " LSP support
 Plug 'Raimondi/delimitMate'                                  " auto complete quotes, brackets, etc.
 Plug 'sheerun/vim-polyglot'                                  " all the languages
@@ -286,6 +288,18 @@ nmap <leader>d :GitGutterToggle<cr>
 let g:vimwiki_list = [{'path': '~/Dropbox\ \(Personal\)/vimwiki'}]
 let g:vimwiki_map_prefix = '<Leader>k'
 
+" vim-lsp
+nmap <buffer> <leader>ld <plug>(lsp-definition)
+nmap <buffer> <leader>lf <plug>(lsp-document-format)
+nmap <buffer> <leader>lh <plug>(lsp-hover)
+nmap <buffer> <leader>lp <plug>(lsp-peek-definition)
+nmap <buffer> <leader>lr <plug>(lsp-rename)
+nmap <buffer> <leader>ls <plug>(lsp-document-symbol)
+nmap <buffer> <leader>l/ <plug>(lsp-document-diagnostics)
+
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
 """"""""""""
 " Status
 """"""""""""
@@ -299,16 +313,6 @@ set statusline+=\ \|\ %2lL:%2cC  " column number followed by a 'C'
 set statusline+=\ \|\ %3p%%      " percent through file
 set statusline+=\ %y             " filetype
 set statusline+=\                " trailing space
-
-""""""""""""
-" vim-lsp
-""""""""""""
-nmap <leader>ld :LspDefinition<cr>
-nmap <leader>lf :LspDocumentFormat<cr>
-nmap <leader>lh :LspHover<cr>
-nmap <leader>lp :LspPeekDefinition<cr>
-nmap <leader>lr :LspRename<cr>
-nmap <leader>ls :LspDocumentSymbol<cr>
 
 """"""""""""
 " snippet hack
