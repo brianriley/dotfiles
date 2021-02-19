@@ -7,6 +7,7 @@ Plug 'janko-m/vim-test'                                      " test runner
 Plug 'junegunn/fzf.vim'                                      " all my fuzzy finding needs
 Plug 'machakann/vim-highlightedyank'                         " briefly highlight yanked text
 Plug 'mattn/vim-lsp-settings'                                " autoconfig for LSP
+Plug 'prabirshrestha/async.vim'                              " async function API
 Plug 'prabirshrestha/asyncomplete.vim'                       " autocompletions
 Plug 'prabirshrestha/asyncomplete-lsp.vim'                   " autocomplete for lsp
 Plug 'prabirshrestha/vim-lsp'                                " LSP support
