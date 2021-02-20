@@ -301,6 +301,8 @@ nmap <buffer> <leader>l/ <plug>(lsp-document-diagnostics)
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+highlight lspReference cterm=bold
+
 """"""""""""
 " Status
 """"""""""""
