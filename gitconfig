@@ -12,7 +12,7 @@
   rollback = reset HEAD^
   search = "!f() { git log --all --grep=$1; }; f"
   st = status
-  today = log --since=\"00:00:00\" --all --no-merges --oneline --author=brian@btriley.com
+  today = log --since=\"00:00:00\" --all --no-merges --oneline --author='Brian Riley'
   unstage = reset HEAD --
 [color]
   ui = true
