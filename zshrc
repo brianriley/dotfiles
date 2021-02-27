@@ -139,7 +139,7 @@ bindkey '^R' history-incremental-search-backward
 #######################
 #### version management
 #######################
-. /usr/local/opt/asdf/asdf.sh
+. $HOME/.asdf/asdf.sh
 
 #######################
 #### gpg
