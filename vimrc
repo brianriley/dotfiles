@@ -3,7 +3,6 @@ Plug 'airblade/vim-gitgutter'                                " show git diff in 
 Plug 'bogado/file-line'                                      " open files by line number: vim file.txt:123
 Plug 'chriskempson/base16-vim'                               " base16 for colors
 Plug 'haya14busa/is.vim'                                     " search improvements
-Plug 'janko-m/vim-test'                                      " test runner
 Plug 'junegunn/fzf.vim'                                      " all my fuzzy finding needs
 Plug 'machakann/vim-highlightedyank'                         " briefly highlight yanked text
 Plug 'mattn/vim-lsp-settings'                                " autoconfig for LSP
@@ -18,6 +17,7 @@ Plug 'tpope/vim-endwise'                                     " add `end` to ruby
 Plug 'tpope/vim-fugitive'                                    " git integration
 Plug 'tpope/vim-surround'                                    " change surrounding quotes, brackets, etc.
 Plug 'tpope/vim-vinegar'                                     " netrw improvements
+Plug 'vim-test/vim-test'                                     " test runner
 Plug 'vimwiki/vimwiki'                                       " for personal and work wikis
 call plug#end()
 
@@ -290,13 +290,26 @@ let g:vimwiki_list = [{'path': '~/Dropbox\ \(Personal\)/vimwiki'}]
 let g:vimwiki_map_prefix = '<Leader>k'
 
 " vim-lsp
-nmap <buffer> <leader>ld <plug>(lsp-definition)
-nmap <buffer> <leader>lf <plug>(lsp-document-format)
-nmap <buffer> <leader>lh <plug>(lsp-hover)
-nmap <buffer> <leader>lp <plug>(lsp-peek-definition)
-nmap <buffer> <leader>lr <plug>(lsp-rename)
-nmap <buffer> <leader>ls <plug>(lsp-document-symbol)
-nmap <buffer> <leader>l/ <plug>(lsp-document-diagnostics)
+function! s:on_lsp_buffer_enabled() abort
+  setlocal omnifunc=lsp#complete
+  setlocal signcolumn=yes
+  nmap <buffer> <leader>ld <plug>(lsp-definition)
+  nmap <buffer> <leader>lf <plug>(lsp-document-format)
+  nmap <buffer> <leader>lh <plug>(lsp-hover)
+  nmap <buffer> <leader>lp <plug>(lsp-peek-definition)
+  nmap <buffer> <leader>lr <plug>(lsp-rename)
+  nmap <buffer> <leader>ls <plug>(lsp-document-symbol)
+  nmap <buffer> <leader>l/ <plug>(lsp-document-diagnostics)
+
+  let g:lsp_format_sync_timeout = 1000
+  autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+endfunction
+
+augroup lsp_install
+  au!
+  " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
 
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
