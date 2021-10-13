@@ -1,12 +1,12 @@
 const MODIFIERS = [ 'ctrl', 'alt', 'cmd' ];
+const MARGIN = 75;
 
 /* Pseudo full screen */
 const maximize = (visibleFrame, window) => {
-  const margin = 75;
-  const newX      = visibleFrame.x + (margin / 2),
-        newY      = visibleFrame.y + (margin / 2),
-        newWidth  = visibleFrame.width - margin,
-        newHeight = visibleFrame.height - margin;
+  const newX      = visibleFrame.x + (MARGIN / 2),
+        newY      = visibleFrame.y + (MARGIN / 2),
+        newWidth  = visibleFrame.width - MARGIN,
+        newHeight = visibleFrame.height - MARGIN;
 
   window.setTopLeft({x: newX, y: newY});
   window.setSize({width: newWidth, height: newHeight});
@@ -63,8 +63,12 @@ Key.on('h', MODIFIERS, () => {
   if (!window || !visibleFrame) return;
 
   window.setTopLeft({
-    x: 0,
-    y: window.frame().y
+    x: MARGIN / 2,
+    y: MARGIN / 2
+  });
+  window.setSize({
+    width: visibleFrame.width / 2,
+    height: visibleFrame.height - MARGIN
   });
 });
 
@@ -74,9 +78,13 @@ Key.on('j', MODIFIERS, () => {
 
   if (!window || !visibleFrame) return;
 
+  window.setSize({
+    width: visibleFrame.width - MARGIN,
+    height: visibleFrame.height / 2
+  });
   window.setTopLeft({
-    x: window.frame().x,
-    y: visibleFrame.y + (visibleFrame.height - window.frame().height)
+    x: MARGIN / 2,
+    y: visibleFrame.y + (visibleFrame.height - window.frame().height) - (MARGIN / 2)
   });
 });
 
@@ -86,9 +94,13 @@ Key.on('k', MODIFIERS, () => {
 
   if (!window || !visibleFrame) return;
 
+  window.setSize({
+    width: visibleFrame.width - MARGIN,
+    height: visibleFrame.height / 2
+  });
   window.setTopLeft({
-    x: window.frame().x,
-    y: 0
+    x: MARGIN / 2,
+    y: MARGIN / 2
   });
 });
 
@@ -99,8 +111,12 @@ Key.on('l', MODIFIERS, () => {
   if (!window || !visibleFrame) return;
 
   window.setTopLeft({
-    x: visibleFrame.x + (visibleFrame.width - window.frame().width),
-    y: window.frame().y
+    x: visibleFrame.x + (visibleFrame.width - window.frame().width) - (MARGIN / 2),
+    y: MARGIN / 2
+  });
+  window.setSize({
+    width: visibleFrame.width / 2,
+    height: visibleFrame.height - MARGIN
   });
 });
 
