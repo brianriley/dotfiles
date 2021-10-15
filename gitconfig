@@ -5,7 +5,7 @@
 [alias]
   activity = ! git log --name-only --oneline | tail -n +2 | sort | uniq -c | sort
   branches = branch --sort=-committerdate
-  graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+  graph = log --graph --pretty=format:'%C(yellow)%h%Creset %C(cyan)%D%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
   join = merge --no-ff
   leaderboard = shortlog -sn
   recap = "!f() { git log -p --since='$1' --reverse; }; f"
