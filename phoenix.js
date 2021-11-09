@@ -1,3 +1,8 @@
+Phoenix.set({
+  'daemon': true,
+  'openAtLogin': true,
+});
+
 const MODIFIERS = [ 'ctrl', 'alt', 'cmd' ];
 const PADDING = 35;
 
@@ -5,28 +10,28 @@ const PADDING = 35;
 const halfWidth = (parentFrame) => {
   return {
     width: (parentFrame.width - (PADDING * 3)) / 2,
-    height: parentFrame.height - (PADDING * 2)
+    height: parentFrame.height - (PADDING * 2),
   };
 };
 
 const halfHeight = (parentFrame) => {
   return {
     width: parentFrame.width - (PADDING * 2),
-    height: (parentFrame.height - (PADDING * 3)) / 2
+    height: (parentFrame.height - (PADDING * 3)) / 2,
   };
 };
 
 const quarterSize = (parentFrame) => {
   return {
     width: halfWidth(parentFrame).width,
-    height: halfHeight(parentFrame).height
+    height: halfHeight(parentFrame).height,
   };
 };
 
 const fullSize = (parentFrame) => {
   return {
     width: halfHeight(parentFrame).width,
-    height: halfWidth(parentFrame).height
+    height: halfWidth(parentFrame).height,
   };
 };
 
@@ -34,35 +39,35 @@ const fullSize = (parentFrame) => {
 const topLeft = () => {
   return {
     x: PADDING,
-    y: PADDING
+    y: PADDING,
   };
 };
 
 const topRight = (parentFrame, window) => {
   return {
     x: halfWidth(parentFrame).width + (PADDING * 2),
-    y: PADDING
+    y: PADDING,
   };
 };
 
 const bottomLeft = (parentFrame, window) => {
   return {
     x: PADDING,
-    y: halfHeight(parentFrame).height + (PADDING * 2)
+    y: halfHeight(parentFrame).height + (PADDING * 2),
   };
 };
 
 const bottomRight = (parentFrame, window) => {
   return {
     x: topRight(parentFrame, window).x,
-    y: bottomLeft(parentFrame, window).y
+    y: bottomLeft(parentFrame, window).y,
   };
 };
 
 const center = (parentFrame, window) => {
   return {
     x: parentFrame.x + (parentFrame.width / 2) - (window.frame().width / 2),
-    y: parentFrame.y + (parentFrame.height / 2) - (window.frame().height / 2)
+    y: parentFrame.y + (parentFrame.height / 2) - (window.frame().height / 2),
   };
 };
 
