@@ -1,42 +1,79 @@
 const MODIFIERS = [ 'ctrl', 'alt', 'cmd' ];
-const MARGIN = 75;
+const PADDING = 35;
 
-/* Pseudo full screen */
-const maximize = (visibleFrame, window) => {
-  const newX      = visibleFrame.x + (MARGIN / 2),
-        newY      = visibleFrame.y + (MARGIN / 2),
-        newWidth  = visibleFrame.width - MARGIN,
-        newHeight = visibleFrame.height - MARGIN;
-
-  window.setTopLeft({x: newX, y: newY});
-  window.setSize({width: newWidth, height: newHeight});
+/* Sizing */
+const halfWidth = (parentFrame) => {
+  return {
+    width: (parentFrame.width - (PADDING * 3)) / 2,
+    height: parentFrame.height - (PADDING * 2)
+  };
 };
 
-const center = (visibleFrame, window) => {
-  window.setTopLeft({
-    x: visibleFrame.x + (visibleFrame.width / 2) - (window.frame().width / 2),
-    y: visibleFrame.y + (visibleFrame.height / 2) - (window.frame().height / 2)
-  });
+const halfHeight = (parentFrame) => {
+  return {
+    width: parentFrame.width - (PADDING * 2),
+    height: (parentFrame.height - (PADDING * 3)) / 2
+  };
+};
+
+const quarterSize = (parentFrame) => {
+  return {
+    width: halfWidth(parentFrame).width,
+    height: halfHeight(parentFrame).height
+  };
+};
+
+const fullSize = (parentFrame) => {
+  return {
+    width: halfHeight(parentFrame).width,
+    height: halfWidth(parentFrame).height
+  };
+};
+
+/* Position */
+const topLeft = () => {
+  return {
+    x: PADDING,
+    y: PADDING
+  };
+};
+
+const topRight = (parentFrame, window) => {
+  return {
+    x: halfWidth(parentFrame).width + (PADDING * 2),
+    y: PADDING
+  };
+};
+
+const bottomLeft = (parentFrame, window) => {
+  return {
+    x: PADDING,
+    y: halfHeight(parentFrame).height + (PADDING * 2)
+  };
+};
+
+const bottomRight = (parentFrame, window) => {
+  return {
+    x: topRight(parentFrame, window).x,
+    y: bottomLeft(parentFrame, window).y
+  };
+};
+
+const center = (parentFrame, window) => {
+  return {
+    x: parentFrame.x + (parentFrame.width / 2) - (window.frame().width / 2),
+    y: parentFrame.y + (parentFrame.height / 2) - (window.frame().height / 2)
+  };
 };
 
 /* Center */
 Key.on('c', MODIFIERS, () => {
-  const visibleFrame = Screen.main().flippedVisibleFrame();
+  const parentFrame = Screen.main().flippedVisibleFrame();
   const window = Window.focused();
 
-  if (!window || !visibleFrame) return;
+  if (!window || !parentFrame) return;
 
-  center(visibleFrame, window);
-});
-
-/* Center and maximize */
-Key.on('z', MODIFIERS, () => {
-  const visibleFrame = Screen.main().flippedVisibleFrame();
-  const window = Window.focused();
-
-  if (!window || !visibleFrame) return;
-
-  maximize(visibleFrame, window);
+  window.setTopLeft(center(parentFrame, window));
 });
 
 /* Reload */
@@ -52,72 +89,73 @@ Key.on('left', MODIFIERS, () => {
     .find(screen => screen.identifier() !== currentScreen.identifier())
     .flippedVisibleFrame();
 
-  center(nextScreen, window);
+  window.setTopLeft(center(nextScreen, window));
 });
 
-/* Move windoww to corners */
-Key.on('h', MODIFIERS, () => {
-  const visibleFrame = Screen.main().flippedVisibleFrame();
+/* "Full" screen */
+Key.on('f', MODIFIERS, () => {
+  const parentFrame = Screen.main().flippedVisibleFrame();
   const window = Window.focused();
 
-  if (!window || !visibleFrame) return;
+  if (!window || !parentFrame) return;
 
-  window.setTopLeft({
-    x: MARGIN / 2,
-    y: MARGIN / 2
-  });
-  window.setSize({
-    width: visibleFrame.width / 2,
-    height: visibleFrame.height - MARGIN
-  });
+  window.setFrame({...fullSize(parentFrame), ...topLeft()});
+});
+
+/* Move window */
+Key.on('h', MODIFIERS, () => {
+  const parentFrame = Screen.main().flippedVisibleFrame();
+  const window = Window.focused();
+
+  if (!window || !parentFrame) return;
+
+  window.setFrame({...quarterSize(parentFrame), ...topLeft()});
 });
 
 Key.on('j', MODIFIERS, () => {
-  const visibleFrame = Screen.main().flippedVisibleFrame();
+  const parentFrame = Screen.main().flippedVisibleFrame();
   const window = Window.focused();
 
-  if (!window || !visibleFrame) return;
+  if (!window || !parentFrame) return;
 
-  window.setSize({
-    width: visibleFrame.width - MARGIN,
-    height: visibleFrame.height / 2
-  });
-  window.setTopLeft({
-    x: MARGIN / 2,
-    y: visibleFrame.y + (visibleFrame.height - window.frame().height) - (MARGIN / 2)
-  });
+  window.setFrame({...quarterSize(parentFrame), ...bottomLeft(parentFrame, window)});
 });
 
 Key.on('k', MODIFIERS, () => {
-  const visibleFrame = Screen.main().flippedVisibleFrame();
+  const parentFrame = Screen.main().flippedVisibleFrame();
   const window = Window.focused();
 
-  if (!window || !visibleFrame) return;
+  if (!window || !parentFrame) return;
 
-  window.setSize({
-    width: visibleFrame.width - MARGIN,
-    height: visibleFrame.height / 2
-  });
-  window.setTopLeft({
-    x: MARGIN / 2,
-    y: MARGIN / 2
-  });
+  window.setFrame({...quarterSize(parentFrame), ...bottomRight(parentFrame, window)});
 });
 
 Key.on('l', MODIFIERS, () => {
-  const visibleFrame = Screen.main().flippedVisibleFrame();
+  const parentFrame = Screen.main().flippedVisibleFrame();
   const window = Window.focused();
 
-  if (!window || !visibleFrame) return;
+  if (!window || !parentFrame) return;
 
-  window.setTopLeft({
-    x: visibleFrame.x + (visibleFrame.width - window.frame().width) - (MARGIN / 2),
-    y: MARGIN / 2
-  });
-  window.setSize({
-    width: visibleFrame.width / 2,
-    height: visibleFrame.height - MARGIN
-  });
+  window.setFrame({...quarterSize(parentFrame), ...topRight(parentFrame, window)});
+});
+
+/* Size window */
+Key.on('\\', MODIFIERS, () => {
+  const parentFrame = Screen.main().flippedVisibleFrame();
+  const window = Window.focused();
+
+  if (!window || !parentFrame) return;
+
+  window.setSize(halfWidth(parentFrame));
+});
+
+Key.on('-', MODIFIERS, () => {
+  const parentFrame = Screen.main().flippedVisibleFrame();
+  const window = Window.focused();
+
+  if (!window || !parentFrame) return;
+
+  window.setSize(halfHeight(parentFrame));
 });
 
 /* Apps */
@@ -125,7 +163,7 @@ Key.on('t', MODIFIERS, () => {
   App.launch('Kitty').focus();
 });
 
-Key.on('f', MODIFIERS, () => {
+Key.on('b', MODIFIERS, () => {
   App.launch('Firefox Developer Edition').focus();
 });
 
