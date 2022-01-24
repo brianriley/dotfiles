@@ -3,7 +3,7 @@
   email = 97886+brianriley@users.noreply.github.com
   signingkey = 97886+brianriley@users.noreply.github.com
 [alias]
-  activity = ! git log --name-only --oneline | tail -n +2 | sort | uniq -c | sort
+  activity = "!f() { git log --name-only --oneline \"${1:---since=1970}\" | tail -n +2 | sort | uniq -c | sort; }; f"
   branches = branch --sort=-committerdate
   graph = log --graph --pretty=format:'%C(yellow)%h%Creset %C(cyan)%D%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
   join = merge --no-ff
