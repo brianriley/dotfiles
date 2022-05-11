@@ -5,12 +5,7 @@ Plug 'chriskempson/base16-vim'                               " base16 for colors
 Plug 'haya14busa/is.vim'                                     " search improvements
 Plug 'junegunn/fzf.vim'                                      " all my fuzzy finding needs
 Plug 'machakann/vim-highlightedyank'                         " briefly highlight yanked text
-Plug 'mattn/vim-lsp-settings'                                " autoconfig for LSP
-Plug 'prabirshrestha/async.vim'                              " async function API
-Plug 'prabirshrestha/asyncomplete.vim'                       " autocompletions
-Plug 'prabirshrestha/asyncomplete-lsp.vim'                   " autocomplete for lsp
-Plug 'prabirshrestha/vim-lsp'                                " LSP support
-Plug 'Raimondi/delimitMate'                                  " auto complete quotes, brackets, etc.
+Plug 'neoclide/coc.nvim', {'branch': 'release'}              " code completion, type and linter errors
 Plug 'sheerun/vim-polyglot'                                  " all the languages
 Plug 'tpope/vim-commentary'                                  " auto comment selected code
 Plug 'tpope/vim-endwise'                                     " add `end` to ruby and other code
@@ -42,7 +37,9 @@ set number
 set ttymouse=sgr
 set nohls
 set noswapfile
+set re=0                     " use new regex syntax highlighter
 set scrolloff=3
+set signcolumn=number        " merge sign column and number column
 set softtabstop=2
 set shell=zsh
 set shiftwidth=2
@@ -67,6 +64,13 @@ set balloonevalterm
 
 " split windows to the right or below the current window
 set splitright splitbelow
+
+" help some language servers with backup issues
+set nobackup
+set nowritebackup
+
+set cmdheight=2
+set shortmess+=c
 
 let mapleader=" "
 
@@ -165,17 +169,17 @@ augroup END
 """"""""""""
 " Open current file and line on GitHub
 """"""""""""
-function! OpenOnGitHub() abort
-  let reporoot = substitute(system("git rev-parse --show-toplevel"), "\n", "", "")
-  let origin = substitute(substitute(system("git config --get remote.origin.url"), "\\.git", "", ""), "\n", "", "")
-  let branch = substitute(system("git rev-parse --abbrev-ref HEAD"), "\n", "", "")
-  let filepath = substitute(expand('%:p'), reporoot, "", "")
-  let linenumber = line('.')
-  let url = origin . "/blob/" . branch . filepath . "#L" . linenumber
-  call system("open " . url)
-endfunction
+" function! OpenOnGitHub() abort
+"   let reporoot = substitute(system("git rev-parse --show-toplevel"), "\n", "", "")
+"   let origin = substitute(substitute(system("git config --get remote.origin.url"), "\\.git", "", ""), "\n", "", "")
+"   let branch = substitute(system("git rev-parse --abbrev-ref HEAD"), "\n", "", "")
+"   let filepath = substitute(expand('%:p'), reporoot, "", "")
+"   let linenumber = line('.')
+"   let url = origin . "/blob/" . branch . filepath . "#L" . linenumber
+"   call system("open " . url)
+" endfunction
 
-map <leader>g :call OpenOnGitHub()<cr>
+" map <leader>g :call OpenOnGitHub()<cr>
 
 """"""""""""
 " Movements
@@ -286,35 +290,24 @@ nmap <leader>` ysiw`
 nmap <leader>d :GitGutterToggle<cr>
 
 " vimwiki
-let g:vimwiki_list = [{'path': '~/Dropbox\ \(Personal\)/vimwiki'}]
+let g:vimwiki_list = [{'path': '~/Documents/vimwiki', 'syntax': 'markdown', 'ext': 'md'}]
 let g:vimwiki_map_prefix = '<Leader>k'
 
-" vim-lsp
-function! s:on_lsp_buffer_enabled() abort
-  setlocal omnifunc=lsp#complete
-  setlocal signcolumn=yes
-  nmap <buffer> <leader>ld <plug>(lsp-definition)
-  nmap <buffer> <leader>lf <plug>(lsp-document-format)
-  nmap <buffer> <leader>lh <plug>(lsp-hover)
-  nmap <buffer> <leader>lp <plug>(lsp-peek-definition)
-  nmap <buffer> <leader>lr <plug>(lsp-rename)
-  nmap <buffer> <leader>ls <plug>(lsp-document-symbol)
-  nmap <buffer> <leader>l/ <plug>(lsp-document-diagnostics)
-
-  let g:lsp_format_sync_timeout = 1000
-  autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
-endfunction
-
-augroup lsp_install
-  au!
-  " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-augroup END
-
+" coc.vim
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-highlight lspReference cterm=bold
+highlight CocHighlightText cterm=bold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+nmap <buffer> <leader>ld <plug>(coc-definition)
+nmap <buffer> <leader>lt <plug>(coc-type-definition)
+nmap <buffer> <leader>li <plug>(coc-implementation)
+nmap <buffer> <leader>lr <plug>(coc-references)
+nmap <buffer> <leader>ln <plug>(coc-rename)
+nmap <buffer> <leader>lf <plug>(coc-fix-current)
+nmap <buffer> <leader>l/ <plug>(coc-diagnostics-next)
+nmap <buffer> <leader>l? <plug>(coc-diagnostics-prev)
 
 """"""""""""
 " Status
