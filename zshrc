@@ -84,7 +84,7 @@ light() {
 }
 
 dark() {
-  base16_summerfruit-dark
+  base16_eighties
 }
 
 #######################
