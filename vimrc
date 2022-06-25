@@ -298,6 +298,7 @@ let g:vimwiki_map_prefix = '<Leader>k'
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+highlight CocUnusedHighlight ctermfg=White ctermbg=Red
 highlight CocHighlightText cterm=bold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
