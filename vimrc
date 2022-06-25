@@ -274,6 +274,7 @@ nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 let test#javascript#jasmine#file_pattern = '\-test\.js'
 let test#javascript#jasmine#executable = 'npm test'
+let test#javascript#mocha#executable = './bin/mocha'
 
 " vim-surround
 nmap <leader>' ysiw'
