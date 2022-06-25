@@ -7,7 +7,8 @@ setopt prompt_subst
 autoload -U promptinit && promptinit
 
 # typing the dir name will cd into it
-setopt autocd
+setopt auto_cd
+cdpath=($HOME/src)
 
 # enable completion
 fpath+=~/.zfunc
