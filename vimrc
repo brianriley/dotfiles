@@ -43,6 +43,7 @@ set signcolumn=number        " merge sign column and number column
 set softtabstop=2
 set shell=zsh
 set shiftwidth=2
+set shortmess-=S             " Show the match count
 set t_ti= t_te=
 set tabstop=2
 set updatetime=250           " speeds up the update from 4 s to 250 ms
