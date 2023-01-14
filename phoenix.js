@@ -43,14 +43,14 @@ const topLeft = () => {
   };
 };
 
-const topRight = (parentFrame, window) => {
+const topRight = (parentFrame, _window) => {
   return {
     x: halfWidth(parentFrame).width + (PADDING * 2),
     y: PADDING,
   };
 };
 
-const bottomLeft = (parentFrame, window) => {
+const bottomLeft = (parentFrame, _window) => {
   return {
     x: PADDING,
     y: halfHeight(parentFrame).height + (PADDING * 2),
