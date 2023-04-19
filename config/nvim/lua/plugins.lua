@@ -163,6 +163,7 @@ return {
 
   -- git
   { 'tpope/vim-fugitive' },
+  { 'tpope/vim-rhubarb' },
   {
     'lewis6991/gitsigns.nvim',
     config = function(_, _)
