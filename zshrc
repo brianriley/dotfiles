@@ -72,23 +72,6 @@ export ZSH=$HOME/.zsh
 setopt correct
 
 #######################
-#### Colors
-#######################
-# Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/"
-[ -n "$PS1" ] && \
-  [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-    eval "$("$BASE16_SHELL/profile_helper.sh")"
-
-light() {
-  base16_summerfruit-light
-}
-
-dark() {
-  base16_eighties
-}
-
-#######################
 #### Prompt
 #######################
 PROMPT_TIME="[%{$fg[cyan]%}%*%{$reset_color%}]"
@@ -163,8 +146,21 @@ export PATH="$HOME/.fastlane/bin:$PATH"
 #### direnv
 #######################
 (( $+commands[direnv] )) && eval "$(direnv hook zsh)"
+export DIRENV_LOG_FORMAT=
 
 #######################
-#### project specifics
+#### grc
 #######################
-[ -f ~/.project.zsh ] && source ~/.project.zsh
+[[ -s "/opt/homebrew/etc/grc.zsh" ]] && source /opt/homebrew/etc/grc.zsh
+
+#######################
+#### volta
+#######################
+export VOLTA_HOME="$HOME/.volta"
+export VOLTA_FEATURE_PNPM=1
+export PATH="$VOLTA_HOME/bin:$PATH"
+
+#######################
+#### homebrew
+#######################
+export PATH="/opt/homebrew/bin:$PATH"

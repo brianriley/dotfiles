@@ -14,9 +14,6 @@ pushd scripts
 fancy_echo "Installing Homebrew..."
 source install-homebrew.sh
 
-fancy_echo "Installing base16-shell..."
-source install-base16.sh
-
 fancy_echo "Installing Homebrew packages..."
 source install-homebrew-packages.sh
 
