@@ -63,7 +63,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
-export EDITOR="vi"
+export EDITOR="nvim"
 
 # Path to the .zsh directory
 export ZSH=$HOME/.zsh
