@@ -48,6 +48,8 @@ local function nmap(keys, command, opts)
   vim.keymap.set('n', keys, command, opts)
 end
 
+vim.keymap.set('i', '<C-c>', '<Esc>')
+
 nmap('<leader>q', ':q<cr>')
 nmap('<leader>Q', ':qa<cr>')
 nmap('<leader>r', ':r<SPACE>')
