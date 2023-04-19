@@ -188,8 +188,6 @@ return {
 		end,
 	},
 
-	{ 'sheerun/vim-polyglot' },
-
 	-- tpope
 	{ 'tpope/vim-vinegar' },
 	{ 'tpope/vim-speeddating' },
@@ -317,4 +315,5 @@ return {
 		lazy = true,
 		name = "catppuccin",
 	},
+	{ "nvim-tree/nvim-web-devicons", lazy = true },
 }
