@@ -112,10 +112,10 @@ vim.g['netrw_liststyle'] = 3                               -- use tree view in n
 local netrwdrawer_toggled = false
 local function netrwdrawer()
   if netrwdrawer_toggled then
-    vim.cmd('Lexplore')
+    vim.cmd('Lexplore!')
     netrwdrawer_toggled = false
   else
-    vim.cmd('Lexplore | vert res 30<cr>')
+    vim.cmd('Lexplore! | vert res 30<cr>')
     netrwdrawer_toggled = true
   end
 end
