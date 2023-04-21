@@ -289,6 +289,7 @@ return {
       ensure_installed = {
         "bash",
         "c",
+        "glimmer",
         "html",
         "javascript",
         "json",
