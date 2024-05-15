@@ -65,77 +65,26 @@ return {
   },
 
   {
-    'hrsh7th/nvim-cmp',
-    version = false, -- last release is way too old
-    event = 'InsertEnter',
-    dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'saadparwaiz1/cmp_luasnip',
-    },
-    opts = function()
-      local cmp = require('cmp')
-      return {
-        completion = {
-          completeopt = 'menu,menuone,noinsert',
-        },
-        snippet = {
-          expand = function(args)
-            require('luasnip').lsp_expand(args.body)
-          end,
-        },
-        mapping = cmp.mapping.preset.insert({
-          ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-          ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
-          ['<C-space>'] = cmp.mapping.complete(),
-          ['<C-e>'] = cmp.mapping.abort(),
-          ['<tab>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-          ['<S-CR>'] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-          }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-        }),
-        sources = cmp.config.sources({
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' },
-          { name = 'buffer' },
-          { name = 'path' },
-        }),
-      }
-    end,
+    'echasnovski/mini.completion',
+    version = false,
+    config = function()
+      require('mini.completion').setup()
+    end
   },
 
   -- searching
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.1',
     dependencies = {'nvim-lua/plenary.nvim'},
   },
 
   -- mini
   {
     'echasnovski/mini.indentscope',
-    version = false, -- wait till new 0.7.0 release to put it back on semver
-    event = { 'BufReadPre', 'BufNewFile' },
-    draw = {
-      delay = 50,
-    },
+    version = false,
     opts = {
       symbol = '│',
-
-      options = { try_as_border = true },
     },
-    init = function()
-      vim.api.nvim_create_autocmd('FileType', {
-        pattern = { 'help', 'lazy', 'mason' },
-        callback = function()
-          vim.b.miniindentscope_disable = true
-        end,
-      })
-    end,
     config = function(_, opts)
       require('mini.indentscope').setup(opts)
     end,
@@ -206,13 +155,10 @@ return {
       vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").open()<cr>', {
         desc = "Open Spectre"
       })
-      vim.keymap.set('n', '<leader>s*', '<cmd>lua require("spectre").open_visual({select_word=true})<cr>', {
-        desc = "Search current word"
+      vim.keymap.set('n', '<leader>ss', '<cmd>lua require("spectre").open_visual({select_word=true})<cr>', {
+        desc = "Search current word in directory"
       })
-      vim.keymap.set('v', '<leader>s*', '<esc><cmd>lua require("spectre").open_visual()<cr>', {
-        desc = "Search current word"
-      })
-      vim.keymap.set('n', '<leader>ss', '<cmd>lua require("spectre").open_file_search({select_word=true})<cr>', {
+      vim.keymap.set('n', '<leader>s*', '<cmd>lua require("spectre").open_file_search({select_word=true})<cr>', {
         desc = "Search on current file"
       })
     end
@@ -345,12 +291,10 @@ return {
     end,
   },
   {
-    "nvim-lualine/lualine.nvim",
-    event = 'VeryLazy',
-    opts = {
-      options = {
-        disabled_filetypes = { 'netrw', 'Trouble' },
-      },
-    },
+    "echasnovski/mini.statusline",
+    version = '*',
+    config = function(_, opts)
+      require('mini.statusline').setup(opts)
+    end,
   },
 }
