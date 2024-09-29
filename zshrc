@@ -66,3 +66,6 @@ export GPG_TTY=$(tty)
 
 # Version management
 [ -f $(brew --prefix asdf)/libexec/asdf.sh ] && source $(brew --prefix asdf)/libexec/asdf.sh
+
+# Local configs
+[ -f "${HOME}/.local/zshrc" ] && source "${HOME}/.local/zshrc"
