@@ -272,6 +272,11 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
+    config = function(_, opts)
+      require("catppuccin").setup({
+        transparent_background = true,
+      })
+    end,
   },
   { "nvim-tree/nvim-web-devicons" },
   {
