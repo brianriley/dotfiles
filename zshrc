@@ -123,7 +123,7 @@ bindkey '^R' history-incremental-search-backward
 #######################
 #### version management
 #######################
-. $HOME/.asdf/asdf.sh
+[ -f $(brew --prefix asdf)/libexec/asdf.sh ] && source $(brew --prefix asdf)/libexec/asdf.sh
 
 #######################
 #### gpg
