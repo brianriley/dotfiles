@@ -55,6 +55,8 @@ setopt correct
 alias ls='ls -G --color'
 alias ll='ls -lh'
 
+alias vi='nvim'
+
 # Integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
