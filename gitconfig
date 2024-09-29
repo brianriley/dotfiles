@@ -21,10 +21,8 @@
 [rerere]
   enabled = true
 [core]
-  editor = vim
+  editor = nvim
   excludesfile = ~/.gitignore
-[credential]
-  helper = osxkeychain
 [merge]
   tool = vimdiff
 [commit]
@@ -36,8 +34,6 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
-[url "git@github.com:"]
-	insteadOf = https://github.com/
 [fetch]
   prune = true
 [init]
