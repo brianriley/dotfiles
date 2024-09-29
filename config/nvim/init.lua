@@ -59,13 +59,6 @@ nmap('<leader>,', ':e $MYVIMRC<cr>', { desc = 'Edit vimrc file' })
 nmap('<leader><CR>', 'o<Esc>')
 nmap('<leader><S-CR>', 'O<Esc>')
 
--- remap C-W C-<key> to C-<key> for
--- moving between splits
-nmap('<C-J>', '<C-W>j')
-nmap('<C-K>', '<C-W>k')
-nmap('<C-H>', '<C-W>h')
-nmap('<C-L>', '<C-W>l')
-
 -- move up/down within wrapped lines
 nmap('k', 'gk')
 nmap('<up>', 'gk')
