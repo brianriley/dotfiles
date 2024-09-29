@@ -31,3 +31,5 @@ cask 'phoenix'
 
 tap 'homebrew/cask-fonts'
 cask 'font-fira-code'
+
+brew 'jandedobbeleer/oh-my-posh/oh-my-posh'
