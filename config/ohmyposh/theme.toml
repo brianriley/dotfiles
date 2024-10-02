@@ -20,7 +20,7 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
   [[blocks.segments]]
     type = 'git'
     style = 'plain'
-    foreground = 'gray'
+    foreground = 'darkGray'
     background = 'transparent'
     template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}[+]{{ end }}'
 
