@@ -91,6 +91,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
 end,
 })
 
+-- autocomplete with tab
+vim.api.nvim_set_keymap('i', '<Tab>',   [[pumvisible() ? "\<C-p>" : "\<Tab>"]],   { noremap = true, expr = true })
+
 -- vim-test
 nmap('<leader>t', ':TestNearest<cr>', { silent = true })
 nmap('<leader>T', ':TestFile<cr>', { silent = true })
