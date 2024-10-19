@@ -69,3 +69,6 @@ export GPG_TTY=$(tty)
 
 # Local configs
 [ -f "${HOME}/.local/zshrc" ] && source "${HOME}/.local/zshrc"
+
+# Path
+export PATH="${PATH}:${HOME}/.local/bin"
