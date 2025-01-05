@@ -1,0 +1,78 @@
+@define-color backgroundactive rgba(205,205,205,0.8);
+
+* {
+    font-family: 'Fira Code', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', monospace;
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+}
+
+window#waybar {
+    background-color: transparent;
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+.modules-left {
+    padding-left: 15px;
+}
+
+.modules-right {
+    padding-right: 15px;
+}
+
+#workspaces {
+    margin: 5px 1px 6px 1px;
+    padding: 0px 1px;
+}
+
+#workspaces button {
+    padding: 0px 5px;
+    margin: 5px 3px;
+    background: transparent;
+    border-radius: 15px;
+    border: 2px solid @backgroundactive;
+    transition: all 0.3s ease-in-out;
+    min-width: 15px;
+}
+
+#workspaces button.active {
+    background: @backgroundactive;
+    border-color: #ffffff;
+    min-width: 30px;
+}
+
+#custom-exit {
+    padding: 0px;
+    margin: 0px;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+#language {
+    padding: 0 5px;
+    margin: 0 5px;
+    min-width: 15px;
+}
+
+#privacy {
+    padding: 0;
+}
+
+#privacy-item {
+    padding: 0 5px;
+    color: white;
+}
+
+#privacy-item.screenshare {
+    background-color: #cf5700;
+}
+
+#privacy-item.audio-in {
+    background-color: #1ca000;
+}
+
+#privacy-item.audio-out {
+    background-color: #0069d4;
+}

@@ -1,0 +1,62 @@
+// -*- mode: jsonc -*-
+{
+    // layout
+    "layer": "top",
+    "spacing": 0,
+
+    "custom/exit": {
+        "format": "",
+        "on-click": "wlogout",
+        "tooltip-format": "Power"
+    },
+    "hyprland/workspaces": {
+        "all-outputs": true,
+        "format": ""
+    },
+    "hyprland/language": {
+        "format-en": "🇺🇸"
+    },
+    "clock": {
+        "format": "{:%a %H:%M}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "format": {
+                "days": "<span color='#9b9b9b'>{}</span>",
+                "today": "<span color='#ffffff'>{}</span>"
+            }
+        }
+    },
+    "custom/vpn": {
+        "format": "{icon}",
+        "format-icons": {
+          "disabled": "",
+          "enabled": ""
+        },
+        "exec": "~/.local/bin/vpn-enabled.sh",
+        "return-type": "json",
+        "interval": 2,
+        "on-click": "~/.local/bin/toggle-vpn.sh"
+    },
+
+    // Choose the order of the modules
+    "modules-left": [
+        "custom/exit"
+    ],
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+    "modules-right": [
+        "custom/vpn",
+        "hyprland/language",
+        "clock",
+        "privacy"
+    ],
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    }
+}
