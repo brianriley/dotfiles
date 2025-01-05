@@ -1,6 +1,15 @@
-version = 2
-final_space = true
 console_title_template = '{{ .Shell }} in {{ .Folder }}'
+version = 3
+final_space = true
+
+[secondary_prompt]
+  template = '>> '
+  background = 'transparent'
+
+[transient_prompt]
+  template = '> '
+  background = 'transparent'
+  foreground_templates = ['{{ if gt .Code 0 }}red{{ end }}', '{{ if eq .Code 0 }}magenta{{ end }}']
 
 [[blocks]]
   type = 'prompt'
@@ -8,24 +17,26 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
   newline = true
 
   [[blocks.segments]]
-    type = 'path'
-    style ='plain'
-    background = 'transparent'
-    foreground = 'blue'
     template = '{{ .Path }}'
+    foreground = 'blue'
+    background = 'transparent'
+    type = 'path'
+    style = 'plain'
 
     [blocks.segments.properties]
+      cache_duration = 'none'
       style = 'full'
 
   [[blocks.segments]]
-    type = 'git'
-    style = 'plain'
+    template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}[+]{{ end }}'
     foreground = 'darkGray'
     background = 'transparent'
-    template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}[+]{{ end }}'
+    type = 'git'
+    style = 'plain'
 
     [blocks.segments.properties]
       branch_icon = ''
+      cache_duration = 'none'
       commit_icon = '@'
       fetch_status = true
 
@@ -35,24 +46,11 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
   newline = true
 
   [[blocks.segments]]
+    template = '>'
+    background = 'transparent'
     type = 'text'
     style = 'plain'
-    foreground_templates = [
-      '{{ if gt .Code 0 }}red{{ end }}',
-      '{{ if eq .Code 0 }}magenta{{ end }}',
-    ]
-    background = 'transparent'
-    template = '>'
+    foreground_templates = ['{{ if gt .Code 0 }}red{{ end }}', '{{ if eq .Code 0 }}magenta{{ end }}']
 
-  [transient_prompt]
-    foreground_templates = [
-      '{{ if gt .Code 0 }}red{{ end }}',
-      '{{ if eq .Code 0 }}magenta{{ end }}',
-    ]
-    background = 'transparent'
-    template = '> '
-
-  [secondary_prompt]
-    forground = 'magenta'
-    background = 'transparent'
-    template = '>> '
+    [blocks.segments.properties]
+      cache_duration = 'none'
