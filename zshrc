@@ -65,7 +65,7 @@ eval "$(zoxide init --cmd cd zsh)"
 export GPG_TTY=$(tty)
 
 # Version management
-[ -f $(brew --prefix asdf)/libexec/asdf.sh ] && source $(brew --prefix asdf)/libexec/asdf.sh
+[ -f "${HOME}/.local/bin/mise" ] && eval "$(~/.local/bin/mise activate zsh)"
 
 # Local configs
 [ -f "${HOME}/.local/zshrc" ] && source "${HOME}/.local/zshrc"
