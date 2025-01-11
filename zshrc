@@ -56,6 +56,7 @@ alias ls='ls -G --color'
 alias ll='ls -lh'
 
 alias vi='nvim'
+alias open='xdg-open'
 
 # Integrations
 eval "$(fzf --zsh)"
