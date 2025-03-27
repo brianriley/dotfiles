@@ -128,3 +128,7 @@ vim.cmd [[
 ]]
 
 vim.cmd.colorscheme 'catppuccin'
+
+vim.diagnostic.config({
+  virtual_lines = true
+})
