@@ -2,7 +2,6 @@ local vim = vim
 local jit = jit
 
 return {
-  -- lsp
   {
     'williamboman/mason.nvim',
     build = ':MasonUpdate',
@@ -10,6 +9,8 @@ return {
       require('mason').setup()
     end,
   },
+
+  -- lsp
   {
     'williamboman/mason-lspconfig.nvim',
     config = function(_, _)
@@ -25,9 +26,19 @@ return {
     end,
   },
   { 'neovim/nvim-lspconfig' },
-  { 'folke/neodev.nvim', opts = { experimental = { pathStrict = true } } },
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
+  },
+  {
+    "nvimtools/none-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = { "mason.nvim" },
     opts = function()
@@ -63,7 +74,6 @@ return {
       delete_check_events = 'TextChanged',
     },
   },
-
   {
     'echasnovski/mini.completion',
     version = false,
