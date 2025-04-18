@@ -81,6 +81,7 @@ return {
       require('mini.completion').setup()
     end
   },
+  { 'github/copilot.vim' },
 
   -- searching
   {
@@ -288,7 +289,6 @@ return {
       })
     end,
   },
-  { "nvim-tree/nvim-web-devicons" },
   {
     "stevearc/dressing.nvim",
     lazy = true,
@@ -329,5 +329,15 @@ return {
       { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
+  },
+  {
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    -- Optional dependencies
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+    lazy = false,
   },
 }

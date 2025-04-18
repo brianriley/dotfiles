@@ -98,20 +98,6 @@ vim.api.nvim_set_keymap('i', '<Tab>',   [[pumvisible() ? "\<C-p>" : "\<Tab>"]], 
 nmap('<leader>t', ':TestNearest<cr>', { silent = true })
 nmap('<leader>T', ':TestFile<cr>', { silent = true })
 
--- files
-vim.g['netrw_liststyle'] = 3                               -- use tree view in netrw
-local netrwdrawer_toggled = false
-local function netrwdrawer()
-  if netrwdrawer_toggled then
-    vim.cmd('Lexplore!')
-    netrwdrawer_toggled = false
-  else
-    vim.cmd('Lexplore! | vert res 30<cr>')
-    netrwdrawer_toggled = true
-  end
-end
-nmap('<leader>_', netrwdrawer, { desc = 'Toggle file drawer' })
-
 -- autocommands
 vim.cmd [[
   augroup jump_to_last_position
