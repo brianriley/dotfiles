@@ -57,10 +57,6 @@ alias ll='ls -lh'
 
 alias vi='nvim'
 
-# Integrations
-eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
-
 # GPG
 export GPG_TTY=$(tty)
 
@@ -72,3 +68,7 @@ export GPG_TTY=$(tty)
 
 # Path
 export PATH="${PATH}:${HOME}/.local/bin"
+
+# Integrations
+source <(fzf --zsh)
+eval "$(zoxide init zsh)"
