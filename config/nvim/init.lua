@@ -112,9 +112,10 @@ vim.cmd [[
       \ exe "normal! gg"
   augroup END
 ]]
+vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
 
 vim.cmd.colorscheme 'catppuccin'
 
 vim.diagnostic.config({
-  virtual_lines = true
+  virtual_text = true
 })
