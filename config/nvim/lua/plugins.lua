@@ -3,11 +3,8 @@ local jit = jit
 
 return {
   {
-    'williamboman/mason.nvim',
-    build = ':MasonUpdate',
-    config = function(_, _)
-      require('mason').setup()
-    end,
+    "mason-org/mason.nvim",
+    opts = {}
   },
 
   -- lsp
@@ -16,8 +13,8 @@ return {
     "mason-org/mason-lspconfig.nvim",
     opts = {},
     dependencies = {
-        { "mason-org/mason.nvim", opts = {} },
-        "neovim/nvim-lspconfig",
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
     },
   },
   {
@@ -55,8 +52,8 @@ return {
     'L3MON4D3/LuaSnip',
     lazy = true,
     build = (not jit.os:find('Windows'))
-      and 'echo -e "NOTE: jsregexp is optional, so not a big deal if it fails to build\n"; make install_jsregexp'
-      or nil,
+        and 'echo -e "NOTE: jsregexp is optional, so not a big deal if it fails to build\n"; make install_jsregexp'
+        or nil,
     dependencies = {
       'rafamadriz/friendly-snippets',
       config = function()
@@ -75,12 +72,12 @@ return {
       require('mini.completion').setup()
     end
   },
-  { 'github/copilot.vim' },
+  -- { 'github/copilot.vim' },
 
   -- searching
   {
     'nvim-telescope/telescope.nvim',
-    dependencies = {'nvim-lua/plenary.nvim'},
+    dependencies = { 'nvim-lua/plenary.nvim' },
   },
 
   -- mini
@@ -133,13 +130,13 @@ return {
             if vim.wo.diff then return ']c' end
             vim.schedule(function() gs.next_hunk() end)
             return '<Ignore>'
-          end, {expr=true})
+          end, { expr = true })
 
           map('n', '[c', function()
             if vim.wo.diff then return '[c' end
             vim.schedule(function() gs.prev_hunk() end)
             return '<Ignore>'
-          end, {expr=true})
+          end, { expr = true })
         end
       })
     end,
@@ -170,34 +167,28 @@ return {
   },
   {
     "folke/trouble.nvim",
-    cmd = { "TroubleToggle", "Trouble" },
-    opts = { use_diagnostic_signs = true },
+    cmd = "Trouble",
+    opts = {},
     keys = {
-      { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
-      { "<leader>xX", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
-      { "<leader>xL", "<cmd>TroubleToggle loclist<cr>", desc = "Location List (Trouble)" },
-      { "<leader>xQ", "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Trouble)" },
       {
-        "[q",
-        function()
-          if require("trouble").is_open() then
-            require("trouble").previous({ skip_groups = true, jump = true })
-          else
-            vim.cmd.cprev()
-          end
-        end,
-        desc = "Previous trouble/quickfix item",
+        "<leader>xx",
+        "<cmd>Trouble diagnostics filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)"
       },
       {
-        "]q",
-        function()
-          if require("trouble").is_open() then
-            require("trouble").next({ skip_groups = true, jump = true })
-          else
-            vim.cmd.cnext()
-          end
-        end,
-        desc = "Next trouble/quickfix item",
+        "<leader>xX",
+        "<cmd>Trouble diagnostics<cr>",
+        desc = "Diagnostics (Trouble)"
+      },
+      {
+        "<leader>xL",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Location List (Trouble)"
+      },
+      {
+        "<leader>xQ",
+        "<cmd>Trouble qfix toggle<cr>",
+        desc = "Quickfix List (Trouble)"
       },
     },
   },
@@ -230,7 +221,7 @@ return {
     },
     keys = {
       { "<c-space>", desc = "Increment selection" },
-      { "<bs>", desc = "Decrement selection", mode = "x" },
+      { "<bs>",      desc = "Decrement selection", mode = "x" },
     },
     -- @type TSConfig
     opts = {
@@ -317,10 +308,10 @@ return {
       "TmuxNavigatePrevious",
     },
     keys = {
-      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { "<c-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
