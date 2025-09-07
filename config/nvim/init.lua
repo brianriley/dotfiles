@@ -116,6 +116,14 @@ vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
 
 vim.cmd.colorscheme 'catppuccin'
 
+-- LSP diagnostics
 vim.diagnostic.config({
   virtual_text = true
 })
+
+vim.cmd [[
+  highlight DiagnosticUnderlineError gui=undercurl guisp=Red
+  highlight DiagnosticUnderlineWarn gui=undercurl guisp=Orange
+  highlight DiagnosticUnderlineInfo gui=undercurl guisp=LightBlue
+  highlight DiagnosticUnderlineHint gui=undercurl guisp=LightGrey
+]]
