@@ -114,7 +114,7 @@ vim.cmd [[
 ]]
 vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
 
-vim.cmd.colorscheme 'catppuccin'
+vim.cmd.colorscheme 'nord'
 
 -- LSP diagnostics
 vim.diagnostic.config({

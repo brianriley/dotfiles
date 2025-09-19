@@ -275,6 +275,9 @@ return {
     end,
   },
   {
+    "shaunsingh/nord.nvim",
+  },
+  {
     "stevearc/dressing.nvim",
     lazy = true,
     init = function()
