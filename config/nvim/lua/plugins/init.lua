@@ -47,69 +47,10 @@ return {
     end,
   },
 
-  -- completion
-  {
-    'L3MON4D3/LuaSnip',
-    lazy = true,
-    build = (not jit.os:find('Windows'))
-        and 'echo -e "NOTE: jsregexp is optional, so not a big deal if it fails to build\n"; make install_jsregexp'
-        or nil,
-    dependencies = {
-      'rafamadriz/friendly-snippets',
-      config = function()
-        require('luasnip.loaders.from_vscode').lazy_load()
-      end,
-    },
-    opts = {
-      history = true,
-      delete_check_events = 'TextChanged',
-    },
-  },
-  {
-    'echasnovski/mini.completion',
-    version = false,
-    config = function()
-      require('mini.completion').setup()
-    end
-  },
-  -- { 'github/copilot.vim' },
-
   -- searching
   {
     'nvim-telescope/telescope.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
-  },
-
-  -- mini
-  {
-    'echasnovski/mini.indentscope',
-    version = false,
-    opts = {
-      symbol = '│',
-    },
-    config = function(_, opts)
-      require('mini.indentscope').setup(opts)
-    end,
-  },
-  {
-    'echasnovski/mini.comment',
-    event = "VeryLazy",
-    config = function(_, opts)
-      require('mini.comment').setup(opts)
-    end,
-  },
-  {
-    'echasnovski/mini.surround',
-    version = false,
-    opts = {
-      mappings = {
-        delete = 'ds',
-        replace = 'cs',
-      },
-    },
-    config = function(_, opts)
-      require('mini.surround').setup(opts)
-    end,
   },
 
   -- git
@@ -151,11 +92,11 @@ return {
 
   -- editor
   {
-    "windwp/nvim-spectre",
+    "nvim-pack/nvim-spectre",
     config = function(_, _)
       require('spectre').setup()
-      vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").open()<cr>', {
-        desc = "Open Spectre"
+      vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").toggle()<cr>', {
+        desc = "Toggle Spectre"
       })
       vim.keymap.set('n', '<leader>ss', '<cmd>lua require("spectre").open_visual({select_word=true})<cr>', {
         desc = "Search current word in directory"
@@ -194,100 +135,30 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    version = false, -- last release is way too old and doesn't work on Windows
+    branch = "master",
+    lazy = false,
     build = ":TSUpdate",
-    event = { "BufReadPost", "BufNewFile" },
-    dependencies = {
-      {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        init = function()
-          -- PERF: no need to load the plugin, if we only need its queries for mini.ai
-          local plugin = require("lazy.core.config").spec.plugins["nvim-treesitter"]
-          local opts = require("lazy.core.plugin").values(plugin, "opts", false)
-          local enabled = false
-          if opts.textobjects then
-            for _, mod in ipairs({ "move", "select", "swap", "lsp_interop" }) do
-              if opts.textobjects[mod] and opts.textobjects[mod].enable then
-                enabled = true
-                break
-              end
-            end
-          end
-          if not enabled then
-            require("lazy.core.loader").disable_rtp_plugin("nvim-treesitter-textobjects")
-          end
-        end,
-      },
-    },
-    keys = {
-      { "<c-space>", desc = "Increment selection" },
-      { "<bs>",      desc = "Decrement selection", mode = "x" },
-    },
-    -- @type TSConfig
-    opts = {
-      highlight = { enable = true },
-      indent = { enable = true },
-      context_commentstring = { enable = true, enable_autocmd = false },
-      ensure_installed = {
-        "bash",
-        "c",
-        "glimmer",
-        "html",
-        "javascript",
-        "json",
-        "lua",
-        "luadoc",
-        "luap",
-        "markdown",
-        "markdown_inline",
-        "python",
-        "query",
-        "regex",
-        "tsx",
-        "typescript",
-        "vim",
-        "vimdoc",
-        "yaml",
-      },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "<C-space>",
-          node_incremental = "<C-space>",
-          scope_incremental = "<nop>",
-          node_decremental = "<bs>",
-        },
-      },
-    },
-    -- @param opts TSConfig
-    config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
-    end,
   },
   { "MunifTanjim/nui.nvim",        lazy = true },
   { "nvim-tree/nvim-web-devicons", opts = {} },
   {
-    "stevearc/dressing.nvim",
+    "folke/snacks.nvim",
+    priority = 1000,
     lazy = true,
-    init = function()
-      ---@diagnostic disable-next-line: duplicate-set-field
-      vim.ui.select = function(...)
-        require("lazy").load({ plugins = { "dressing.nvim" } })
-        return vim.ui.select(...)
-      end
-      ---@diagnostic disable-next-line: duplicate-set-field
-      vim.ui.input = function(...)
-        require("lazy").load({ plugins = { "dressing.nvim" } })
-        return vim.ui.input(...)
-      end
-    end,
-  },
-  {
-    "echasnovski/mini.statusline",
-    version = '*',
-    config = function(_, opts)
-      require('mini.statusline').setup(opts)
-    end,
+    opts = {
+      bigfile = { enabled = true },
+      dashboard = { enabled = true },
+      explorer = { enabled = true },
+      indent = { enabled = true },
+      input = { enabled = true },
+      picker = { enabled = true },
+      notifier = { enabled = true },
+      quickfile = { enabled = true },
+      scope = { enabled = true },
+      scroll = { enabled = true },
+      statuscolumn = { enabled = true },
+      words = { enabled = true },
+    },
   },
   {
     "christoomey/vim-tmux-navigator",
@@ -308,13 +179,9 @@ return {
     },
   },
   {
-    'stevearc/oil.nvim',
-    ---@module 'oil'
-    ---@type oil.SetupOpts
+    "stevearc/oil.nvim",
     opts = {},
-    -- Optional dependencies
-    dependencies = { { "echasnovski/mini.icons", opts = {} } },
-    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+    dependencies = { { "nvim-tree/nvim-web-devicons", opts = {} } },
     lazy = false,
   },
 }
