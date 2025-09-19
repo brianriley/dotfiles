@@ -264,19 +264,8 @@ return {
       require("nvim-treesitter.configs").setup(opts)
     end,
   },
-  { "MunifTanjim/nui.nvim", lazy = true },
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    config = function(_, opts)
-      require("catppuccin").setup({
-        transparent_background = true,
-      })
-    end,
-  },
-  {
-    "shaunsingh/nord.nvim",
-  },
+  { "MunifTanjim/nui.nvim",        lazy = true },
+  { "nvim-tree/nvim-web-devicons", opts = {} },
   {
     "stevearc/dressing.nvim",
     lazy = true,

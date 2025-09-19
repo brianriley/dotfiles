@@ -1,39 +1,26 @@
 local vim = vim
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
 vim.g.mapleader = ' '
 
-require('lazy').setup('plugins')
+require('config.lazy')
 
 local builtin = require('telescope.builtin')
 
-vim.o.clipboard = 'unnamedplus'    -- system clipboard
+vim.o.clipboard = 'unnamedplus' -- system clipboard
 vim.o.cursorline = true
-vim.o.expandtab = true         -- convert tabs to spaces
-vim.o.ignorecase = true        -- ignore case in search patterns
-vim.o.number = true            -- show line numbers
-vim.o.scrolloff = 3            -- lines to keep at top and bottom
-vim.o.shiftwidth = 2           -- number of space for each indent
-vim.o.signcolumn = 'yes'       -- add LSP/git signs to the left
-vim.o.sidescrolloff = 3        -- lines to keep at left and right
+vim.o.expandtab = true          -- convert tabs to spaces
+vim.o.ignorecase = true         -- ignore case in search patterns
+vim.o.number = true             -- show line numbers
+vim.o.scrolloff = 3             -- lines to keep at top and bottom
+vim.o.shiftwidth = 2            -- number of space for each indent
+vim.o.signcolumn = 'yes'        -- add LSP/git signs to the left
+vim.o.sidescrolloff = 3         -- lines to keep at left and right
 vim.o.smartcase = true
 vim.o.smartindent = true
-vim.o.splitbelow = true        -- split windows below current
-vim.o.splitright = true        -- split windows to the right
+vim.o.splitbelow = true -- split windows below current
+vim.o.splitright = true -- split windows to the right
 vim.o.tabstop = 2
-vim.o.updatetime = 250         -- speeds up the update for faster completion
+vim.o.updatetime = 250  -- speeds up the update for faster completion
 vim.o.wrap = true
 vim.o.linebreak = true
 
@@ -79,7 +66,7 @@ nmap('<leader>gb', ':Git blame<cr>')
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
-    local opts = {remap = false, silent = true, buffer = ev.buf }
+    local opts = { remap = false, silent = true, buffer = ev.buf }
     vim.keymap.set('n', '<leader>li', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', '<leader>lt', vim.lsp.buf.type_definition, opts)
@@ -88,11 +75,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<leader>ln', vim.lsp.buf.rename, opts)
     vim.keymap.set('n', '<leader>lf', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', '<leader>le', vim.diagnostic.open_float, opts)
-end,
+  end,
 })
 
 -- autocomplete with tab
-vim.api.nvim_set_keymap('i', '<Tab>',   [[pumvisible() ? "\<C-p>" : "\<Tab>"]],   { noremap = true, expr = true })
+vim.api.nvim_set_keymap('i', '<Tab>', [[pumvisible() ? "\<C-p>" : "\<Tab>"]], { noremap = true, expr = true })
 
 -- vim-test
 nmap('<leader>t', ':TestNearest<cr>', { silent = true })
@@ -114,10 +101,31 @@ vim.cmd [[
 ]]
 vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
 
-vim.cmd.colorscheme 'nord'
-
 -- LSP diagnostics
+local signs = {
+  Error = " ",
+  Warn = " ",
+  Hint = "󰌵 ",
+  Info = " "
+}
+
+local signConf = {
+  text = {},
+  texthl = {},
+  numhl = {},
+}
+
+for type, icon in pairs(signs) do
+  local severityName = string.upper(type)
+  local severity = vim.diagnostic.severity[severityName]
+  local hl = "DiagnosticSign" .. type
+  signConf.text[severity] = icon
+  signConf.texthl[severity] = hl
+  signConf.numhl[severity] = hl
+end
+
 vim.diagnostic.config({
+  signs = signConf,
   virtual_text = true
 })
 
