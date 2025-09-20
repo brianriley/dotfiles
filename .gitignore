@@ -3,3 +3,5 @@ weechat/script
 weechat/sec.conf
 weechat/weechat.log
 Brewfile.lock.json
+config/nvim/lazy-lock.json
+config/tmux/plugins/
