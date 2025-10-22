@@ -8,3 +8,5 @@ __pycache__
 
 *.jar
 !gradle/wrapper/gradle-wrapper.jar
+
+node_modules
