@@ -36,7 +36,7 @@ bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
 # History
-HISTFILE="${XDG_STATE_HOME:-${HOME}/.local/state}/zsh/.history"
+HISTFILE="${HOME}/.zsh_history"
 HISTSIZE=10000
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
