@@ -10,6 +10,10 @@
 - [Oh My Posh](https://ohmyposh.dev/)
 - [Mise-En-Place](https://mise.jdx.dev/)
 - [fzf](https://github.com/junegunn/fzf)
+- [fd](https://github.com/sharkdp/fd)
+- [bat](bhttps://github.com/sharkdp/bat)
+- [eza](https://github.com/eza-community/eza)
+- [fzf-git](https://github.com/junegunn/fzf-git.sh)
 - [zoxide](https://github.com/ajeetdsouza/zoxide)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - Tmux

@@ -60,8 +60,6 @@ alias vi='nvim'
 # GPG
 export GPG_TTY=$(tty)
 
-# Version management
-[ -f "${HOME}/.local/bin/mise" ] && eval "$(~/.local/bin/mise activate zsh)"
 
 # Local configs
 [ -f "${HOME}/.local/zshrc" ] && source "${HOME}/.local/zshrc"
@@ -70,5 +68,42 @@ export GPG_TTY=$(tty)
 export PATH="${PATH}:${HOME}/.local/bin"
 
 # Integrations
+[ -f "${HOME}/.local/bin/mise" ] && eval "$(~/.local/bin/mise activate zsh)"
+
 source <(fzf --zsh)
-eval "$(zoxide init zsh)"
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+
+_fzf_compgen_path() {
+  fd --hidden --exclude .git . "$1"
+}
+
+_fzf_compgen_dir() {
+  fd --type=d --hidden --exclude .git . "$1"
+}
+
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd) fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    *) fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
+  esac
+}
+
+if command -v eza &> /dev/null; then
+  unalias ls
+  alias ls="eza -lh --group-directories-first --icons=auto"
+  alias lt="eza --tree --level=2 --icons --git"
+fi
+
+[ -f "${HOME}/.local/share/fzf-git.sh/fzf-git.sh" ] && source "${HOME}/.local/share/fzf-git.sh/fzf-git.sh"
+
+if command -v zoxide &> /dev/null; then
+  eval "$(zoxide init zsh)"
+  alias cd="z"
+fi
