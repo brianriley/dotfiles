@@ -6,11 +6,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local opts = { remap = false, silent = true, buffer = ev.buf }
     vim.keymap.set("n", "<leader>li", vim.lsp.buf.hover, opts)
     vim.keymap.set("n", "<leader>ld", vim.lsp.buf.definition, opts)
-    vim.keymap.set("n", "<leader>lt", vim.lsp.buf.type_definition, opts)
+    vim.keymap.set("n", "<leader>lt", "<cmd>Telescope lsp_type_definitions<cr>", opts)
     vim.keymap.set("n", "<leader>lI", vim.lsp.buf.implementation, opts)
     vim.keymap.set("n", "<leader>lr", "<cmd>Telescope lsp_references<cr>", opts)
     vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, opts)
-    vim.keymap.set("n", "<leader>lf", vim.lsp.buf.code_action, opts)
+    vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, opts)
     vim.keymap.set("n", "<leader>le", vim.diagnostic.open_float, opts)
   end,
 })
