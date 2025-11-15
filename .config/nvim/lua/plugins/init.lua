@@ -1,7 +1,11 @@
 local vim = vim
-local jit = jit
 
 return {
+  {
+    "folke/lazydev.nvim",
+    opts = {},
+  },
+
 	-- lsp
 	{
 		"mason-org/mason-lspconfig.nvim",
