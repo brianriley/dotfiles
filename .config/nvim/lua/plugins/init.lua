@@ -14,6 +14,7 @@ return {
 				"lua_ls",
 				"ts_ls",
 				"eslint",
+        "vue_ls",
 			},
 		},
 		dependencies = {
