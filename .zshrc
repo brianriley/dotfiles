@@ -51,6 +51,8 @@ setopt hist_find_no_dups
 # Spellign correction
 setopt correct
 
+export EDITOR=nvim
+
 # Aliases
 alias ls='ls -G --color'
 alias ll='ls -lh'
