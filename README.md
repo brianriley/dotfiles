@@ -20,10 +20,18 @@
 
 ## Installation
 
-    $ stow -t ~ .
+    stow -t ~ .
 
 On OSX, run:
 
-    $ mkdir -p $HOME/Library/KeyBindings
-    $ cp system/DefaultKeyBinding.dict $HOME/Library/KeyBindings/
-    $ source system/osx.sh
+    mkdir -p $HOME/Library/KeyBindings
+    cp system/DefaultKeyBinding.dict $HOME/Library/KeyBindings/
+    source system/osx.sh
+
+## Post installation
+
+### Kitty
+
+Install a theme in `~/.local/share/kitty/theme.conf`. E.g.:
+
+    curl -o ~/.local/share/kitty/theme.conf https://raw.githubusercontent.com/connorholyday/nord-kitty/master/nord.conf
