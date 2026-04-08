@@ -5,6 +5,9 @@
 [alias]
   activity = "!f() { git log --name-only --oneline \"${1:---since=1970}\" | tail -n +2 | sort | uniq -c | sort; }; f"
   branches = branch --sort=-committerdate
+  bugs = "!f() { git log -i -E --grep=\"fix|bug|broken\" --name-only --format='' | sort | uniq -c | sort -nr | head -20; }; f"
+  cpm = "!f() { git log --format='%ad' --date=format:'%Y-%m' | sort | uniq -c; }; f" # commits per month
+  firefights = "!f() { git log --oneline --since=\"1 year ago\" | grep -iE 'revert|hotfix|emergency|rollback'; }; f"
   graph = log --graph --pretty=format:'%C(yellow)%h%Creset %C(cyan)%D%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
   join = merge --no-ff
   leaderboard = shortlog -sn
