@@ -4,6 +4,9 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
+# Path
+export PATH="${PATH}:${HOME}/.local/bin"
+
 # Homebrew init
 if [[ $(uname) == "Darwin" ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -65,9 +68,6 @@ export GPG_TTY=$(tty)
 
 # Local configs
 [ -f "${HOME}/.local/zshrc" ] && source "${HOME}/.local/zshrc"
-
-# Path
-export PATH="${PATH}:${HOME}/.local/bin"
 
 # Integrations
 [ -f "${HOME}/.local/bin/mise" ] && eval "$(~/.local/bin/mise activate zsh)"
