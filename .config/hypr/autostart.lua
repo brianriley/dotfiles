@@ -1,0 +1,7 @@
+hl.on("hyprland.start", function()
+  hl.exec_cmd("uwsm-app -- waybar")
+  hl.exec_cmd("uwsm-app -- hyprpaper")
+  hl.exec_cmd("uwsm-app -- hypridle")
+  hl.exec_cmd("uwsm-app -- walker --gapplication-service")
+  hl.exec_cmd("fcitx5 -d")
+end)

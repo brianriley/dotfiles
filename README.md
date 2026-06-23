@@ -22,12 +22,6 @@
 
     stow -t ~ .
 
-On OSX, run:
-
-    mkdir -p $HOME/Library/KeyBindings
-    cp system/DefaultKeyBinding.dict $HOME/Library/KeyBindings/
-    source system/osx.sh
-
 ## Post installation
 
 ### Kitty

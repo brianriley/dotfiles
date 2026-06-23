@@ -1,0 +1,9 @@
+#!/bin/bash
+
+choice=$(printf "  Lock\n󰜉  Restart\n󰐥  Shutdown" | walker -d -p "System")
+
+case "$choice" in
+  *Lock*)     ~/.local/bin/btr-system-lock ;;
+  *Restart*)  systemctl reboot ;;
+  *Shutdown*) systemctl poweroff ;;
+esac
